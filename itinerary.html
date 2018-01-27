@@ -4,12 +4,13 @@
         <meta charset="UTF-8">
         <title>Title of the document</title>
         <link rel="stylesheet" type="text/css" href="styles/header.css">
+        <script src="javascript/header.js" type="text/javascript"/>
     </head>
 
     <body>
         <header id="top-header">
             <h1>Vacay Collab</h1>
-            <ul>
+            <ul id="desktop-nav">
                 <li>Plans</li>
                 <li>Login</li>
                 <li>
@@ -18,7 +19,16 @@
                  </select>
                 </li>
             </ul>
-            <img src="https://cdn4.iconfinder.com/data/icons/tupix-1/30/list-512.png" height="50px" width="50px">
+            <img src="https://cdn4.iconfinder.com/data/icons/tupix-1/30/list-512.png" height="50px" width="50px" onclick="mobileNavClick()">
+            <ul id="mobile-nav">
+                <li>Plans</li>
+                <li>Login</li>
+                <li>
+                    <select>
+                    <option value="eng">English</option>
+                 </select>
+                </li>
+            </ul>
         </header>
     </body>
 
