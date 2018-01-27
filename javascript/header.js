@@ -1,4 +1,5 @@
-/*global document*/
+/* global document */
+/* exported mobileNavClick */
 
 function mobileNavClick() {
     'use strict';
