@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Title of the document</title>
+        <link rel="stylesheet" type="text/css" href="styles/header.css">
+        <script src="javascript/header.js" type="text/javascript"></script>
+    </head>
+
+    <body>
+        <header id="top-header">
+            <h1>Vacay Collab</h1>
+            <ul id="desktop-nav">
+                <li>Plans</li>
+                <li>Login</li>
+                <li>
+                    <select>
+                    <option value="eng">English</option>
+                 </select>
+                </li>
+            </ul>
+            <img src="assets/images/mobile_hamburger.png" height="50px" width="50px" onclick="mobileNavClick()">
+            <ul id="mobile-nav">
+                <li>Plans</li>
+                <li>Login</li>
+                <li>
+                    <select>
+                    <option value="eng">English</option>
+                 </select>
+                </li>
+            </ul>
+        </header>
+
+        <div id="login-border">
+            <h1>Login</h1>
+            <p>Login to access your vacation plan from any device.</p>
+            <button class="loginBtn loginBtn--facebook">
+                Login with Facebook
+              </button>
+              <button class="loginBtn loginBtn--google">
+                Login with Google
+            </button>
+            <p>or</p>
+            <hr/>
+            <form>
+                <br>
+                Email:
+                <input type="text" name="email"></br>
+                <br>
+                Password:
+                <input type="text" name="password"></br>
+            </form>
+            <button class="login-button">Login</button>
+            <a href="signup.html">New User? Sign Up!</a>
+        </div>
+
+    </body>
+
+</html>
