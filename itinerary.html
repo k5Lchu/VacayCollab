@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         <title>Title of the document</title>
         <link rel="stylesheet" type="text/css" href="styles/header.css">
+        <link rel="stylesheet" type="text/css" href="styles/itinerary.css">
         <script src="javascript/header.js" type="text/javascript"></script>
     </head>
 
@@ -30,6 +31,133 @@
                 </li>
             </ul>
         </header>
+
+        <div id="group-chat-container">
+            <div id="top-prompt">
+                <h1>Where does everyone want to go?</h1>
+                <h4>Vote on where to want to go! Leave comments for each other and the leader of this group to back up why your spot should be part of the vacation</h4>
+            </div>
+            <div id="chat-interact-bar">
+                <h6>SELECT VIEW:</h6>
+                <ul>
+                    <li>LIST</li>
+                    <li>CALENDER</li>
+                    <li>MAPS</li>
+                    <button id="desktop-button" type="button">Add Activity</button>
+                </ul>
+                <button id="mobile-button" type="button">Add Activity</button>
+            </div>
+            <div id="chat-main-content">
+                <div id="left-content">
+                    <ul>
+                        <li>
+                            <h5>Get to Chiang Mai</h5>
+                            <ul class="left-content-dates">
+                                <li>
+                                    <div>
+                                        <p class="left-content-date-month">MAR</p>
+                                        <p class="left-content-date-day">18</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <h5>Chiang Mai</h5>
+                            <ul class="left-content-dates">
+                                <li>
+                                    <div>
+                                        <p class="left-content-date-month">MAR</p>
+                                        <p class="left-content-date-day">20</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div>
+                                        <p class="left-content-date-month">MAR</p>
+                                        <p class="left-content-date-day">21</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div>
+                                        <p class="left-content-date-month">MAR</p>
+                                        <p class="left-content-date-day">22</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div id="right-content">
+                    <ul>
+                        <li>
+                            <div class="right-content-dates">
+                                <p class="right-content-date-month">MAR</p>
+                                <p class="right-content-date-day-of-month">18</p>
+                                <p class="right-content-date-day">SUN</p>
+                            </div>
+                            <p class="right-content-activity-title">Get to Chiang Mai</p>
+                            <p class="right-content-activity-times">9:00am - 9:00pm</p>
+                            <p class="right-content-activity-description">
+                                <img src="https://cdn4.iconfinder.com/data/icons/aiga-symbol-signs/444/aiga_departingflights-512.png" height="10px" width="10px">
+                                 <span>San Diego</span>
+                                <img src="http://icons.iconarchive.com/icons/iconsmind/outline/256/Arrow-OutRight-icon.png" height="10px" width="10px">
+                                 <span>Chiang Mai</span> <span class="duration">(21h 15min)</span> <a href="https://google.com">Check prices</a>
+                            </p>
+                        </li>
+                        <li>
+                            <div class="right-content-dates">
+                                <p class="right-content-date-month">MAR</p>
+                                <p class="right-content-date-day-of-month">20</p>
+                                <p class="right-content-date-day">TUE</p>
+                            </div>
+                            <p class="right-content-activity-title">Chiang Mai Attractions</p>
+                            <p class="right-content-activity-times">9:00am - 8:00pm</p>
+                            <p class="right-content-activity-description">Visit the Wat Suan Dok <span class="duration">(3 hours)</span> and Tha Phae Gate <span class="duration">(4 hours)</span>.</p>
+                        </li>
+                        <li>
+                            <div class="right-content-dates">
+                                <p class="right-content-date-month">MAR</p>
+                                <p class="right-content-date-day-of-month">21</p>
+                                <p class="right-content-date-day">WED</p>
+                            </div>
+                            <p class="right-content-activity-title">Chiang Mai Foodies</p>
+                            <p class="right-content-activity-times">11:00am - 7:00pm</p>
+                            <p class="right-content-activity-description">Find and try all the street food!</p>
+                        </li>
+                        <li>
+                            <div class="right-content-dates">
+                                <p class="right-content-date-month">MAR</p>
+                                <p class="right-content-date-day-of-month">22</p>
+                                <p class="right-content-date-day">THU</p>
+                            </div>
+                            <p class="right-content-activity-title">Chiang Mai Hiking Hell</p>
+                            <p class="right-content-activity-times">10:00am - 6:00pm</p>
+                            <p class="right-content-activity-description">Visit hiking trail north of the city. Bring water!!!</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div id="chat-comments">
+                <h2>Comments:</h2>
+                <form>
+                    <input type="text" placeholder="Write a comment here">
+                </form>
+                <ul id="chat-comments-all">
+                    <li>
+                        <p class="comment-author">Luffy:</p>
+                        <p class="comment-content">Why the scrub attitude Robin?</p>
+                    </li>
+                    <li>
+                        <p class="comment-author">Luffy:</p>
+                        <p class="comment-content">Robin it's full of trash down there...</p>
+                    </li>
+                    <li>
+                        <p class="comment-author">Nico Robin:</p>
+                        <p class="comment-content">Let's go to the beach to see the ocean!</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
     </body>
 
 </html>
