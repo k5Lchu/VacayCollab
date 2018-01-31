@@ -96,6 +96,19 @@ ul {
     float: right;
 }
 
+#progress-buttons button:hover{
+    background-color: steelblue;
+}
+
+.edit-button:hover {
+    background-color: dodgerblue;
+    color: white;
+}
+
+#progress-buttons button, .edit-button {
+    cursor: pointer;
+}
+
 @media only screen and (max-width: 768px) {
     #itinerary-list li {
         grid-template-areas:
@@ -105,7 +118,7 @@ ul {
     }
 
     .edit-button {
-        width: 90%;
-        margin: 0px;
+        width: 100%;
+        margin: auto;
     }
 }

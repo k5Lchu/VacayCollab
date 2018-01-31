@@ -36,6 +36,15 @@ body {
     border-right: 1px solid gray;
 }
 
+#desktop-nav li, #mobile-nav li:not(:last-child),
+#top-header h1 {
+    cursor: pointer;
+}
+
+#desktop-nav li:hover, #mobile-nav li:not(:last-child):hover {
+    color: white;
+}
+
 #desktop-nav select {
     min-width: 130px;
     font-size: 0.7em;

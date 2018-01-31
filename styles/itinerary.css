@@ -209,8 +209,6 @@
     padding: 10px;
     border-radius: 5px;
     margin-top: 5px;
-    max-height: 300px;
-    overflow: auto;
     margin-bottom: 10px;
 }
 
@@ -238,6 +236,8 @@
 #chat-comments-all {
     list-style-type: none;
     padding: 0px;
+    max-height: 200px;
+    overflow: auto;
 }
 
 .comment-author {
@@ -277,6 +277,19 @@
 
 #progress-buttons button:last-child {
     float: right;
+}
+
+#chat-interact-bar li, #desktop-button, #mobile-button,
+.left-content-dates div, #progress-buttons button {
+    cursor: pointer;
+}
+
+#desktop-button:hover, #mobile-button:hover {
+    background-color: darkorange;
+}
+
+#progress-buttons button:hover{
+    background-color: steelblue;
 }
 
 @media only screen and (max-width: 768px) {

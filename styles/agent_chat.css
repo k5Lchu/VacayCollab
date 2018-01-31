@@ -35,6 +35,10 @@ ul {
     padding-right: 15px;
 }
 
+#chat-title img:hover {
+    cursor: pointer;
+}
+
 #chat {
     background-color: white;
     width: 370px;
