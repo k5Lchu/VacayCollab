@@ -1,0 +1,111 @@
+#progress-bar {
+    border: 1px solid black;
+    width: 200px;
+    height: 20px;
+    margin: auto;
+    margin-top: 30px;
+}
+
+#progress-bar div {
+    width: 180px;
+    height: 20px;
+    background-color: dodgerblue;
+}
+
+#main-container {
+    max-width: 65%;
+    border: 2px solid black;
+    border-radius: 10px;
+    margin: auto;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    padding: 15px;
+}
+
+ul {
+    list-style: none;
+    padding: 0px;
+}
+
+#main-container > h1 {
+    text-align: center;
+}
+
+#itinerary-list > ul {
+    max-height: 400px;
+    overflow-y: auto;
+    border: 2px solid lightblue;
+    border-radius: 5px;
+}
+
+#itinerary-list li {
+    display: grid;
+    grid-template-areas:
+        "title title title"
+        "description description edit-button";
+    padding: 0px 20px;
+    margin: 30px 20px;
+}
+
+#itinerary-list h3 {
+    grid-area: title;
+    margin: 0px 0px;
+}
+
+.event-description {
+    grid-area: description;
+    margin: 5px 0px;
+}
+
+.edit-button {
+    grid-area: edit-button;
+    font-size: 1.4em;
+    color: dodgerblue;
+    background-color: white;
+    border: 1px solid dodgerblue;
+    max-height: 35px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin: auto;
+    margin-left: 50px;
+    border-radius: 6px;
+}
+
+#progress-buttons {
+    width: 75%;
+    margin: auto;
+    margin-bottom: 75px;
+    overflow: hidden;
+}
+
+#progress-buttons button {
+    background-color: dodgerblue;
+    color: white;
+    border: none;
+    font-size: 1.5em;
+    font-weight: bold;
+    padding: 5px 20px;
+    border-radius: 6px;
+}
+
+#progress-buttons button:first-child {
+    float: left;
+}
+
+#progress-buttons button:last-child {
+    float: right;
+}
+
+@media only screen and (max-width: 768px) {
+    #itinerary-list li {
+        grid-template-areas:
+            "title"
+            "description"
+            "edit-button";
+    }
+
+    .edit-button {
+        width: 90%;
+        margin: 0px;
+    }
+}

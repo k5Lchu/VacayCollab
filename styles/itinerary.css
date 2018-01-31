@@ -1,10 +1,24 @@
+#progress-bar {
+    border: 1px solid black;
+    width: 200px;
+    height: 20px;
+    margin: auto;
+    margin-top: 30px;
+}
+
+#progress-bar div {
+    width: 140px;
+    height: 20px;
+    background-color: dodgerblue;
+}
+
 #group-chat-container {
     max-width: 65%;
     border: 2px solid black;
     border-radius: 10px;
     margin: auto;
-    margin-top: 50px;
-    margin-bottom: 50px;
+    margin-top: 30px;
+    margin-bottom: 10px;
     padding: 15px;
 }
 
@@ -238,6 +252,31 @@
     line-height: 0.5em;
     margin-bottom: 20px;
     border-bottom: 1px solid gray;
+}
+
+#progress-buttons {
+    width: 75%;
+    margin: auto;
+    margin-bottom: 75px;
+    overflow: hidden;
+}
+
+#progress-buttons button {
+    background-color: dodgerblue;
+    color: white;
+    border: none;
+    font-size: 1.5em;
+    font-weight: bold;
+    padding: 5px 20px;
+    border-radius: 6px;
+}
+
+#progress-buttons button:first-child {
+    float: left;
+}
+
+#progress-buttons button:last-child {
+    float: right;
 }
 
 @media only screen and (max-width: 768px) {
