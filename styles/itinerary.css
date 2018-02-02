@@ -28,8 +28,8 @@
 
 #top-prompt h4 {
     margin-top: 10px;
-    margin-left: 20%;
-    margin-right: 20%;
+    margin-left: 10%;
+    margin-right: 10%;
 }
 
 #top-prompt h1 {
@@ -57,7 +57,7 @@
 
 #chat-interact-bar li {
     font-size: 0.6em;
-    margin: 0px 10px;
+    margin: 0px 5px;
     line-height: 30px;
 }
 
@@ -249,7 +249,7 @@
 .comment-content {
     padding-bottom: 10px;
     padding-left: 50px;
-    line-height: 0.5em;
+    line-height: 1em;
     margin-bottom: 20px;
     border-bottom: 1px solid gray;
 }
@@ -316,5 +316,23 @@
 
     #desktop-button {
         display: none;
+    }
+
+    #top-prompt h4 {
+        font-size: 3.2vw;
+        margin-left: 3%;
+        margin-right: 3%;
+    }
+
+    #top-prompt h1 {
+        font-size: 4.4vw;
+    }
+
+    #chat-comments input[type=text] {
+        width: 95%;
+    }
+
+    .comment-content {
+        padding-left: 10%;
     }
 }

@@ -121,4 +121,8 @@ ul {
         width: 100%;
         margin: auto;
     }
+
+    #main-container > h1 {
+        font-size: 5vw;
+    }
 }
