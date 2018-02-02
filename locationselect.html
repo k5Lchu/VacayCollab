@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Location Select</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="styles/header.css">
+    <link rel="stylesheet" type="text/css" href="styles/locationselect.css">
+    <script src="javascript/header.js" type="text/javascript"></script>
+</head>
+
+<body>
+    <header id="top-header">
+        <h1>Vacay Collab</h1>
+        <ul id="desktop-nav">
+            <li>Plans</li>
+            <li>Login</li>
+            <li>
+                <select>
+                    <option value="eng">English</option>
+                </select>
+            </li>
+        </ul>
+        <img src="assets/images/mobile_hamburger.png" height="50px" width="50px" onclick="mobileNavClick()">
+        <ul id="mobile-nav">
+            <li>Plans</li>
+            <li>Login</li>
+            <li>
+                <select>
+                    <option value="eng">English</option>
+                </select>
+            </li>
+        </ul>
+    </header>
+
+    <div id="progress-bar"><div></div></div>
+
+    <div id="location-container">
+        <div id="top-prompt">
+            <h1>Where does everyone want to go?</h1>
+            <h4>Vote on where you want to go! Leave comments for the group with you opinions on your vacation destination</h4>
+        </div>
+        <div id="search-filter">
+            <search>Search For Destinations....</search>
+            <filter>Filter</filter>
+        </div>
+        <div id="area-container">
+            <full-area>
+                <div id="area-pic">
+                    <img src="assets/images/chiangmai-pic.jpg" height="100%" width="100%" />
+                </div>
+                <div id="area-desc">
+                    <area-name>Chiang Mai</area-name>
+                    <upvote-count>+3</upvote-count>
+                    <area-info><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nun maximus kevin chu is a scrub, nulla ut commodo sagittis, sapien dui mattis dui, non pulvinar lorem felis nec erat.</p></area-info>
+                    <area-upvote>UpVote</area-upvote>
+                </div>
+            </full-area>
+        
+        </div>    
+    </div>
+
+    <div id="progress-buttons">
+        <button type="button">Back</button>
+        <button type="button">Next</button>
+    </div>
+
+</body>

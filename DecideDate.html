@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>DecideDate</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="styles/header.css">
+	<link rel="stylesheet" type="text/css" href="styles/DecideDate.css">
+	<script src="javascript/header.js" type="text/javascript"></script>
+</head>
+
+<body>
+	<header id="top-header">
+		<h1>Vacay Collab</h1>
+		<ul id="desktop-nav">
+			<li>Plans</li>
+			<li>Login</li>
+			<li>
+				<select>
+					<option value="eng">English</option>
+				</select>
+			</li>
+		</ul>
+		<img src="assets/images/mobile_hamburger.png" height="50px" width="50px" onclick="mobileNavClick()">
+		<ul id="mobile-nav">
+			<li>Plans</li>
+			<li>Login</li>
+			<li>
+				<select>
+					<option value="eng">English</option>
+				</select>
+			</li>
+		</ul>
+	</header>
+
+	<div id="progress-bar"><div></div></div>
+
+	<div id="calender-container">
+		<div id="top-prompt">
+			<h1>Decide the Date</h1>
+			<h4>As the leader of this group, use the available dates of all participants to finalize the vacation start and end dates</h4>
+		</div>
+		<div id="calender">
+			<img src="assets/images/calender.png" height="100%" width="100%"/>
+		</div>
+	</div>
+
+	<div id="progress-buttons">
+		<button type="button">Back</button>
+		<button type="button">Next</button>
+	</div>
+
+</body>

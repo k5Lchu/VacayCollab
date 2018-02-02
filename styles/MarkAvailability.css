@@ -1,0 +1,73 @@
+#progress-bar {
+    border: 1px solid black;
+    width: 200px;
+    height: 20px;
+    margin: auto;
+    margin-top: 30px;
+}
+
+#progress-bar div {
+    width: 20px;
+    height: 20px;
+    background-color: dodgerblue;
+} 
+
+#calender-container {
+    max-width: 65%;
+    border: 2px solid black;
+    border-radius: 10px;
+    margin: auto;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    padding: 15px;
+}
+
+#top-prompt {
+    text-align: center;
+}
+
+#top-prompt h4 {
+    margin-top: 10px;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+#top-prompt h1 {
+    margin-bottom: 10px;
+}
+
+#calender {
+    text-align: center;
+    margin-top: 10px;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+#progress-buttons {
+    width: 75%;
+    margin: auto;
+    margin-bottom: 75px;
+    overflow: hidden;
+}
+
+#progress-buttons button {
+    background-color: dodgerblue;
+    color: white;
+    border: none;
+    font-size: 1.5em;
+    font-weight: bold;
+    padding: 5px 20px;
+    border-radius: 6px;
+}
+
+#progress-buttons button:first-child {
+    float: left;
+}
+
+#progress-buttons button:last-child {
+    float: right;
+}
+
+#progress-buttons button:hover {
+    background-color: steelblue;
+}

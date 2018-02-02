@@ -1,0 +1,185 @@
+#progress-bar {
+    border: 1px solid black;
+    width: 200px;
+    height: 20px;
+    margin: auto;
+    margin-top: 30px;
+}
+
+#progress-bar div {
+    width: 60px;
+    height: 20px;
+    background-color: dodgerblue;
+}
+
+#location-container {
+    max-width: 65%;
+    border: 2px solid black;
+    border-radius: 10px;
+    margin: auto;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    
+}
+
+#top-prompt {
+    text-align: center;
+}
+
+#top-prompt h4 {
+    margin-top: 10px;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+#top-prompt h1 {
+    margin-bottom: 10px;
+}
+
+#search-filter {
+    text-align: center;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+#search-filter search {
+    margin-top: 10px;
+    margin-right: 20px;
+    margin-bottom: 10px;
+    background-color: navajowhite;
+    border: 2px solid darkgray;
+    color: darkgray;
+    font-size: 1.5em;
+    border-radius: 10px;
+}
+
+#search-filter filter {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: dodgerblue;
+    color: white;
+    border: 2px solid black;
+    font-size: 1.5em;
+    font-weight: bold;
+    border-radius: 6px;
+    padding: 0px 10px;
+}
+
+#search-filter filter:hover {
+    background-color: steelblue;
+    cursor: pointer;
+}
+
+#area-container {
+    margin-left: 0px;
+    margin-right: 0px;
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    overflow: auto;
+    max-height: 300px;
+}
+
+#area-container full-area {
+    border-top: 2px solid gray;
+    border-bottom: 2px solid gray;
+    background-color: lightgray;
+    display: grid;
+    grid-template-areas: 'left right';
+}
+
+#area-pic {
+    grid-area: left;
+    text-align: center;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: lightgray;
+}
+
+#area-desc {
+    grid-area: right;
+    background-color: lightgray;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+#area-desc area-name {
+    text-align: center;
+    border-bottom: 2px solid gray;
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-left: 25%;
+    margin-right: 10%;
+    margin-top: 10px;
+}
+
+#area-desc area-info {
+    text-align: left;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+#area-desc area-upvote {
+    text-align: right;
+    background-color: white;
+    color: black;
+    border: none;
+    font-size: 1.5em;
+    font-weight: bold;
+    padding: 5px 5px;
+    border-radius: 6px;
+    margin-left: 50%;
+    margin-right: 10%;
+    margin-top: 10px;
+}
+
+#area-desc area-upvote:hover {
+    background-color: lightsteelblue;
+    cursor: pointer;
+}
+
+#area-desc upvote-count {
+    text-align: right;
+    background-color: white;
+    color: black;
+    border: none;
+    font-size: 1.5em;
+    font-weight: bold;
+    padding: 5px 5px;
+    border-radius: 6px;
+}
+
+#progress-buttons {
+    width: 75%;
+    margin: auto;
+    margin-bottom: 75px;
+    overflow: hidden;
+}
+
+#progress-buttons button {
+    background-color: dodgerblue;
+    color: white;
+    border: none;
+    font-size: 1.5em;
+    font-weight: bold;
+    padding: 5px 20px;
+    border-radius: 6px;
+}
+
+#progress-buttons button:first-child {
+    float: left;
+}
+
+#progress-buttons button:last-child {
+    float: right;
+}
+
+#progress-buttons button:hover {
+    background-color: steelblue;
+    cursor: pointer;
+}
