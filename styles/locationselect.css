@@ -42,7 +42,7 @@
     margin-right: 10%;
 }
 
-#search {
+#search-filter input {
     width: 60%;
     margin-top: 10px;
     margin-right: 10px;
@@ -56,7 +56,7 @@
     margin: auto;
 }
 
-#filter {
+#search-filter button {
     background-color: dodgerblue;
     color: white;
     border: 2px solid black;
@@ -69,7 +69,7 @@
     margin: auto;
 }
 
-#filter:hover {
+#search-filter filter:hover {
     background-color: steelblue;
     cursor: pointer;
 }
@@ -92,7 +92,7 @@
     grid-template-areas: 'left right';
 }
 
-#area-pic {
+#area-container full-area area-pic {
     grid-area: left;
     text-align: center;
     margin-left: 5%;
@@ -102,17 +102,12 @@
     background-color: lightgray;
 }
 
-#area-pic1 {
-    grid-area: left;
-    text-align: center;
-    margin-left: 5%;
-    margin-right: 5%;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    background-color: lightgray;
+#area-container full-area area-pic img {
+    width: 100%;
+    height: 100%;
 }
 
-#area-desc {
+#area-container full-area area-desc {
     grid-area: right;
     background-color: lightgray;
     margin-left: 5%;
@@ -121,16 +116,7 @@
     margin-bottom: 5px;
 }
 
-#area-desc1 {
-    grid-area: right;
-    background-color: lightgray;
-    margin-left: 5%;
-    margin-right: 5%;
-    margin-top: 5px;
-    margin-bottom: 5px;
-}
-
-#area-desc area-name {
+#area-container full-area area-desc area-name {
     text-align: center;
     border-bottom: 2px solid gray;
     font-size: 1.5em;
@@ -138,13 +124,13 @@
     margin-top: 10px;
 }
 
-#area-desc area-info {
+#area-container full-area area-desc area-info {
     text-align: left;
     margin-left: 10%;
     margin-right: 10%;
 }
 
-#area-desc area-upvote {
+#area-container full-area area-desc area-upvote {
     text-align: right;
     background-color: white;
     color: black;
@@ -158,12 +144,12 @@
     
 }
 
-#area-desc area-upvote:hover {
+#area-container full-area area-desc area-upvote:hover {
     background-color: lightsteelblue;
     cursor: pointer;
 }
 
-#area-desc upvote-count {
+#area-container full-area area-desc upvote-count {
     text-align: right;
     background-color: white;
     color: black;
