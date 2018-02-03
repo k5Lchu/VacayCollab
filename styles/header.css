@@ -111,6 +111,16 @@ body {
     padding: 10px;
 }
 
+#top-header img {
+    height: 50px;
+    width: 50px;
+}
+
+.flight-icons {
+    height: 10px;
+    width: 10px;
+}
+
 @media only screen and (max-width: 768px) {
     #top-header img {
         grid-column: 6/8;
