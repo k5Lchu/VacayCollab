@@ -43,16 +43,16 @@
 }
 
 #search-filter input[type=text] {
-    width: 40%;
+    width: 60%;
     margin-top: 10px;
-    margin-right: 20px;
+    margin-right: 10px;
     margin-bottom: 10px;
     background-color: navajowhite;
     border: 2px solid darkgray;
     color: darkgray;
     font-size: 1em;
     border-radius: 10px;
-    padding: 4px 5px;
+    padding: 4px 4px;
 }
 
 #search-filter filter {
@@ -103,8 +103,8 @@
 #area-desc {
     grid-area: right;
     background-color: lightgray;
-    margin-left: 5px;
-    margin-right: 5px;
+    margin-left: 5%;
+    margin-right: 5%;
     margin-top: 5px;
     margin-bottom: 5px;
 }
@@ -114,8 +114,6 @@
     border-bottom: 2px solid gray;
     font-size: 1.5em;
     font-weight: bold;
-    margin-left: 25%;
-    margin-right: 10%;
     margin-top: 10px;
 }
 
@@ -134,9 +132,9 @@
     font-weight: bold;
     padding: 5px 5px;
     border-radius: 6px;
-    margin-left: 50%;
-    margin-right: 10%;
-    margin-top: 10px;
+    margin: auto;
+    float: right;
+    
 }
 
 #area-desc area-upvote:hover {
@@ -151,7 +149,6 @@
     border: none;
     font-size: 1.5em;
     font-weight: bold;
-    padding: 5px 5px;
     border-radius: 6px;
 }
 
@@ -232,4 +229,18 @@
     line-height: 1em;
     margin-bottom: 20px;
     border-bottom: 1px solid gray;
+}
+
+@media only screen and (max-width: 768px){
+    #location-container {
+        max-width: 90%;
+    }
+
+    #search-filter input[type=text]{
+        width: 80%;
+    }
+
+    #area-container full-area{
+        grid-template-areas: 'left' 'right';
+    }
 }

@@ -71,3 +71,14 @@
 #progress-buttons button:hover {
     background-color: steelblue;
 }
+
+@media only screen and (max-width: 768px){
+    #calender-container {
+        max-width: 90%;
+    }
+
+    #calender {
+        margin-left: 0%;
+        margin-right: 0%;
+    }
+}
