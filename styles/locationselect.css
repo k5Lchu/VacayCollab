@@ -42,15 +42,17 @@
     margin-right: 10%;
 }
 
-#search-filter search {
+#search-filter input[type=text] {
+    width: 40%;
     margin-top: 10px;
     margin-right: 20px;
     margin-bottom: 10px;
     background-color: navajowhite;
     border: 2px solid darkgray;
     color: darkgray;
-    font-size: 1.5em;
+    font-size: 1em;
     border-radius: 10px;
+    padding: 4px 5px;
 }
 
 #search-filter filter {
@@ -75,7 +77,6 @@
     margin-right: 0px;
     border-top: 2px solid black;
     border-bottom: 2px solid black;
-    margin-bottom: 20px;
     margin-top: 20px;
     overflow: auto;
     max-height: 300px;
@@ -182,4 +183,53 @@
 #progress-buttons button:hover {
     background-color: steelblue;
     cursor: pointer;
+}
+
+#chat-comments {
+    background-color: lightgray;
+    padding: 10px;
+    border-bottom: 2px solid black;
+    margin-bottom: 20px;
+}
+
+#chat-comments h2 {
+    margin: 0;
+    padding-bottom: 10px;
+}
+
+#chat-comments form {
+    text-align: center;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    padding: 10px;
+    margin-bottom: 30px;
+}
+
+#chat-comments input[type=text] {
+    width: 80%;
+    padding: 5px;
+    background-color: inherit;
+    border: none;
+    border-bottom: 1px solid black;
+}
+
+#chat-comments-all {
+    list-style-type: none;
+    padding: 0px;
+    max-height: 200px;
+    overflow: auto;
+}
+
+.comment-author {
+    border-top: 1px solid gray;
+    font-weight: bold;
+    padding-top: 5px;
+}
+
+.comment-content {
+    padding-bottom: 10px;
+    padding-left: 50px;
+    line-height: 1em;
+    margin-bottom: 20px;
+    border-bottom: 1px solid gray;
 }
