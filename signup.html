@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         <title>Title of the document</title>
         <link rel="stylesheet" type="text/css" href="styles/header.css">
+        <link rel="stylesheet" type="text/css" href="styles/signup.css">
         <script src="javascript/header.js" type="text/javascript"></script>
     </head>
 
@@ -31,31 +32,48 @@
             </ul>
         </header>
 
-        <div id="signup-border">
+        <div id="main-container">
             <h1>Sign Up</h1>
+            <h4>Sign up today to start planning for your group's next BIG vacation!</h4>
             <form>
                     <br>
-                        First Name
-                        <input id="firstName" name="firstName" type="text" />
+                        First name:<br>
+                        <input id="firstName" name="firstName" placeholder="Enter your first name" type="text" />
                     </br>
                     <br>
-                        Last Name:
-                        <input id="lastName" name="lastName" type="text" />
+                        Last name:<br>
+                        <input id="lastName" name="lastName" placeholder="Enter your last name" type="text" />
                     </br>
                     <br>
-                        Email:
-                        <input id="email" name="email" type="email" />
+                        Email address:<br>
+                        <input id="email" name="email" placeholder="Kevinisascrub@gmail.com" type="email" />
                     </br>
                     <br>
-                        Password:
+                        Create a password:<br>
                         <input id="password" name="password" type="password" />
                     </br>
                     <br>
-                        Confirm Password:
+                        Confirm your password:<br>
                         <input id="passwordRe" name="passwordRe" type="password" />
                     </br>
+                    <br>
+                        Birthday:<br>
+                    <input id="birthday" name="birthday" type="date" />
+                    </br>
+                    <br>
+                    <label for="country">Country: </label><br>
+                    <select id="country" name="country">
+                      <option value="australia">Australia</option>
+                      <option value="canada">Canada</option>
+                      <option value="china">China</option>
+                      <option value="jabooty">Jabooty</option>
+                      <option value="usa">USA</option>
+                    </select>
+                    </br>
                 </form>
-            <button class="login-button">Sign Up</button>
+            </br>
+            <!--<button id="desktop-button" type="button">Sign Up!</button>-->
+            <p><a href="https://www.andrew.cmu.edu/user/gkesden/images/gkesden2.jpg" class="desktop-button"> Sign Up! </a></p>
         </div>
 
     </body>
