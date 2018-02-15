@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -21,7 +21,7 @@
                 </select>
             </li>
         </ul>
-        <img src="assets/images/mobile_hamburger.png" onclick="mobileNavClick()" alt="|">
+        <img src="assets/images/mobile_hamburger.png" alt="Menu" onclick="mobileNavClick()" >
         <ul id="mobile-nav">
             <li>Plans</li>
             <li>Login</li>
@@ -42,31 +42,32 @@
         </div>
         <div id="search-filter">
             <input type="text" placeholder="Search For Destinations....">
-            <filter>Filter</filter>
+            <button type="button">Filter</button>
         </div>
         <div id="area-container">
             <full-area>
-                <div id="area-pic">
-                    <img src="assets/images/chiangmai-pic.jpg" height="100%" width="100%" />
-                </div>
-                <div id="area-desc">
+                <area-pic>
+                    <img src="assets/images/chiangmai-pic.jpg" alt="Picture not found" />
+                </area-pic>
+                <area-desc>
                     <area-name>Chiang Mai</area-name>
                     <upvote-count>+3</upvote-count>
                     <area-info><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nun maximus kevin chu is a scrub, nulla ut commodo sagittis, sapien dui mattis dui, non pulvinar lorem felis nec erat.</p></area-info>
                     <area-upvote>UpVote</area-upvote>
-                </div>
+                </area-desc>
             </full-area>
             <full-area>
-                <div id="area-pic">
-                    <img src="assets/images/LA-pic.jpg" height="100%" width="100%" />
-                </div>
-                <div id="area-desc">
+                <area-pic>
+                    <img src="assets/images/LA-pic.jpg" alt="Picture not found" />
+                </area-pic>
+                <area-desc>
                     <area-name>Los Angeles</area-name>
                     <upvote-count>+1</upvote-count>
                     <area-info><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nun maximus kevin chu is a scrub, nulla ut commodo sagittis, sapien dui mattis dui, non pulvinar lorem felis nec erat.</p></area-info>
                     <area-upvote>UpVote</area-upvote>
-                </div>
+                </area-desc>
             </full-area>
+        
         </div>
         <div id="chat-comments">
             <h2>Comments:</h2>
