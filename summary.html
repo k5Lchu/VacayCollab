@@ -8,6 +8,7 @@
         <link rel="stylesheet" type="text/css" href="styles/agent_chat.css">
         <link rel="stylesheet" type="text/css" href="styles/summary.css">
         <script src="javascript/header.js" type="text/javascript"></script>
+        <script src="javascript/agent_chat.js" type="text/javascript"></script>
         <script src="javascript/summary.js" type="text/javascript"></script>
     </head>
 
@@ -63,26 +64,19 @@
             </div>
         </div>
 
+        <button id="chat-button" onclick="toggleChat()" type="button"><img src="http://iconshow.me/media/images/ui/ios7-icons/png/512/chatbubble-outline.png" alt="chat"></button>
+
         <div id="advisor-chat-container">
             <header id="chat-title">
                 <h3>Chat with us</h3>
-                <img src="https://bcscallprocessing.com/wp-content/uploads/2016/04/chevron-down-300x300.png" alt="hide">
+                <img onclick="hideChat()" src="https://bcscallprocessing.com/wp-content/uploads/2016/04/chevron-down-300x300.png" alt="hide">
             </header>
             <div id="chat">
                 <ul>
-                    <li><p>I have a question</p></li>
-                    <li><p>Sure thing!</p></li>
-                    <li><p>What is your question?</p></li>
-                    <li><p>Do you happen to know any places to visit in ChiangMai?</p></li>
-                    <li><p>Not really</p></li>
-                    <li><p>...</p></li>
-                    <li><p>Thank you.....?</p></li>
-                    <li><p>Thank you.....?</p></li>
-                    <li><p>Thank you.....?</p></li>
                 </ul>
             </div>
-            <form>
-                <input type="text" placeholder="Type a message...">
+            <form onsubmit="return sendMessage()">
+                <input id="message-input" type="text" placeholder="Type a message...">
             </form>
         </div>
     </body>

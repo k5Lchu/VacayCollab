@@ -1,4 +1,4 @@
-/* global document, window, location */
+/* global document, window, location, populateChat */
 /* exported clickBack, clickNext, editEvent, submitEdits */
 
 var itineraryData = [
@@ -124,6 +124,7 @@ var hideModal = function (event) {
 window.onload = function () {
     'use strict';
     populateList();
+    populateChat();
 };
 
 window.onclick = function (event) {
