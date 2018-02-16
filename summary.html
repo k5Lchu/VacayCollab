@@ -8,6 +8,7 @@
         <link rel="stylesheet" type="text/css" href="styles/agent_chat.css">
         <link rel="stylesheet" type="text/css" href="styles/summary.css">
         <script src="javascript/header.js" type="text/javascript"></script>
+        <script src="javascript/summary.js" type="text/javascript"></script>
     </head>
 
     <body>
@@ -40,38 +41,26 @@
             <h1>Does this plan work with everyone?</h1>
             <div id="itinerary-list">
                 <ul>
-                    <li>
-                        <h3>Label</h3>
-                        <p class="event-description">ffdsfdsf fsdfds fsdfds fsdf sdf sd fdsfdsfsd fs dfdsfsd fsdf sdf sdfsdf sdf sdf sdf sdfsdf sdfs dfsdsd</p>
-                        <button class="edit-button" type="button">Edit</button>
-                    </li>
-                    <li>
-                        <h3>Label</h3>
-                        <p class="event-description">fffdsfdsf fsdfds fsdfds fsdf sdf sd fdsfdsfsd fs dfdsfsd fsdf sdf sdfsdf sdf sdf sdf sdfsdf sdfs dfsdsd</p>
-                        <button class="edit-button" type="button">Edit</button>
-                    </li>
-                    <li>
-                        <h3>Label</h3>
-                        <p class="event-description">fffdsfdsf fsdfds fsdfds fsdf sdf sd fdsfdsfsd fs dfdsfsd fsdf sdf sdfsdf sdf sdf sdf sdfsdf sdfs dfsdsd</p>
-                        <button class="edit-button" type="button">Edit</button>
-                    </li>
-                    <li>
-                        <h3>Label</h3>
-                        <p class="event-description">ffdsfdsf fsdfds fsdfds fsdf sdf sd fdsfdsfsd fs dfdsfsd fsdf sdf sdfsdf sdf sdf sdf sdfsdf sdfs dfsdsd</p>
-                        <button class="edit-button" type="button">Edit</button>
-                    </li>
-                    <li>
-                        <h3>Label</h3>
-                        <p class="event-description">ffdsfdsf fsdfds fsdfds fsdf sdf sd fdsfdsfsd fs dfdsfsd fsdf sdf sdfsdf sdf sdf sdf sdfsdf sdfs dfsdsd</p>
-                        <button class="edit-button" type="button">Edit</button>
-                    </li>
                 </ul>
             </div>
         </div>
 
         <div id="progress-buttons">
-            <button type="button">Back</button>
-            <button type="button">Next</button>
+            <button type="button" onclick="clickBack()">Back</button>
+            <button type="button" onclick="clickNext()">Next</button>
+        </div>
+
+        <div id="modal">
+            <div id="modal-content">
+                <h4>Edit Event Summary</h4>
+                <form onsubmit="return submitEdits()">
+                    <div>
+                        <p class="input-titles">Title</p><input id="title-input" class="inputs" type="text" placeholder="Enter new title">
+                        <p class="input-titles">Descirption</p><textarea id="description-input" class="inputs" placeholder="Enter new descirption here"></textarea>
+                    </div>
+                    <button id="submit-edits-button">Submit</button>
+                </form>
+            </div>
         </div>
 
         <div id="advisor-chat-container">
