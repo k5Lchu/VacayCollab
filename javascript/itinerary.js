@@ -80,16 +80,17 @@ var addToLeftList = function (newEvent, itineraryLeft) {
     'use strict';
     var locationItem = itineraryLeft.querySelector('#' + newEvent.location.replace(/\s+/g, '-').toLocaleLowerCase());
     var scrollToId = (newEvent.month + '-' + newEvent.dayOfMonth + '-' + newEvent.year).toLowerCase();
+    var dateItemId = ('date-' + newEvent.month + '-' + newEvent.dayOfMonth + '-' + newEvent.year).toLowerCase();
     if (locationItem === null) {
         var itemLocation = newEvent.location;
         if (newEvent.type === 'flight') {
             itemLocation = 'Get to ' + itemLocation;
         }
-        var newLeftItem = '<li id="' + itemLocation.replace(/\s+/g, '-').toLocaleLowerCase() + '"><h5>' + itemLocation + '</h5><ul class="left-content-dates"><li><div onclick="scrollToEvent(\'' + scrollToId + '\',this)"><p class="left-content-date-month">' + newEvent.month + '</p><p class="left-content-date-day">' + newEvent.dayOfMonth + '</p></div></li></ul></li>';
+        var newLeftItem = '<li id="' + itemLocation.replace(/\s+/g, '-').toLocaleLowerCase() + '"><h5>' + itemLocation + '</h5><ul class="left-content-dates"><li><div id="' + dateItemId + '" onclick="scrollToEvent(\'' + scrollToId + '\',this)"><p class="left-content-date-month">' + newEvent.month + '</p><p class="left-content-date-day">' + newEvent.dayOfMonth + '</p></div></li></ul></li>';
         itineraryLeft.innerHTML += newLeftItem;
     } else {
         var locationItemDates = locationItem.querySelector('ul');
-        locationItemDates.innerHTML += '<li><div onclick="scrollToEvent(\'' + scrollToId + '\',this)"><p class="left-content-date-month">' + newEvent.month + '</p><p class="left-content-date-day">' + newEvent.dayOfMonth + '</p></div></li>';
+        locationItemDates.innerHTML += '<li><div id="' + dateItemId + '" onclick="scrollToEvent(\'' + scrollToId + '\',this)"><p class="left-content-date-month">' + newEvent.month + '</p><p class="left-content-date-day">' + newEvent.dayOfMonth + '</p></div></li>';
     }
 };
 
@@ -184,6 +185,11 @@ var addNewActivity = function () {
 
     addToLeftList(newActivity, leftItineraryList);
     addToRightList(newActivity, rightItineraryList);
+
+    if (currEventDateElement !== null && currEventElement !== null) {
+        currEventDateElement = document.getElementById(currEventDateElement.getAttribute('id'));
+        currEventElement = document.getElementById(currEventElement.getAttribute('id'));
+    }
 
     document.getElementById('modal').style.display = 'none';
 
