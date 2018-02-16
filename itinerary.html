@@ -47,9 +47,9 @@
                     <li>LIST</li>
                     <li>CALENDER</li>
                     <li>MAPS</li>
-                    <li><button id="desktop-button" type="button">Add Activity</button></li>
+                    <li><button id="desktop-button" type="button" onclick="showModal()">Add Activity</button></li>
                 </ul>
-                <button id="mobile-button" type="button">Add Activity</button>
+                <button id="mobile-button" type="button" onclick="showModal()">Add Activity</button>
             </div>
             <div id="chat-main-content">
                 <div id="left-content">
@@ -72,8 +72,29 @@
         </div>
 
         <div id="progress-buttons">
-            <button type="button">Back</button>
-            <button type="button">Next</button>
+            <button type="button" onclick="clickBack()">Back</button>
+            <button type="button" onclick="clickNext()">Next</button>
+        </div>
+
+        <div id="modal">
+            <div id="modal-content">
+                <h4>Add an Activity</h4>
+                <form onsubmit="return addNewActivity()">
+                    <input id="activity-mode-select" type="radio" name="type" value="activity" onclick="typeChange('activity')" checked> Activity
+                    <input type="radio" name="type" value="flight" onclick="typeChange('flight')"> Flight
+                    <div>
+                        <p class="activity-fields">Title</p> <input id="title-input" class="reg-input activity-fields" type="text" placeholder="Enter a title">
+                        <p class="flight-fields">Start Location</p> <input id="st-location-input" class="flight-fields reg-input" type="text" placeholder="Enter a departure location">
+                        <p>Destination</p> <input id="dest-input" class="reg-input" type="text" placeholder="Enter a destination">
+                        <p>Date</p> <input id="date-input" class="reg-input" type="date">
+                        <p>Start Time</p> <input id="start-time-input" class="reg-input" type="time">
+                        <p>End Time</p> <input id="end-time-input" class="reg-input" type="time">
+                        <p class="flight-fields">Flight Duration</p> <input id="fl-dur-input" class="flight-fields reg-input" type="text" placeholder="Duration of flight">
+                        <p class="activity-fields">Description</p> <textarea id="description-input" class="activity-fields reg-input" type="text" rows="5" cols="100" placeholder="Write a descirption"></textarea>
+                    </div>
+                    <button id="submit-activity-button">Submit</button>
+                </form>
+            </div>
         </div>
 
     </body>

@@ -1,5 +1,8 @@
-/* global document, window */
-/* exported mobileNavClick, addNewComment, scrollToEvent */
+/* global document, window, location */
+/* exported mobileNavClick, addNewComment, scrollToEvent, addNewActivity, typeChange, showModal, clickBack, clickNext */
+
+var months = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
+var daysInWeek = ['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN'];
 
 var itineraryData = [
     {
@@ -124,6 +127,7 @@ var addNewComment = function () {
  * @param clickedDate - refernece to date element that was clicked on
  */
 var scrollToEvent = function (id, clickedDate) {
+    'use strict';
     var eventElement = document.getElementById(id);
 
     // set right content div to scroll to desired event item
@@ -151,6 +155,76 @@ var scrollToEvent = function (id, clickedDate) {
     currEventElement.style.border = '4px solid black';
 };
 
+var addNewActivity = function () {
+    'use strict';
+    var d, leftItineraryList, rightItineraryList;
+    d = new Date(document.getElementById('date-input').value);
+    leftItineraryList = document.getElementById('left-content').firstElementChild;
+    rightItineraryList = document.getElementById('right-content').firstElementChild;
+
+    var newActivity = {
+        startLocation: document.getElementById('st-location-input').value,
+        location: document.getElementById('dest-input').value,
+        title: document.getElementById('title-input').value,
+        month: months[d.getMonth()],
+        dayOfMonth: d.getDate() + 1,
+        dayOfWeek: daysInWeek[d.getDay()],
+        year: d.getFullYear(),
+        startTime: document.getElementById('start-time-input').value,
+        endTime: document.getElementById('end-time-input').value,
+        totalTime: document.getElementById('fl-dur-input').value,
+        description: document.getElementById('description-input').value
+    };
+
+    if (document.getElementById('activity-mode-select').checked) {
+        newActivity.type = 'activity';
+    } else {
+        newActivity.type = 'flight';
+    }
+
+    addToLeftList(newActivity, leftItineraryList);
+    addToRightList(newActivity, rightItineraryList);
+
+    document.getElementById('modal').style.display = 'none';
+
+    return false;
+};
+
+var typeChange = function (newType) {
+    'use strict';
+    var i, flightInputs, activityInputs;
+    flightInputs = document.getElementsByClassName('flight-fields');
+    activityInputs = document.getElementsByClassName('activity-fields');
+    if (newType === 'activity') {
+        for (i = 0; i < flightInputs.length; i += 1) {
+            flightInputs[i].style.display = 'none';
+        }
+        for (i = 0; i < activityInputs.length; i += 1) {
+            activityInputs[i].style.display = 'block';
+        }
+    } else {
+        for (i = 0; i < flightInputs.length; i += 1) {
+            flightInputs[i].style.display = 'block';
+        }
+        for (i = 0; i < activityInputs.length; i += 1) {
+            activityInputs[i].style.display = 'none';
+        }
+    }
+};
+
+var showModal = function () {
+    'use strict';
+    document.getElementById('modal').style.display = 'block';
+};
+
+var hideModal = function (event) {
+    'use strict';
+    var modal = document.getElementById('modal');
+    if (event.target === modal) {
+        modal.style.display = 'none';
+    }
+};
+
 var populateEventList = function () {
     'use strict';
     var i, leftItineraryList, rightItineraryList;
@@ -174,8 +248,24 @@ var populateInitialComments = function () {
     }
 };
 
+var clickBack = function () {
+    'use strict';
+    location.href = 'hotel.html';
+};
+
+var clickNext = function () {
+    'use strict';
+    location.href = 'summary.html';
+};
+
 window.onload = function () {
     'use strict';
     populateEventList();
     populateInitialComments();
+    typeChange('activity');
+};
+
+window.onclick = function (event) {
+    'use strict';
+    hideModal(event);
 };
