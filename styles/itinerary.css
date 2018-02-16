@@ -96,6 +96,13 @@
     border-bottom: 1px solid gray;
 }
 
+.flight-icons {
+    margin-left: 5px;
+    margin-right: 5px;
+    width: 10px;
+    height: 10px;
+}
+
 #left-content {
     grid-area: left;
     overflow: auto;
@@ -111,6 +118,7 @@
 
 #left-content ul, #right-content ul {
     list-style-type: none;
+    position: relative;
 }
 
 #left-content > ul {
@@ -172,7 +180,9 @@
     grid-template-rows: 1fr 1fr;
     border-bottom: 3px solid gray;
     margin-bottom: 10px;
-    padding-bottom: 10px;
+    margin-right: 10px;
+    padding: 10px;
+    border-radius: 5px;
 }
 
 .right-content-activity-title {
@@ -282,6 +292,10 @@
 #chat-interact-bar li, #desktop-button, #mobile-button,
 .left-content-dates div, #progress-buttons button {
     cursor: pointer;
+}
+
+.left-content-dates div:hover {
+    border: 1px solid black;
 }
 
 #desktop-button:hover, #mobile-button:hover {
