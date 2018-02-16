@@ -1,3 +1,3 @@
 function login() {
-    window.location.href = "/invite.html";
+    window.location = "invite.html";
 }
