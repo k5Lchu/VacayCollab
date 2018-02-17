@@ -1,3 +1,13 @@
 function invite() {
-    window.location = "MarkAvailability.html";
+    location.href = "MarkAvailability.html";
 }
+
+var clickBack = function () {
+    'use strict';
+    location.href = 'index.html';
+};
+
+var clickNext = function () {
+    'use strict';
+    location.href = 'MarkAvailability.html';
+};

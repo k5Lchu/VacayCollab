@@ -1,3 +1,14 @@
 function checkAirBnB() {
-    windows.location = "https://www.airbnb.com"
+    'use strict';
+    location.href = "https://www.airbnb.com"
 }
+
+var clickBack = function () {
+    'use strict';
+    location.href = 'locationselect.html';
+};
+
+var clickNext = function () {
+    'use strict';
+    location.href = 'itinerary.html';
+};

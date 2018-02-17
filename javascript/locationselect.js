@@ -139,3 +139,13 @@ window.onload = function() {
     initialLocations();
     populateInitialComments();
 };
+
+var clickBack = function () {
+    'use strict';
+    location.href = 'DecideDate.html';
+};
+
+var clickNext = function () {
+    'use strict';
+    location.href = 'hotel.html';
+};

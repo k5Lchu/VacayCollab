@@ -111,10 +111,10 @@ window.onload = function(){
 
 var clickBack = function () {
     'use strict';
-    location.href = 'MarkAvailability.html';
+    location.href = 'invite.html';
 };
 
 var clickNext = function () {
     'use strict';
-    location.href = 'locationselect.html';
+    location.href = 'DecideDate.html';
 };

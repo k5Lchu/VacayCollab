@@ -1,3 +1,4 @@
 function login() {
-    window.location = "invite.html";
+    'use strict';
+    location.href = "invite.html";
 }

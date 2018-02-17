@@ -1,3 +1,4 @@
 function signup() {
-    window.location = "login.html";
+    'use strict';
+    location.href = "login.html";
 }
