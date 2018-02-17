@@ -4,7 +4,7 @@
 var chatData = [
     {
         author: 'user',
-        message: 'I have a quetsion'
+        message: 'I have a question'
     },
     {
         author: 'agent',
