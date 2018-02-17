@@ -138,6 +138,7 @@ window.onload = function() {
     initialSearch();
     initialLocations();
     populateInitialComments();
+    populateChat();
 };
 
 var clickBack = function () {
@@ -149,3 +150,4 @@ var clickNext = function () {
     'use strict';
     location.href = 'hotel.html';
 };
+

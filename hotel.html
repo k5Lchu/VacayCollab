@@ -39,6 +39,23 @@
     <div id="progress-bar"><div></div></div>
 
 
+    <button id="chat-button" onclick="toggleChat()" type="button"><img src="http://iconshow.me/media/images/ui/ios7-icons/png/512/chatbubble-outline.png" alt="chat"></button>
+    
+            <div id="advisor-chat-container">
+                <header id="chat-title">
+                    <h3>Chat with us</h3>
+                    <img onclick="hideChat()" src="https://bcscallprocessing.com/wp-content/uploads/2016/04/chevron-down-300x300.png" alt="hide">
+                </header>
+                <div id="chat">
+                    <ul>
+                    </ul>
+                </div>
+                <form onsubmit="return sendMessage()">
+                    <input id="message-input" type="text" placeholder="Type a message...">
+                </form>
+            </div>
+
+
     <div id="location-container">
         <div id="top-prompt">
             <h1>Where does everyone want to stay?</h1>

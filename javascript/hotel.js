@@ -12,3 +12,8 @@ var clickNext = function () {
     'use strict';
     location.href = 'itinerary.html';
 };
+
+window.onload = function() {
+    'use strict';
+    populateChat();
+};

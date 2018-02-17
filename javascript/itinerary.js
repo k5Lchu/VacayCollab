@@ -256,6 +256,7 @@ window.onload = function () {
     populateEventList();
     populateInitialComments();
     typeChange('activity');
+    populateChat();
 };
 
 window.onclick = function (event) {
