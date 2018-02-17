@@ -9,6 +9,12 @@ var days = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 var currentMonth = 1;
 var currdays = [];
 
+var dayspassed;
+
+if (localStorage.getItem('dates-selected') != null) {
+    dayspassed = JSON.parse(localStorage.getItem('dates-selected'));
+}
+
 var chngMonth = function(mon){
     var newMonth = mon;
     var bM = newMonth-1;
@@ -45,12 +51,21 @@ var makeCalendar = function(){
         var curr = document.getElementById('d'+day);
         curr.innerHTML = i+1;
     }
-    for(i=0; i<currdays.length ; i+=1){
-        var translate = translateMonthDay(currentMonth, currdays[i]);
-        if(translate > 0){
+    for (i = 0; i < dayspassed.length; i += 1){
+        var translate = translateMonthDay(currentMonth, dayspassed[i]);
+        if(translate > -1){
             var day = startday+translate;
             var curr = document.getElementById('d'+day);
             curr.style.backgroundColor = "gray";
+        }
+    }
+    for (i = 0; i < currdays.length; i += 1) {
+        var translate = translateMonthDay(currentMonth, currdays[i]);
+        if (translate > -1) {
+            var day = startday + translate;
+            var curr = document.getElementById('d' + day);
+            if (curr.style.backgroundColor == "gray") { curr.style.backgroundColor = "teal"; }
+            else { curr.style.backgroundColor = "lightblue";}
         }
     }
 };
@@ -78,12 +93,14 @@ var selectDay = function(day){
     var contains = currdays.indexOf(select);
     if(contains == -1) {
         currdays.push(select);
-        cell.style.backgroundColor = "gray";
+        if (cell.style.backgroundColor == "gray") { cell.style.backgroundColor = "teal"; }
+        else { cell.style.backgroundColor = "lightblue";}
         console.log("added day: "+select);
     }
     else{
-        currdays.splice(contains,1);
-        cell.style.backgroundColor = "white";
+        currdays.splice(contains, 1);
+        if (cell.style.backgroundColor == "teal") { cell.style.backgroundColor = "gray"; }
+        else { cell.style.backgroundColor = "white"; }
         console.log("removed day: "+select);
     }
     return true;
@@ -97,7 +114,7 @@ var translateMonthDay = function(month, yearday){
         i+=1;
     }
     var bound = range+days[i];
-    if(yearday < range || yearday > bound) return -1;
+    if(yearday < range || yearday >= bound) return -1;
     return yearday-range;
 };
 
@@ -111,6 +128,7 @@ window.onload = function(){
 
 var clickBack = function () {
     'use strict';
+    localStorage.setItem('dates-selected', JSON.stringify(dayspassed))
     location.href = 'MarkAvailability.html';
 };
 
