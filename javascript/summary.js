@@ -1,7 +1,7 @@
-/* global document, window, location, populateChat */
+/* global document, window, location, populateChat, localStorage */
 /* exported clickBack, clickNext, editEvent, submitEdits */
 
-var itineraryData = [
+/*var itineraryData = [
     {
         type: 'flight',
         startLocation: 'San Diego',
@@ -50,7 +50,9 @@ var itineraryData = [
         endTime: '6:00pm',
         description: 'Visit hiking trail north of the city. Bring water!!!'
     }
-];
+];*/
+
+var itineraryData = JSON.parse(localStorage.getItem('itinerary'));
 
 var populateList = function () {
     'use strict';
@@ -71,6 +73,19 @@ var populateList = function () {
         itemId = (currEvent.month + '-' + currEvent.dayOfMonth + '-' + currEvent.year).toLowerCase();
 
         itineraryList.innerHTML += '<li id="' + itemId + '"><h3>' + eventTitle + '</h3><p class="event-description">' + description + '</p><button class="edit-button" onclick="editEvent(this)" parentid="' + itemId + '" type="button">Edit</button></li>';
+    }
+};
+
+var showModal = function () {
+    'use strict';
+    document.getElementById('modal').style.display = 'block';
+};
+
+var hideModal = function (event) {
+    'use strict';
+    var modal = document.getElementById('modal');
+    if (event.target === modal) {
+        modal.style.display = 'none';
     }
 };
 
@@ -96,7 +111,7 @@ var submitEdits = function () {
     document.getElementById('modal').style.display = 'none';
 
     return false;
-}
+};
 
 var clickBack = function () {
     'use strict';
@@ -108,19 +123,6 @@ var clickNext = function () {
     location.href = 'https://www.andrew.cmu.edu/user/gkesden/images/gkesden2.jpg';
 };
 
-var showModal = function () {
-    'use strict';
-    document.getElementById('modal').style.display = 'block';
-}
-
-var hideModal = function (event) {
-    'use strict';
-    var modal = document.getElementById('modal');
-    if (event.target === modal) {
-        modal.style.display = 'none';
-    }
-}
-
 window.onload = function () {
     'use strict';
     populateList();
@@ -128,5 +130,6 @@ window.onload = function () {
 };
 
 window.onclick = function (event) {
+    'use strict';
     hideModal(event);
-}
+};

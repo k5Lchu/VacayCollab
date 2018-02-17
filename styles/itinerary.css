@@ -188,7 +188,7 @@
 .right-content-activity-title {
     font-size: 1.2em;
     margin: auto 0px;
-    grid-column: 2/6;
+    grid-column: 2/5;
     grid-row: 1/2;
 }
 
@@ -212,6 +212,19 @@
 
 .duration, .right-content-activity-times {
     color: gray;
+}
+
+.delete-button {
+    width: 20px;
+    height: 20px;
+    grid-column: 5/6;
+    grid-row: 1/2;
+    margin: auto;
+}
+
+.delete-button:hover {
+    border-radius: 50%;
+    border: 1px solid red;
 }
 
 #chat-comments {

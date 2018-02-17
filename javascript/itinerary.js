@@ -1,59 +1,14 @@
-/* global document, window, location */
-/* exported mobileNavClick, addNewComment, scrollToEvent, addNewActivity, typeChange, showModal, clickBack, clickNext */
+/* global document, window, location, localStorage */
+/* exported mobileNavClick, addNewComment, scrollToEvent, addNewActivity, typeChange, showModal, clickBack, clickNext, deleteEvent */
 
 var months = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
 var daysInWeek = ['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN'];
 
-var itineraryData = [
-    {
-        type: 'flight',
-        startLocation: 'San Diego',
-        location: 'Chiang Mai',
-        month: 'MAR',
-        dayOfMonth: 18,
-        dayOfWeek: 'SUN',
-        year: 2017,
-        startTime: '9:00am',
-        endTime: '9:00pm',
-        totalTime: '21hr 15min'
-    },
-    {
-        type: 'activity',
-        location: 'Chiang Mai',
-        title: 'Chiang Mai Attractions',
-        month: 'MAR',
-        dayOfMonth: 20,
-        dayOfWeek: 'TUE',
-        year: 2017,
-        startTime: '9:00am',
-        endTime: '8:00pm',
-        description: 'Visit the Wat Suan Dok (3 hours) and Tha Phae Gate (4 hours)'
-    },
-    {
-        type: 'activity',
-        location: 'Chiang Mai',
-        title: 'Chiang Mai Foodies',
-        month: 'MAR',
-        dayOfMonth: 21,
-        dayOfWeek: 'WED',
-        year: 2017,
-        startTime: '11:00am',
-        endTime: '7:00pm',
-        description: 'Find and try all the street food!'
-    },
-    {
-        type: 'activity',
-        location: 'Chiang Mai',
-        title: 'Chiang Mai Hiking Hell',
-        month: 'MAR',
-        dayOfMonth: 22,
-        dayOfWeek: 'THU',
-        year: 2017,
-        startTime: '10:00am',
-        endTime: '6:00pm',
-        description: 'Visit hiking trail north of the city. Bring water!!!'
-    }
-];
+var itineraryData = [];
+
+if (localStorage.getItem('itinerary') !== null) {
+    itineraryData = JSON.parse(localStorage.getItem('itinerary'));
+}
 
 var comments = [
     {
@@ -97,14 +52,43 @@ var addToLeftList = function (newEvent, itineraryLeft) {
 var addToRightList = function (newEvent, itineraryRight) {
     'use strict';
     var itemId = (newEvent.month + '-' + newEvent.dayOfMonth + '-' + newEvent.year).toLowerCase();
+    var dateItemId = ('date-' + newEvent.month + '-' + newEvent.dayOfMonth + '-' + newEvent.year).toLowerCase();
     if (newEvent.type === 'flight') {
-        var newFlightItem = '<li id="' + itemId + '"><div class="right-content-dates"><p class="right-content-date-month">' + newEvent.month + '</p><p class="right-content-date-day-of-month">' + newEvent.dayOfMonth + '</p><p class="right-content-date-day">' + newEvent.dayOfWeek + '</p></div><p class="right-content-activity-title">Get to ' + newEvent.location + '</p><p class="right-content-activity-times">' + newEvent.startTime + ' - ' + newEvent.endTime + '</p><p class="right-content-activity-description"><img class="flight-icons" src="https://cdn4.iconfinder.com/data/icons/aiga-symbol-signs/444/aiga_departingflights-512.png" alt="flight"><span>' + newEvent.startLocation + '</span><img class="flight-icons" src="http://icons.iconarchive.com/icons/iconsmind/outline/256/Arrow-OutRight-icon.png" alt="to"><span>' + newEvent.location + '</span> <span class="duration">(' + newEvent.totalTime + ')</span> <a href="https://google.com">Check prices</a></p></li>';
+        var newFlightItem = '<li id="' + itemId + '"><div class="right-content-dates"><p class="right-content-date-month">' + newEvent.month + '</p><p class="right-content-date-day-of-month">' + newEvent.dayOfMonth + '</p><p class="right-content-date-day">' + newEvent.dayOfWeek + '</p></div><p class="right-content-activity-title">Get to ' + newEvent.location + '</p><img class="delete-button" dateid="' + dateItemId + '" parentid="' + itemId + '" onclick="deleteEvent(this)" src="https://cdn0.iconfinder.com/data/icons/round-ui-icons/128/close_red.png" alt="delete"><p class="right-content-activity-times">' + newEvent.startTime + ' - ' + newEvent.endTime + '</p><p class="right-content-activity-description"><img class="flight-icons" src="https://cdn4.iconfinder.com/data/icons/aiga-symbol-signs/444/aiga_departingflights-512.png" alt="flight"><span>' + newEvent.startLocation + '</span><img class="flight-icons" src="http://icons.iconarchive.com/icons/iconsmind/outline/256/Arrow-OutRight-icon.png" alt="to"><span>' + newEvent.location + '</span> <span class="duration">(' + newEvent.totalTime + ')</span> <a href="https://google.com">Check prices</a></p></li>';
         itineraryRight.innerHTML += newFlightItem;
     } else {
-        var newEventItem = '<li id="' + itemId + '"><div class="right-content-dates"><p class="right-content-date-month">' + newEvent.month + '</p><p class="right-content-date-day-of-month">' + newEvent.dayOfMonth + '</p><p class="right-content-date-day">' + newEvent.dayOfWeek + '</p></div><p class="right-content-activity-title">' + newEvent.title + '</p><p class="right-content-activity-times">' + newEvent.startTime + ' - ' + newEvent.endTime + '</p><p class="right-content-activity-description">' + newEvent.description + '</p></li>';
+        var newEventItem = '<li id="' + itemId + '"><div class="right-content-dates"><p class="right-content-date-month">' + newEvent.month + '</p><p class="right-content-date-day-of-month">' + newEvent.dayOfMonth + '</p><p class="right-content-date-day">' + newEvent.dayOfWeek + '</p></div><p class="right-content-activity-title">' + newEvent.title + '</p><img class="delete-button" dateid="' + dateItemId + '" parentid="' + itemId + '" onclick="deleteEvent(this)" src="https://cdn0.iconfinder.com/data/icons/round-ui-icons/128/close_red.png" alt="delete"><p class="right-content-activity-times">' + newEvent.startTime + ' - ' + newEvent.endTime + '</p><p class="right-content-activity-description">' + newEvent.description + '</p></li>';
         itineraryRight.innerHTML += newEventItem;
     }
 };
+
+var deleteEvent = function (delButtonRef) {
+    'use strict';
+    var dateElement = document.getElementById(delButtonRef.getAttribute('dateid')).parentElement;
+    var eventElement = document.getElementById(delButtonRef.getAttribute('parentid'));
+
+    var month, dayOfMonth;
+
+    month = dateElement.children.item(0).children.item(0).innerHTML;
+    dayOfMonth = dateElement.children.item(0).children.item(1).innerHTML;
+
+    for (var i = 0; i < itineraryData.length; i += 1) {
+        if (itineraryData[i].month === month && itineraryData[i].dayOfMonth == dayOfMonth) {
+            itineraryData.splice(i,1);
+            break;
+        }
+    }
+
+    eventElement.parentElement.removeChild(eventElement);
+    if (dateElement.parentElement.childElementCount == 1) {
+        dateElement.parentElement.parentElement.parentElement.removeChild(dateElement.parentElement.parentElement);
+    } else {
+        dateElement.parentElement.removeChild(dateElement);
+    }
+
+    currEventDateElement = null;
+    currEventElement = null;
+}
 
 var addNewComment = function () {
     'use strict';
@@ -182,6 +166,8 @@ var addNewActivity = function () {
     } else {
         newActivity.type = 'flight';
     }
+
+    itineraryData.push(newActivity);
 
     addToLeftList(newActivity, leftItineraryList);
     addToRightList(newActivity, rightItineraryList);
@@ -261,6 +247,7 @@ var clickBack = function () {
 
 var clickNext = function () {
     'use strict';
+    localStorage.setItem('itinerary', JSON.stringify(itineraryData));
     location.href = 'summary.html';
 };
 
