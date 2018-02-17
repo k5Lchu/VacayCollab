@@ -7,6 +7,7 @@
 	<link rel="stylesheet" type="text/css" href="styles/header.css">
 	<link rel="stylesheet" type="text/css" href="styles/DecideDate.css">
 	<script src="javascript/header.js" type="text/javascript"></script>
+	<script src="javascript/DecideDate.js" type="text/javascript"></script>
 </head>
 
 <body>
@@ -41,32 +42,30 @@
 			<h4>As the leader of this group, use the available dates of all participants to finalize the vacation start and end dates</h4>
 		</div>
 		<div id="calender">
-            <div id="month">
-                <h1>
-                    <button type="button">Jan</button>
-                    February
-                    <button type="button">Mar</button>
-                </h1>
+            <div id="month-select">   
             </div>
             <table>
                 <tr>
                     <th>Sun</th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th><th>Sat</th>
                 </tr>
                 <tr>
-                    <td></td><td></td><td></td><td></td><td>1</td><td>2</td><td>3</td>
+                    <td id='d0' onclick='selectDay(0)'></td><td id='d1' onclick='selectDay(1)'></td><td id='d2' onclick='selectDay(2)'></td><td id='d3' onclick='selectDay(3)'></td><td id='d4' onclick='selectDay(4)'></td><td id='d5' onclick='selectDay(5)'></td><td id='d6' onclick='selectDay(6)'></td>
                 </tr>
                 <tr>
-                    <td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td><td>10</td>
+					<td id='d7'  onclick='selectDay(7)'></td><td id='d8' onclick='selectDay(8)'></td><td id='d9' onclick='selectDay(9)'></td><td id='d10' onclick='selectDay(10)'></td><td id='d11' onclick='selectDay(11)'></td><td id='d12' onclick='selectDay(12)'></td><td id='d13'  onclick='selectDay(13)'></td>
                 </tr>
                 <tr>
-                    <td>11</td><td>12</td><td>13</td><td>14</td><td>15</td><td>16</td><td>17</td>
+					<td id='d14' onclick='selectDay(14)'></td><td id='d15' onclick='selectDay(15)'></td><td id='d16' onclick='selectDay(16)'></td><td id='d17' onclick='selectDay(17)'></td><td id='d18' onclick='selectDay(18)'></td><td id='d19' onclick='selectDay(19)'></td><td id='d20' onclick='selectDay(20)'></td>
                 </tr>
                 <tr>
-                    <td>18</td><td>19</td><td>20</td><td>21</td><td>22</td><td>23</td><td>24</td>
+					<td id='d21' onclick='selectDay(21)'></td><td id='d22' onclick='selectDay(22)'></td><td id='d23' onclick='selectDay(23)'></td><td id='d24' onclick='selectDay(24)'></td><td id='d25' onclick='selectDay(25)'></td><td id='d26' onclick='selectDay(26)'></td><td id='d27' onclick='selectDay(27)'></td>
                 </tr>
                 <tr>
-                    <td>25</td><td>26</td><td>27</td><td>28</td><td></td><td></td><td></td>
-                </tr>
+					<td id='d28' onclick='selectDay(28)'></td><td id='d29' onclick='selectDay(29)'></td><td id='d30' onclick='selectDay(30)'></td><td id='d31' onclick='selectDay(31)'></td><td id='d32' onclick='selectDay(32)'></td><td id='d33' onclick='selectDay(33)'></td><td id='d34' onclick='selectDay(35)'></td>
+				</tr>
+				<tr>
+					<td id='d35' onclick='selectDay(35)'></td><td id='d36' onclick='selectDay(36)'></td><td id='d37' onclick='selectDay(37)'></td><td id='d38' onclick='selectDay(38)'></td><td id='d39' onclick='selectDay(39)'></td><td id='d40'  onclick='selectDay(40)'></td><td id='d41'  onclick='selectDay(41)'></td>
+				</tr>
             </table>
         </div>
 	</div>

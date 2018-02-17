@@ -7,6 +7,7 @@
     <link rel="stylesheet" type="text/css" href="styles/header.css">
     <link rel="stylesheet" type="text/css" href="styles/locationselect.css">
     <script src="javascript/header.js" type="text/javascript"></script>
+    <script src="javascript/locationselect.js" type="text/javascript"></script>
 </head>
 
 <body>
@@ -41,52 +42,15 @@
             <h4>Vote on where you want to go! Leave comments for the group with you opinions on your vacation destination</h4>
         </div>
         <div id="search-filter">
-            <input type="text" placeholder="Search For Destinations....">
-            <button type="button">Filter</button>
         </div>
         <div id="area-container">
-            <full-area>
-                <area-pic>
-                    <img src="assets/images/chiangmai-pic.jpg" alt="Picture not found" />
-                </area-pic>
-                <area-desc>
-                    <area-name>Chiang Mai</area-name>
-                    <upvote-count>3</upvote-count>
-                    <area-info><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nun maximus kevin chu is a scrub, nulla ut commodo sagittis, sapien dui mattis dui, non pulvinar lorem felis nec erat.</p></area-info>
-                    <area-upvote>UpVote</area-upvote>
-                </area-desc>
-            </full-area>
-            <full-area>
-                <area-pic>
-                    <img src="assets/images/LA-pic.jpg" alt="Picture not found" />
-                </area-pic>
-                <area-desc>
-                    <area-name>Los Angeles</area-name>
-                    <upvote-count>1</upvote-count>
-                    <area-info><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nun maximus kevin chu is a scrub, nulla ut commodo sagittis, sapien dui mattis dui, non pulvinar lorem felis nec erat.</p></area-info>
-                    <area-upvote>UpVote</area-upvote>
-                </area-desc>
-            </full-area>
-        
         </div>
         <div id="chat-comments">
             <h2>Comments:</h2>
-            <form>
-                <input type="text" placeholder="Write a comment here">
+            <form onsubmit="return addNewComment()">
+                <input id="new-comment-input" type="text" placeholder="Write a comment here">
             </form>
             <ul id="chat-comments-all">
-                <li>
-                    <p class="comment-author">Roronoa Zoro:</p>
-                    <p class="comment-content">Hey Luffy, trust me. If we go to Chiang Mai we can eat a lot of delicious food.</p>
-                </li>
-                <li>
-                    <p class="comment-author">Luffy:</p>
-                    <p class="comment-content">NAMI! WE'RE SETTING SAIL TO CHIANG MAI NOW!</p>
-                </li>
-                <li>
-                    <p class="comment-author">Nami:</p>
-                    <p class="comment-content">I want to see Hollywood!</p>
-                </li>
             </ul>
         </div>
     </div>
