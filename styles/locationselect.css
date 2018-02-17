@@ -36,14 +36,14 @@
 #top-prompt h1 {
     margin-bottom: 10px;
 }
-
+/*
 #search-filter {
     text-align: center;
     margin-left: 10%;
     margin-right: 10%;
-}
+}*/
 
-#search-filter input {
+.dropdown input {
     width: 60%;
     margin-top: 10px;
     margin-right: 10px;
@@ -57,7 +57,7 @@
     margin: auto;
 }
 
-#search-filter button {
+.dropdown button {
     background-color: dodgerblue;
     color: white;
     border: 2px solid black;
@@ -71,7 +71,7 @@
     cursor: pointer;
 }
 
-#search-filter button:hover {
+.dropdown button:hover {
     background-color: steelblue;
     cursor: pointer;
 }
@@ -80,6 +80,8 @@
     position: relative;
     display: inline-block;
     text-align: center;
+    width: 100%;
+    margin: auto;
 }
 
 .dropdown-content {
@@ -89,6 +91,7 @@
     background-color: antiquewhite;
     border: 1px solid black;
     max-height: 300px;
+    right: 25px;
     overflow: auto;
     z-index: 1;
 }

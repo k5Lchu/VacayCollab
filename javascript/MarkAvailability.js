@@ -115,6 +115,7 @@ window.onload = function(){
 
 var clickBack = function () {
     'use strict';
+    localStorage.setItem('dates-selected', JSON.stringify(currdays));
     location.href = 'invite.html';
 };
 
