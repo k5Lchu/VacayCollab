@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Home</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="styles/header.css">
+        <link rel="stylesheet" type="text/css" href="styles/index.css">
+        <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+        <script src="javascript/index.js"></script>
+        <script src="javascript/header.js"></script>
+    </head>
+    
+    <body>
+        <!--<header>
+            <nav class="navbar navbar-inverse navbar-static-top">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="brand" href="#"><img src="assets/logo/vc_logo.jpg" alt="VacayCollabLogo" id="logo"/></a>
+                        </div>
+                            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                                <ul class="nav navbar-nav navbar-right">
+                                    <li><a href="#">Vacay Plans</a></li>
+                                    <li><a href='#'>Login</a></li>
+                                    <li>
+                                        <select>
+                                            <option value="eng">English</option>
+                                        </select>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </header>-->
+        <header id="top-header">
+                <h1>Vacay Collab</h1>
+                <ul id="desktop-nav">
+                    <li>Plans</li>
+                    <li>Login</li>
+                    <li>
+                        <select>
+                        <option value="eng">English</option>
+                     </select>
+                    </li>
+                </ul>
+                <img src="assets/images/mobile_hamburger.png" alt="Menu" onclick="mobileNavClick()">
+                <ul id="mobile-nav">
+                    <li>Plans</li>
+                    <li>Login</li>
+                    <li>
+                        <select>
+                        <option value="eng">English</option>
+                     </select>
+                    </li>
+                </ul>
+            </header>
+
+        <div class="jumbotron">
+                <div class="container">
+                    <h2>Explore the world with your friends.</h2>
+                    <br>
+                    <p><a class="btn btn-primary btn-lg" href="#" role="button" onclick="start()">Start Planning!</a></p>
+                </div>
+        </div>
+
+        <section class="call-to-action">
+                <div class="container">
+                  <div class="row">
+                    <div class="col-md-3">
+                        <span class="glyphicon glyphicon-time glyphicon-large" aria-hidden="true"></span>
+                        <h3>Date</h3>
+                        <p>Decide when to go.</p>
+                    </div>
+                    <div class="col-md-3">
+                        <span class="glyphicon glyphicon-globe glyphicon-large" aria-hidden="true"></span>
+                        <h3>Location</h3>
+                        <p>Pick where to go.</p>
+                    </div>
+                    <div class="col-md-3">
+                        <span class="glyphicon glyphicon-home glyphicon-large" aria-hidden="true"></span>
+                        <h3>Hotel</h3>
+                        <p>Choose where to stay.</p>
+                    </div>
+                    <div class="col-md-3">
+                        <span class="glyphicon glyphicon-heart glyphicon-large" aria-hidden="true"></span>
+                        <h3>Activities</h3>
+                        <p>Do what you love doing!</p>
+                    </div>
+                  </div>
+                </div>
+        </section>
+
+    </body>
+
+</html>
