@@ -42,18 +42,18 @@
     margin-right: 10%;
 }
 
- #month {
+ #month-select {
     display: block;
     bottom: 0;
  }
 
- #month h1 {
+ #month-select h1 {
      text-align: center;
      background-color: steelblue;
      border: 1px solid black;
  }
 
- #month button {
+ #month-select button {
      text-align: center;
      background-color: steelblue;
     color: white;
@@ -63,7 +63,7 @@
     border-radius: 2px;
  }
  
- #month button:hover {
+ #month-select button:hover {
      background-color: dodgerblue;
  }
 
