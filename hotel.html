@@ -101,7 +101,12 @@ width="100%" />-->
 
         <div id="chat-comments">
             <h2>Comments:</h2>
-            <form>
+            <form onsubmit="return addNewComment()">
+                    <input id="new-comment-input" type="text" placeholder="Write a comment here">
+                </form>
+                <ul id="chat-comments-all">
+                </ul>
+            <!--<form>
                 <input type="text" placeholder="Write a comment here">
             </form>
             <ul id="chat-comments-all">
@@ -121,7 +126,8 @@ width="100%" />-->
                     <p class="comment-author">Sanji:</p>
                     <p class="comment-content">Great idea Franky...that way I can cook for Nami-chan and Robin-chan!!!</p>
                 </li>
-            </ul>
+
+            </ul>-->
         </div>
     </div>
 
