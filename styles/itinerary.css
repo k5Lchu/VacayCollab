@@ -188,7 +188,7 @@
 .right-content-activity-title {
     font-size: 1.2em;
     margin: auto 0px;
-    grid-column: 2/6;
+    grid-column: 2/5;
     grid-row: 1/2;
 }
 
@@ -212,6 +212,19 @@
 
 .duration, .right-content-activity-times {
     color: gray;
+}
+
+.delete-button {
+    width: 20px;
+    height: 20px;
+    grid-column: 5/6;
+    grid-row: 1/2;
+    margin: auto;
+}
+
+.delete-button:hover {
+    border-radius: 50%;
+    border: 1px solid red;
 }
 
 #chat-comments {
@@ -306,6 +319,77 @@
     background-color: steelblue;
 }
 
+#modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: black;
+    background-color: rgba(0,0,0,0.4);
+}
+
+#modal-content {
+    background-color: white;
+    width: 400px;
+    margin: 0% auto;
+    margin-top: 5%;
+    text-align: center;
+    border-radius: 5px;
+}
+
+#modal-content h4 {
+    color: white;
+    background-color: darkorange;
+    padding: 10px;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    margin-bottom: 10px;
+}
+
+#modal-content form div {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    margin-top: 10px;
+    padding-bottom: 10px;
+    text-align: left;
+    border-top: 1px solid black;
+    padding-top: 5px;
+}
+
+#modal-content p {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 20px;
+}
+
+.reg-input {
+    margin: 5px auto;
+    margin-left: 20px;
+}
+
+#modal-content textarea {
+    max-width: 80%;
+}
+
+#submit-activity-button {
+    width: 100%;
+    background-color: limegreen;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    cursor: pointer;
+}
+
+#submit-activity-button:hover {
+    background-color: lime;
+}
+
 @media only screen and (max-width: 768px) {
     #chat-main-content {
         grid-template-areas:
@@ -348,5 +432,10 @@
 
     .comment-content {
         padding-left: 10%;
+    }
+
+    #modal-content {
+        width: 80%;
+        margin-top: 15%;
     }
 }

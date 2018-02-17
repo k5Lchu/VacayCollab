@@ -5,10 +5,18 @@
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     overflow: hidden;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    background-color: white;
 }
 
 ul {
     list-style-type: none;
+}
+
+#chat ul {
+    position: relative;
 }
 
 #chat-title {
@@ -79,4 +87,45 @@ ul {
     width: 95%;
     padding: 10px 5px;
     border-top: 1px solid lightgray;
+}
+
+#chat-button {
+    width: 70px;
+    height: 70px;
+    padding: 0px;
+    position: fixed;
+    right: 0;
+    top: 15%;
+    background-color: darkorange;
+    border: none;
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;
+}
+
+#chat-button img {
+    width: 70px;
+    height: 70px;
+    margin: auto;
+}
+
+#chat-button:hover {
+    cursor: pointer;
+    background-color: orange;
+}
+
+@media only screen and (max-width: 768px) {
+    #chat-button {
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        right: auto;
+        top: auto;
+        bottom: 3%;
+        right: 3%;
+    }
+
+    #chat-button img {
+        width: 40px;
+        height: 40px;
+    }
 }
