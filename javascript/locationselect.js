@@ -15,7 +15,7 @@ var locations = [
         upvotes: 3,
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nun maximus kevin chu is a scrub, nulla ut commodo sagittis, sapien dui mattis dui, non pulvinar lorem felis nec erat.',
         pic: 'assets/images/chiangmai-pic.jpg',
-        displayed: true,
+        displayed: false,
         voted: false
     },
     {
@@ -23,7 +23,47 @@ var locations = [
         upvotes: 1,
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nun maximus kevin chu is a scrub, nulla ut commodo sagittis, sapien dui mattis dui, non pulvinar lorem felis nec erat.',
         pic: 'assets/images/LA-pic.jpg',
-        displayed: true,
+        displayed: false,
+        voted: false
+    },
+    {
+        name: 'San Diego',
+        upvotes: 0,
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nun maximus kevin chu is a scrub, nulla ut commodo sagittis, sapien dui mattis dui, non pulvinar lorem felis nec erat.',
+        pic: 'assets/images/sandiego-pic.jpg',
+        displayed: false,
+        voted: false
+    },
+    {
+        name: 'New York',
+        upvotes: 0,
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nun maximus kevin chu is a scrub, nulla ut commodo sagittis, sapien dui mattis dui, non pulvinar lorem felis nec erat.',
+        pic: 'assets/images/newyork-pic.jpg',
+        displayed: false,
+        voted: false
+    },
+    {
+        name: 'Dubai',
+        upvotes: 0,
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nun maximus kevin chu is a scrub, nulla ut commodo sagittis, sapien dui mattis dui, non pulvinar lorem felis nec erat.',
+        pic: 'assets/images/dubai-pic.jpg',
+        displayed: false,
+        voted: false
+    },
+    {
+        name: 'Toronto',
+        upvotes: 0,
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nun maximus kevin chu is a scrub, nulla ut commodo sagittis, sapien dui mattis dui, non pulvinar lorem felis nec erat.',
+        pic: 'assets/images/toronto-pic.jpg',
+        displayed: false,
+        voted: false
+    },
+    {
+        name: 'Paris',
+        upvotes: 0,
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nun maximus kevin chu is a scrub, nulla ut commodo sagittis, sapien dui mattis dui, non pulvinar lorem felis nec erat.',
+        pic: 'assets/images/paris-pic.jpg',
+        displayed: false,
         voted: false
     }
 ];
@@ -49,14 +89,15 @@ var comments = [
 var addLocation = function(areaid) {
     'use strict';
     var arealist = document.getElementById('area-container');
-    if(areaid >= locations.length) return false;
+    if (areaid >= locations.length) return false;
+    if (locations[areaid].displayed == true) return false;
     var area = locations[areaid];
     var areaname = '<area-name>'+area.name+'</area-name>';
     var areadesc = '<area-info><p>'+area.description+'</p></area-info>';
     var upvote = '<upvote-count>'+area.upvotes+'</upvote-count>';
     var areapic = '<area-pic><img src="'+area.pic+'" alt:"Picture Not Found"></area-pic>';
-
-    arealist.innerHTML += '<full-area>'+areapic+'<area-desc>'+areaname+upvote+areadesc+'<area-upvote><button type="button" onclick="upVote('+areaid+')">UpVote</button></area-upvote></area-desc></full-area>';
+    arealist.innerHTML += '<full-area>' + areapic + '<area-desc>' + areaname + upvote + areadesc + '<area-upvote><button type="button" onclick="upVote(' + areaid + ')">UpVote</button></area-upvote></area-desc></full-area>';
+    locations[areaid].displayed = true;
 };
 
 var upVote = function (areaid) {
@@ -73,12 +114,10 @@ var upVote = function (areaid) {
 var searchList = function() {
     var search = document.getElementById('search-input');
     var dropdown = document.getElementById('dropcon');
-    var list,ids = [];
+    dropdown.innerHTML = '';
     var i;
     for(i=0; i<searchlist.length; i+=1){
-        if(searchlist[i].toLowerCase().substring(search.value.toLowerCase())){
-            list.push(searchlist[i]);
-            ids.push(i);
+        if(searchlist[i].toLowerCase().includes(search.value.toLowerCase())){
             dropdown.innerHTML += '<a onclick="addLocation('+i+')">'+searchlist[i]+'</a>';
         }
     }
@@ -88,14 +127,17 @@ var searchList = function() {
 var initialSearch = function() {
     'use strict';
     var searchfilt = document.getElementById("search-filter");
-    searchfilt.innerHTML = '<input id="search-input" type="text" placeholder="Search For Destinations...."><button id="filter-button" onkeyup="searchList()" class="dropbtn">Filter</button><div id="dropdown"><div id="dropcon" class="dropdown-content"></div></div>';
+    var searchbar = '<input id="search-input" type="text" placeholder="Search For Destinations....">';
+    var filter = '<button id="filter-button" onclick="searchList()" class="dropbtn">Search</button></div>';
+    var dropcon = '<div id="dropcon" class="dropdown-content"></div>';
+    searchfilt.innerHTML = searchbar+filter+dropcon;
 };
 
 var initialLocations = function(){
     'use strict';
     var i;
     for(i=0; i<locations.length; i+=1){
-        if(locations[i].displayed) {addLocation(i);}
+        if(locations[i].upvotes > 0) {addLocation(i);}
     }
 };
 
@@ -103,6 +145,10 @@ var clearLocations = function(){
     'use strict';
     var fullarea = document.getElementById('area-container');
     fullarea.innerHTML = "";
+    var i;
+    for (i = 0; i < locations.length; i += 1) {
+        locations[i].displayed = false;
+    }
     return true;
 };
 
