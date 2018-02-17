@@ -13,6 +13,7 @@
 }
 
 #location-container {
+    background-color: white;
     max-width: 65%;
     border: 2px solid black;
     border-radius: 10px;

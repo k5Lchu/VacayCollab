@@ -24,6 +24,7 @@
 }
 
 #location-container {
+    background-color: white;
     max-width: 65%;
     border: 2px solid black;
     border-radius: 10px;
@@ -33,6 +34,7 @@
 }
 
 #hotel-container {
+    background-color: white;
     max-width: 50%;
     width: 50%;
     height: 50%;
@@ -52,11 +54,13 @@
 }
 
 #area-container > h3 {
+    background-color: white;
     margin-left: 10px;
 }
 
 #top-prompt {
     text-align: center;
+    background-color: white;
 }
 
 #top-prompt h4 {
@@ -71,6 +75,7 @@
 
 
 #area-container {
+    background-color: white;
     margin-left: 0px;
     margin-right: 0px;
     margin-bottom: 10px;
@@ -79,31 +84,6 @@
     max-height: 500px;
     text-align: center;
 }
-
-#hotel-pic-l{
-    float:left;    
-    height: auto; 
-    width: auto; 
-    max-width: 250px; 
-    max-height: 250px;
-    padding-left: 25px;
-    padding-right: 25px;
-    padding-top: 30px;
-    padding-bottom: 25px;
-}
-
-#hotel-pic-r{
-    float:right;    
-    height: auto; 
-    width: auto; 
-    max-width: 250px; 
-    max-height: 250px;
-    padding-left: 25px;
-    padding-right: 25px;
-    padding-top: 30px;
-    padding-bottom: 25px;
-}
-
 
 #progress-buttons {
     width: 75%;
