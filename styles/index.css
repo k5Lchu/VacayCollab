@@ -1,0 +1,47 @@
+body {
+	color: white;
+	font-family: 'Montserrat', sans-serif;
+}
+h2 {
+    color: white !important;
+	font-weight: bold !important;
+}
+p {
+	font-size: 16px;
+}
+.navbar {
+	margin-bottom: 0;
+}
+.jumbotron {
+	background-image: url("../assets/images/bgpic-tropical.jpg") !important;
+    text-align: center;
+    background-repeat:no-repeat !important;
+    background-size: cover !important;
+    height: 550px;
+}
+.jumbotron p {
+	color: white;
+	font-size: 26px;
+}
+.btn-primary {
+	color: #fff !important;
+	background-color: transparent !important;
+	border-color: white !important;
+	margin-bottom: 5px;
+}
+.btn-primary:hover {
+	color: black !important;
+	background-color: white !important;
+	border-color: white;
+}
+.glyphicon-large {
+	font-size: 100px;
+}
+.call-to-action {
+	text-align: center;
+}
+.call-to-action p {
+	margin-bottom: 30px;
+	font-family: sans-serif;
+}
+
