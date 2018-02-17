@@ -44,4 +44,9 @@ p {
 	margin-bottom: 30px;
 	font-family: sans-serif;
 }
-
+.jumbotron-gray {
+	background-color:#eee;
+	text-align: center;
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
