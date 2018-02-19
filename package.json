@@ -1,0 +1,26 @@
+{
+  "name": "vacaycollab",
+  "version": "1.0.0",
+  "description": "cse 134b project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/k5Lchu/VacayCollab.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/k5Lchu/VacayCollab/issues"
+  },
+  "homepage": "https://github.com/k5Lchu/VacayCollab#readme",
+  "devDependencies": {
+    "eslint-config-standard": "^11.0.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-node": "^6.0.0",
+    "eslint-plugin-promise": "^3.6.0",
+    "eslint-plugin-standard": "^3.0.1"
+  }
+}
