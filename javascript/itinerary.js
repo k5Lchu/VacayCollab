@@ -1,4 +1,4 @@
-/* global document, window, location, localStorage */
+/* global document, window, location, localStorage, populateChat */
 /* exported mobileNavClick, addNewComment, scrollToEvent, addNewActivity, typeChange, showModal, clickBack, clickNext, deleteEvent */
 
 var months = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
@@ -86,8 +86,10 @@ var deleteEvent = function (delButtonRef) {
         dateElement.parentElement.removeChild(dateElement);
     }
 
-    currEventDateElement = null;
-    currEventElement = null;
+    if (currEventDateElement !== null && currEventElement !== null) {
+        currEventDateElement = document.getElementById(currEventDateElement.getAttribute('id'));
+        currEventElement = document.getElementById(currEventElement.getAttribute('id'));
+    }
 }
 
 var addNewComment = function () {
@@ -256,6 +258,7 @@ window.onload = function () {
     populateEventList();
     populateInitialComments();
     typeChange('activity');
+    populateChat();
 };
 
 window.onclick = function (event) {

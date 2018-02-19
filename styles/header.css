@@ -1,5 +1,7 @@
 body {
     margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    background-color:#eee;
 }
 
 #top-header {
@@ -7,8 +9,6 @@ body {
     color: gray;
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
     width: 100%;
 }
 

@@ -104,9 +104,26 @@ var editEvent = function (editButtonElement) {
 var submitEdits = function () {
     'use strict';
     var parentid = document.getElementById('modal').getAttribute('parentid');
+    var listElement = document.getElementById(parentid).parentElement.children;
+    var eventIndx = 0;
 
-    document.getElementById(parentid).querySelector('h3').innerHTML = document.getElementById('title-input').value;
-    document.getElementById(parentid).querySelector('p').innerHTML = document.getElementById('description-input').value;
+    for (var i = 0; i < listElement.length; i += 1) {
+        if (document.getElementById(parentid) === listElement.item(i)) {
+            eventIndx = i;
+            break;
+        }
+    }
+
+    var newTitle = document.getElementById('title-input').value;
+    var newDescription = document.getElementById('description-input').value;
+
+    if (itineraryData[eventIndx].type !== 'flight') {
+        itineraryData[eventIndx].title = newTitle;
+        itineraryData[eventIndx].description = newDescription;
+    }
+
+    document.getElementById(parentid).querySelector('h3').innerHTML = newTitle;
+    document.getElementById(parentid).querySelector('p').innerHTML = newDescription;
 
     document.getElementById('modal').style.display = 'none';
 
@@ -115,6 +132,7 @@ var submitEdits = function () {
 
 var clickBack = function () {
     'use strict';
+    localStorage.setItem('itinerary', JSON.stringify(itineraryData));
     location.href = 'itinerary.html';
 };
 

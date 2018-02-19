@@ -9,10 +9,8 @@ var days = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 var currentMonth = 1;
 var currdays = [];
 
-var dayspassed;
-
 if (localStorage.getItem('dates-selected') != null) {
-    dayspassed = JSON.parse(localStorage.getItem('dates-selected'));
+    currdays = JSON.parse(localStorage.getItem('dates-selected'));
 }
 
 var chngMonth = function(mon){
@@ -51,21 +49,12 @@ var makeCalendar = function(){
         var curr = document.getElementById('d'+day);
         curr.innerHTML = i+1;
     }
-    for (i = 0; i < dayspassed.length; i += 1){
-        var translate = translateMonthDay(currentMonth, dayspassed[i]);
+    for(i=0; i<currdays.length ; i+=1){
+        var translate = translateMonthDay(currentMonth, currdays[i]);
         if(translate > -1){
             var day = startday+translate;
             var curr = document.getElementById('d'+day);
             curr.style.backgroundColor = "gray";
-        }
-    }
-    for (i = 0; i < currdays.length; i += 1) {
-        var translate = translateMonthDay(currentMonth, currdays[i]);
-        if (translate > -1) {
-            var day = startday + translate;
-            var curr = document.getElementById('d' + day);
-            if (curr.style.backgroundColor == "gray") { curr.style.backgroundColor = "teal"; }
-            else { curr.style.backgroundColor = "lightblue";}
         }
     }
 };
@@ -93,14 +82,12 @@ var selectDay = function(day){
     var contains = currdays.indexOf(select);
     if(contains == -1) {
         currdays.push(select);
-        if (cell.style.backgroundColor == "gray") { cell.style.backgroundColor = "teal"; }
-        else { cell.style.backgroundColor = "lightblue";}
+        cell.style.backgroundColor = "gray"; 
         console.log("added day: "+select);
     }
     else{
         currdays.splice(contains, 1);
-        if (cell.style.backgroundColor == "teal") { cell.style.backgroundColor = "gray"; }
-        else { cell.style.backgroundColor = "white"; }
+        cell.style.backgroundColor = "white"; 
         console.log("removed day: "+select);
     }
     return true;
@@ -128,11 +115,11 @@ window.onload = function(){
 
 var clickBack = function () {
     'use strict';
-    localStorage.setItem('dates-selected', JSON.stringify(dayspassed))
-    location.href = 'MarkAvailability.html';
+    location.href = 'invite.html';
 };
 
 var clickNext = function () {
     'use strict';
-    location.href = 'locationselect.html';
+    localStorage.setItem('dates-selected', JSON.stringify(currdays));
+    location.href = 'DecideDate.html';
 };

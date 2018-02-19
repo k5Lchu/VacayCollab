@@ -10,3 +10,8 @@ function mobileNavClick() {
         mobileNav.style.display = "block";
     }
 }
+
+function home() {
+    'use strict';
+    location.href = "index.html"
+}
