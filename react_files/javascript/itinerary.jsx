@@ -204,8 +204,18 @@ class AddEventModal extends React.Component {
         e.preventDefault();
 
         let newEventDate = new Date(this.state.date);
-        console.log(this.state.date);
-        console.log(newEventDate);
+
+        let startTimeSplit = this.state.startTime.split(':');
+        let endTimeSplit = this.state.endTime.split(':');
+
+        let startTimeHour = parseInt(startTimeSplit[0]) % 12;
+        let meridianIndicatorS = (parseInt(startTimeSplit[0]) > 11) ? 'pm' : 'am';
+
+        let endTimeHour = parseInt(endTimeSplit[0]) % 12;
+        let meridianIndicatorE = (parseInt(endTimeSplit[0]) > 11) ? 'pm' : 'am';
+
+        let convertedStartTime = startTimeHour + ':' + startTimeSplit[1] + meridianIndicatorS;
+        let convertedEndTime = endTimeHour + ':' + endTimeSplit[1] + meridianIndicatorE;
 
         let newEvent = {
             key: Date.now().toString(36) + Math.random().toString(36).substr(2, 5),
@@ -215,8 +225,8 @@ class AddEventModal extends React.Component {
             dayOfMonth: newEventDate.getUTCDate(),
             dayOfWeek: newEventDate.getUTCDay(),
             year: newEventDate.getFullYear(),
-            startTime: this.state.startTime,
-            endTime: this.state.endTime,
+            startTime: convertedStartTime,
+            endTime: convertedEndTime,
             description: this.state.description
         };
 
@@ -398,8 +408,6 @@ class EventList extends React.Component {
 
             return parseInt(aDate[2].toString() + monthNumberMap[aDate[0]].toString() + aDate[1].toString()) - parseInt(bDate[2].toString() + monthNumberMap[bDate[0]].toString() + bDate[1].toString());
         });
-
-        console.log(keys);
 
         for(let i = 0; i < keys.length; i++) {
             let key = 'date-' + keys[i];

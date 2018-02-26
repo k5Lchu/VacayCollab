@@ -168,4 +168,22 @@
     #add-activity-button-container {
         text-align: center;
     }
+
+    #modal-content {
+        width: 90%;
+    }
+
+    .form-input-groups {
+        padding: 5px;
+    }
+
+    #input-container {
+        grid-template-areas:
+            'title'
+            'dest'
+            'date'
+            'stime'
+            'etime'
+            'desc';
+    }
 }
