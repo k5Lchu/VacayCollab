@@ -196,7 +196,3 @@ const CommentComponent = (props) => {
         </div>
     );
 };
-
-ReactDOM.render(
-    <CommentComponent comments={data}/>
-    ,document.getElementById('content'));

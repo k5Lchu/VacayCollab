@@ -34,7 +34,7 @@ let messages = [
 ];
 
 for (let i = 0; i < messages.length; i++) {
-    messages[i].key = Date.now().toString(36) + Math.random().toString(36).substr(2, 5);
+    messages[i].key = 'msg-' + Date.now().toString(36) + Math.random().toString(36).substr(2, 5);
 }
 
 const Message = (props) => {
@@ -211,7 +211,7 @@ class ChatContainer extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            hidden: false
+            hidden: true
         };
 
         this.toggleChatVisibility = this.toggleChatVisibility.bind(this);
@@ -258,5 +258,3 @@ class ChatContainer extends React.Component {
         );
     }
 };
-
-ReactDOM.render(<ChatContainer data={messages} />, document.getElementById('content'));

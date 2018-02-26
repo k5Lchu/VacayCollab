@@ -10,6 +10,7 @@
     display: grid;
     grid-template-columns: 0.5fr 1fr 1fr 1fr;
     height: 500px;
+    margin-bottom: 20px;
 }
 
 .itinerary-container-left {
@@ -188,5 +189,19 @@
             'stime'
             'etime'
             'desc';
+    }
+
+    .itinerary-container {
+        height: 650px;
+    }
+
+    #top-prompt h4 {
+        font-size: 3.2vw;
+        margin-left: 3%;
+        margin-right: 3%;
+    }
+
+    #top-prompt h1 {
+        font-size: 4.4vw;
     }
 }

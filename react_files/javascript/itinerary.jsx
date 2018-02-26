@@ -1,3 +1,66 @@
+let data = [
+    {
+        author: 'Scott',
+        commentContent: '...',
+        key: '5'
+    },
+    {
+        author: 'Kevin',
+        commentContent: 'Eww Fabian territory',
+        key: '4'
+    },
+    {
+        author: 'David',
+        commentContent: 'Shut up Kevin. How does Tijuana sound?',
+        key: '3'
+    },
+    {
+        author: 'Scott',
+        commentContent: 'David where do you want to go?',
+        key: '2'
+    },
+    {
+        author: 'Kevin',
+        commentContent: 'David why aren\'t you saying anything?',
+        key: '1'
+    }
+];
+
+let messages = [
+    {
+        sender: 'user',
+        message: 'I have a question'
+    },
+    {
+        sender: 'agent',
+        message: 'Sure thing! What\'s your question?'
+    },
+    {
+        sender: 'user',
+        message: 'Do you happen to know any places to visit in ChiangMai?'
+    },
+    {
+        sender: 'agent',
+        message: 'Not really'
+    },
+    {
+        sender: 'user',
+        message: '...'
+    },
+    {
+        sender: 'user',
+        message: 'Thank you...?'
+    },
+    {
+        sender: 'agent',
+        message: 'No problem'
+    },
+    {
+        sender: 'agent',
+        message: 'It\'s been a pleasure'
+    }
+];
+
 let months = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
 let daysInWeek = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
 
@@ -406,8 +469,8 @@ class EventList extends React.Component {
             let aDate = a.split(' ');
             let bDate = b.split(' ');
 
-            let aDateVal = parseInt(aDate[2].toString() + ((parseInt(aDate[0]) > 10) ? monthNumberMap[aDate[0]].toString() : '0' + monthNumberMap[aDate[0]].toString()) + ((parseInt(aDate[1]) > 10) ? aDate[1].toString() : '0' + aDate[1].toString()));
-            let bDateVal = parseInt(bDate[2].toString() + ((parseInt(bDate[0]) > 10) ? monthNumberMap[bDate[0]].toString() : '0' + monthNumberMap[bDate[0]].toString()) + ((parseInt(bDate[1]) > 10) ? bDate[1].toString() : '0' + bDate[1].toString()));
+            let aDateVal = parseInt(aDate[2].toString() + ((monthNumberMap[aDate[0]] > 10) ? monthNumberMap[aDate[0]].toString() : '0' + monthNumberMap[aDate[0]].toString()) + ((parseInt(aDate[1]) > 10) ? aDate[1].toString() : '0' + aDate[1].toString()));
+            let bDateVal = parseInt(bDate[2].toString() + ((monthNumberMap[bDate[0]] > 10) ? monthNumberMap[bDate[0]].toString() : '0' + monthNumberMap[bDate[0]].toString()) + ((parseInt(bDate[1]) > 10) ? bDate[1].toString() : '0' + bDate[1].toString()));
 
             return (aDateVal - bDateVal);
         });
@@ -493,4 +556,40 @@ class EventList extends React.Component {
     }
 };
 
-ReactDOM.render(<EventList data={itineraryData} />, document.getElementById('content'));
+const ItinerearyPageContent = (props) => {
+    let mainContainerStyles = {
+        margin: 'auto',
+        border: '1px solid black',
+        padding: '10px',
+        width: '80%',
+        borderRadius: '25px'
+    };
+
+    let contentPromptStyles = {
+        textAlign: 'center'
+    };
+
+    let promptHeaderMainStyles = {
+        marginBottom: '10px'
+    };
+
+    let promptHeaderSubStyles = {
+        marginTop: '10px',
+        marginLeft: '10%',
+        marginRight: '10%'
+    };
+
+    return(
+        <div style={mainContainerStyles}>
+            <div id="top-prompt" style={contentPromptStyles}>
+                <h1 style={promptHeaderMainStyles}>Where does everyone want to go?</h1>
+                <h4 style={promptHeaderSubStyles}>Vote on where to want to go! Leave comments for each other and the leader of this group to back up why your spot should be part of the vacation</h4>
+            </div>
+            <EventList data={props.data} />
+            <CommentComponent comments={data} />
+            <ChatContainer data={messages} />
+        </div>
+    );
+};
+
+ReactDOM.render(<ItinerearyPageContent data={itineraryData} />, document.getElementById('content'));
