@@ -406,7 +406,10 @@ class EventList extends React.Component {
             let aDate = a.split(' ');
             let bDate = b.split(' ');
 
-            return parseInt(aDate[2].toString() + monthNumberMap[aDate[0]].toString() + aDate[1].toString()) - parseInt(bDate[2].toString() + monthNumberMap[bDate[0]].toString() + bDate[1].toString());
+            let aDateVal = parseInt(aDate[2].toString() + ((parseInt(aDate[0]) > 10) ? monthNumberMap[aDate[0]].toString() : '0' + monthNumberMap[aDate[0]].toString()) + ((parseInt(aDate[1]) > 10) ? aDate[1].toString() : '0' + aDate[1].toString()));
+            let bDateVal = parseInt(bDate[2].toString() + ((parseInt(bDate[0]) > 10) ? monthNumberMap[bDate[0]].toString() : '0' + monthNumberMap[bDate[0]].toString()) + ((parseInt(bDate[1]) > 10) ? bDate[1].toString() : '0' + bDate[1].toString()));
+
+            return (aDateVal - bDateVal);
         });
 
         for(let i = 0; i < keys.length; i++) {
@@ -430,7 +433,9 @@ class EventList extends React.Component {
         this.state.data.push(newEvent);
 
         this.state.data.sort((a,b) => {
-            return parseInt(a.year.toString() + a.month.toString() + a.dayOfMonth.toString()) - parseInt(b.year.toString() + b.month.toString() + b.dayOfMonth.toString());
+            let aDateVal = parseInt(a.year.toString() + ((a.month > 10) ? a.month.toString() : '0' + a.month.toString()) + ((a.dayOfMonth > 10) ? a.dayOfMonth.toString() : '0' + a.dayOfMonth.toString()));
+            let bDateVal = parseInt(b.year.toString() + ((b.month > 10) ? b.month.toString() : '0' + b.month.toString()) + ((b.dayOfMonth > 10) ? b.dayOfMonth.toString() : '0' + b.dayOfMonth.toString()));
+            return (aDateVal - bDateVal);
         });
 
         this.setState({
