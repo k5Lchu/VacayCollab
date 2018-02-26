@@ -76,9 +76,10 @@ const Event = (props) => {
         display: 'grid',
         gridTemplateColumns: '1fr 1fr 1fr 1fr 1fr',
         gridTemplateRows: '1fr 0.5fr',
-        border: '1px solid black',
+        border: '1px solid lightgray',
         margin: '10px',
-        paddingTop: '10px'
+        padding: '10px',
+        boxShadow: '0px 3px 3px #888888'
     };
 
     let dateContainerStyles = {
@@ -89,8 +90,8 @@ const Event = (props) => {
     };
 
     let timeStyles = {
-        borderTop: '1px solid black',
-        borderRight: '1px solid black',
+        borderTop: '1px solid lightgray',
+        borderRight: '1px solid lightgray',
         gridColumn: '1/2',
         gridRow: '2/3',
         textAlign: 'center',
@@ -100,7 +101,7 @@ const Event = (props) => {
     };
 
     let descirptionStyles = {
-        borderTop: '1px solid black',
+        borderTop: '1px solid lightgray',
         gridColumn: '2/6',
         gridRow: '2/3',
         padding: '10px',
@@ -371,7 +372,6 @@ class EventList extends React.Component {
         }
 
         this.leftContainerStyles = {
-            border: '1px solid black',
             padding: '10px',
             margin: '10px'
         };
