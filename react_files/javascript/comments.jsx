@@ -177,7 +177,8 @@ class CommentInput extends React.Component {
 
 const CommentComponent = (props) => {
     let containerStyles = {
-        backgroundColor: 'lightgray'
+        backgroundColor: 'lightgray',
+        borderRadius: '10px'
     };
 
     let headerStyles = {

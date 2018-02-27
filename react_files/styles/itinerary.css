@@ -23,6 +23,7 @@
     border: 1px solid lightgray;
     grid-column: 2/5;
     overflow: auto;
+    border-radius: 10px;
 }
 
 #add-activity-button {
