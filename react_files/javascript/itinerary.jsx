@@ -1,4 +1,4 @@
-let data = [
+let commentsData = [
     {
         author: 'Scott',
         commentContent: '...',
@@ -26,7 +26,7 @@ let data = [
     }
 ];
 
-let messages = [
+let messagesData = [
     {
         sender: 'user',
         message: 'I have a question'
@@ -126,12 +126,18 @@ let itineraryData = [
     }
 ];
 
+for (let i = 0; i < messagesData.length; i++) {
+    messagesData[i].key = 'msg-' + Date.now().toString(36) + Math.random().toString(36).substr(2, 5);
+}
+
 for (let i = 0; i < itineraryData.length; i++) {
     itineraryData[i].key = Date.now().toString(36) + Math.random().toString(36).substr(2, 5);
 }
 
 itineraryData.sort((a,b) => {
-    return parseInt(a.year.toString() + a.month.toString() + a.dayOfMonth.toString()) - parseInt(b.year.toString() + b.month.toString() + b.dayOfMonth.toString());
+    let aDateVal = parseInt(a.year.toString() + ((a.month > 10) ? a.month.toString() : '0' + a.month.toString()) + ((a.dayOfMonth > 10) ? a.dayOfMonth.toString() : '0' + a.dayOfMonth.toString()));
+    let bDateVal = parseInt(b.year.toString() + ((b.month > 10) ? b.month.toString() : '0' + b.month.toString()) + ((b.dayOfMonth > 10) ? b.dayOfMonth.toString() : '0' + b.dayOfMonth.toString()));
+    return (aDateVal - bDateVal);
 });
 
 const Event = (props) => {
@@ -562,7 +568,8 @@ const ItinerearyPageContent = (props) => {
         border: '1px solid black',
         padding: '10px',
         width: '80%',
-        borderRadius: '25px'
+        borderRadius: '25px',
+        marginBottom: '50px'
     };
 
     let contentPromptStyles = {
@@ -579,17 +586,35 @@ const ItinerearyPageContent = (props) => {
         marginRight: '10%'
     };
 
+    let progressBarContainerStyle = {
+        width: '70%',
+        height: '20px',
+        margin: 'auto',
+        border: '1px solid black',
+        marginBottom: '50px',
+        marginTop: '50px'
+    };
+
+    let progressBarContentStyle = {
+        width: '80%',
+        height: '20px',
+        backgroundColor: 'dodgerblue'
+    };
+
     return(
-        <div style={mainContainerStyles}>
-            <div id="top-prompt" style={contentPromptStyles}>
-                <h1 style={promptHeaderMainStyles}>Where does everyone want to go?</h1>
-                <h4 style={promptHeaderSubStyles}>Vote on where to want to go! Leave comments for each other and the leader of this group to back up why your spot should be part of the vacation</h4>
+        <div>
+            <div style={progressBarContainerStyle}><div style={progressBarContentStyle}></div></div>
+            <div style={mainContainerStyles}>
+                <div id="top-prompt" style={contentPromptStyles}>
+                    <h1 style={promptHeaderMainStyles}>Where does everyone want to go?</h1>
+                    <h4 style={promptHeaderSubStyles}>Vote on where to want to go! Leave comments for each other and the leader of this group to back up why your spot should be part of the vacation</h4>
+                </div>
+                <EventList data={props.data} />
+                <CommentComponent comments={props.comments} />
+                <ChatContainer data={props.messages} />
             </div>
-            <EventList data={props.data} />
-            <CommentComponent comments={data} />
-            <ChatContainer data={messages} />
         </div>
     );
 };
 
-ReactDOM.render(<ItinerearyPageContent data={itineraryData} />, document.getElementById('content'));
+ReactDOM.render(<ItinerearyPageContent data={itineraryData} comments={commentsData} messages={messagesData} />, document.getElementById('content'));

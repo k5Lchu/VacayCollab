@@ -1,31 +1,3 @@
-let data = [
-    {
-        author: 'Scott',
-        commentContent: '...',
-        key: '5'
-    },
-    {
-        author: 'Kevin',
-        commentContent: 'Eww Fabian territory',
-        key: '4'
-    },
-    {
-        author: 'David',
-        commentContent: 'Shut up Kevin. How does Tijuana sound?',
-        key: '3'
-    },
-    {
-        author: 'Scott',
-        commentContent: 'David where do you want to go?',
-        key: '2'
-    },
-    {
-        author: 'Kevin',
-        commentContent: 'David why aren\'t you saying anything?',
-        key: '1'
-    }
-];
-
 const Comment = (props) => {
     let commentContainerStyles = {
         margin: 'auto',

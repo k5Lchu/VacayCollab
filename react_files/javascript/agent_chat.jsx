@@ -1,42 +1,3 @@
-let messages = [
-    {
-        sender: 'user',
-        message: 'I have a question'
-    },
-    {
-        sender: 'agent',
-        message: 'Sure thing! What\'s your question?'
-    },
-    {
-        sender: 'user',
-        message: 'Do you happen to know any places to visit in ChiangMai?'
-    },
-    {
-        sender: 'agent',
-        message: 'Not really'
-    },
-    {
-        sender: 'user',
-        message: '...'
-    },
-    {
-        sender: 'user',
-        message: 'Thank you...?'
-    },
-    {
-        sender: 'agent',
-        message: 'No problem'
-    },
-    {
-        sender: 'agent',
-        message: 'It\'s been a pleasure'
-    }
-];
-
-for (let i = 0; i < messages.length; i++) {
-    messages[i].key = 'msg-' + Date.now().toString(36) + Math.random().toString(36).substr(2, 5);
-}
-
 const Message = (props) => {
     let messageContainerStyles = {
         padding: '0px 10px',
@@ -146,11 +107,11 @@ class MessageList extends React.Component {
     }
 
     componentDidMount() {
-        this.chatList.scrollTop = this.chatList.offsetHeight;
+        this.chatList.scrollTop = this.chatList.scrollHeight;
     }
 
     componentDidUpdate() {
-        this.chatList.scrollTop = this.chatList.offsetHeight;
+        this.chatList.scrollTop = this.chatList.scrollHeight;
     }
 
     render() {
