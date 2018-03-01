@@ -68,6 +68,8 @@ var locations = [
     }
 ];
 
+var listedLocs = [];
+
 var comments = [
     {
         author: 'Roronoa Zoro',
@@ -86,8 +88,8 @@ var comments = [
     }
 ];
 
-const Location = (props) => {
-    let locationContainerStyle = {
+const VacayLocation = (props) => {
+    /*let locationContainerStyle = {
         border: '2px solid gray',
         backgroundColor: 'lightgray',
         display: 'grid',
@@ -126,7 +128,7 @@ const Location = (props) => {
     let upvoteButtonStyle = {
         position: 'relative'
     };
-
+    */
     let upvoteLocation = () => {
         if (props.voted == false) { props.upvotes = props.upvotes + 1; }
         props.voted = true;
@@ -134,19 +136,114 @@ const Location = (props) => {
     };
 
     return (
-        <div style={locationContainerStyle}>
-            <div style={locationPicStyle}><img src={props.pic} alt:"Picture Not Found" width='100%' height='100%'></div>
-            <div style={locationDescStyle}>
-                <div style={locationNameStyle}>{props.name}</div>
-                <div style={locationNameStyle}>{props.upvotes}</div>
-                <div style={locationNameStyle}><p>{props.description}</p></div>
-                <div style={locationNameStyle} className="area-upvote"><button type="button" onclick={upvoteLocation}>UpVote</button> </div>
-            </div>
-        </div>
+        <full-area /*style={locationContainerStyle}*/>
+            <area-pic /*style={locationPicStyle}*/><img src={props.pic}></img></area-pic>
+            <area-desc /*style={locationDescStyle}*/>
+                <area-name /*style={locationNameStyle}*/>{props.name}</area-name>
+                <upvote-count /*style={locationNameStyle}*/>{props.upvotes}</upvote-count>
+                <area-info /*style={locationNameStyle}*/><p>{props.description}</p></area-info>
+                <area-upvote /*style={locationNameStyle}*/ className="area-upvote"><button type="button" onclick={upvoteLocation}>UpVote</button> </area-upvote>
+            </area-desc>
+        </full-area>
         )
 };
 
 class LocationList extends React.Component {
+    constructor(props) {
+        super(props);
 
+        this.state = {
+            locList: new Map(),
+            displayed: [],
+            data: props.data
+        }
 
-}
+        for(let i=0; i<props.data.length; i++){
+            let loc = props.data[i];
+            if(!this.state.locList.has(loc.name)){
+                this.state.locList.set(loc.name, [loc]);
+            }else{
+                this.state.locList.get(loc.name).push(loc);
+            }
+        }
+
+        this.createLocList = this.createLocList.bind(this);
+        this.createSearchFilter = this.createSearchFilter.bind(this);
+    }
+
+    createLocList(){
+        this.state.displayed = [];
+        let iter = this.state.locList.keys();
+        let curr = iter.next();
+
+        let names = [];
+
+        while(!curr.done){
+            names.push(curr.value);
+            curr = iter.next();
+        }
+
+        names.sort((a,b) =>{
+            return (this.state.locList.get(b).upvotes - this.state.locList.get(a).upvotes);
+        });
+
+        for(let i=0; i<names.length; i++){
+            if(locList.get(names[i]).upvotes > 0){
+                this.state.displayed.push(locList.get(names[i]));
+            }
+        }
+        
+        this.setState({
+            locList: this.state.locList,
+            displayed: this.state.displayed,
+            data: this.state.data
+        });
+    }
+
+    createSearchFilter(){
+        let search = '';
+        let filter = '';
+        let dropdown = '';
+
+        search = '<input id="search-input" type="text" placeholder="Search For Destinations...." onkeyup={searchList()}>';
+        filter = '<button id="filter-button" onclick={dropdownShow()} class="dropbtn">Search</button></div>';
+        dropdown = '<div id="dropcon" class="dropdown-content">';
+        for(let i=0; i<searchList.length; i++){
+            let place = searchList[i];
+            dropdown += '<a onclick={addLocation('+place+')}>'+place+'</a>';
+        }
+        dropdown += '</div>';
+        return search+filter+dropdown;
+    }
+
+    dropdownShow(){
+        let dropdown = document.getElementById('dropcon');
+        dropdown.classList.toggle("show");
+    }
+
+    addLocation(name){
+        if(this.state.locList.get(name)){
+            this.state.displayed.push(this.state.locList.get(name));
+        }
+        this.setState({
+            locList: this.state.locList,
+            displayed: this.state.displayed,
+            data: this.state.data
+        });
+    }
+
+    render(){
+        return(
+            <div>
+                <div id="search-filter" class="dropdown">
+                    {this.createSearchFilter()}
+                </div>
+                <area-container>
+                    {this.displayed.map(vacayLoc => <VacayLocation {...vacayLoc} id={vacayLoc.key}/>)}
+                </area-container>
+            </div>
+        );
+    }
+
+};
+
