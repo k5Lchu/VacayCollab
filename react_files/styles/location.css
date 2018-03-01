@@ -1,0 +1,12 @@
+.area-upvote button {
+    text-align: right;
+    background-color: white;
+    color: black;
+    border: none;
+    font-size: 1.5em;
+    font-weight: bold;
+    padding: 5px 5px;
+    border-radius: 6px;
+    margin: auto;
+    float: right;
+}

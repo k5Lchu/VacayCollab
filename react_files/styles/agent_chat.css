@@ -1,0 +1,27 @@
+#chatToggle {
+    background-color: darkorange;
+    height: 75px;
+    width: 75px;
+    position: fixed;
+    right: 0;
+    top: 15%;
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;
+    cursor: pointer;
+}
+
+#chatToggle:hover {
+    background-color: orange;
+}
+
+@media only screen and (max-width: 768px) {
+    #chatToggle {
+        width: 50px;
+        height: 50px;
+        padding: 5px;
+        top: auto;
+        right: 5%;
+        bottom: 5%;
+        border-radius: 50%;
+    }
+}
