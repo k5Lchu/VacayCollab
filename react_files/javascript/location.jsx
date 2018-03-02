@@ -14,7 +14,7 @@ var locations = [
         name: 'Chiang Mai',
         upvotes: 3,
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nun maximus kevin chu is a scrub, nulla ut commodo sagittis, sapien dui mattis dui, non pulvinar lorem felis nec erat.',
-        pic: 'assets/images/chiangmai-pic.jpg',
+        pic: '../assets/images/chiangmai-pic.jpg',
         displayed: false,
         voted: false
     },
@@ -22,7 +22,7 @@ var locations = [
         name: 'Los Angeles',
         upvotes: 1,
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nun maximus kevin chu is a scrub, nulla ut commodo sagittis, sapien dui mattis dui, non pulvinar lorem felis nec erat.',
-        pic: 'assets/images/LA-pic.jpg',
+        pic: '../assets/images/LA-pic.jpg',
         displayed: false,
         voted: false
     },
@@ -30,7 +30,7 @@ var locations = [
         name: 'San Diego',
         upvotes: 0,
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nun maximus kevin chu is a scrub, nulla ut commodo sagittis, sapien dui mattis dui, non pulvinar lorem felis nec erat.',
-        pic: 'assets/images/sandiego-pic.jpg',
+        pic: '../assets/images/sandiego-pic.jpg',
         displayed: false,
         voted: false
     },
@@ -38,7 +38,7 @@ var locations = [
         name: 'New York',
         upvotes: 0,
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nun maximus kevin chu is a scrub, nulla ut commodo sagittis, sapien dui mattis dui, non pulvinar lorem felis nec erat.',
-        pic: 'assets/images/newyork-pic.jpg',
+        pic: '../assets/images/newyork-pic.jpg',
         displayed: false,
         voted: false
     },
@@ -46,7 +46,7 @@ var locations = [
         name: 'Dubai',
         upvotes: 0,
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nun maximus kevin chu is a scrub, nulla ut commodo sagittis, sapien dui mattis dui, non pulvinar lorem felis nec erat.',
-        pic: 'assets/images/dubai-pic.jpg',
+        pic: '../assets/images/dubai-pic.jpg',
         displayed: false,
         voted: false
     },
@@ -54,7 +54,7 @@ var locations = [
         name: 'Toronto',
         upvotes: 0,
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nun maximus kevin chu is a scrub, nulla ut commodo sagittis, sapien dui mattis dui, non pulvinar lorem felis nec erat.',
-        pic: 'assets/images/toronto-pic.jpg',
+        pic: '../assets/images/toronto-pic.jpg',
         displayed: false,
         voted: false
     },
@@ -62,7 +62,7 @@ var locations = [
         name: 'Paris',
         upvotes: 0,
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nun maximus kevin chu is a scrub, nulla ut commodo sagittis, sapien dui mattis dui, non pulvinar lorem felis nec erat.',
-        pic: 'assets/images/paris-pic.jpg',
+        pic: '../assets/images/paris-pic.jpg',
         displayed: false,
         voted: false
     }
@@ -88,68 +88,45 @@ var comments = [
     }
 ];
 
-const VacayLocation = (props) => {
-    /*let locationContainerStyle = {
-        border: '2px solid gray',
-        backgroundColor: 'lightgray',
-        display: 'grid',
-        gridTemplateAreas: 'left right'
-    };
+class VacayLocation extends React.Component{
+    constructor(props){
+        super(props);
+        this.state = {
+            upvotes: props.upvotes,
+            voted: props.voted
+        }
+        this.upvoteLocation = this.upvoteLocation.bind(this);
+    }
 
-    let locationPicStyle = {
-        gridArea: 'left',
-        textAlign: 'center',
-        margin: 'auto',
-        backgroundColor: 'lightgray'
-    };
+    upvoteLocation(){
+        if (this.state.voted == false) { this.state.upvotes += 1; }
+        this.state.voted = true;
 
-    let locationDescStyle = {
-        gridArea: 'right',
-        backgroundColor: 'lightgray',
-        margin: 'auto'
-    };
+        this.setState({
+            upvotes: this.state.upvotes,
+            voted: this.state.voted
+        });
+        this.props.onUpvote();
+    }
 
-    let locationNameStyle = {
-        gridArea: 'right',
-        textAlign: 'center',
-        borderBottom: '2px solid gray',
-        fontSize: '1.5em',
-        fontWeight: 'bold',
-        marginTop: '10px'
-    };
-
-    let locationInfoStyle = {
-        gridArea: 'right',
-        textAlign: 'left',
-        marginLeft: '10%',
-        marginRight: '10%'
-    };
-
-    let upvoteButtonStyle = {
-        position: 'relative'
-    };
-    */
-    let upvoteLocation = () => {
-        if (props.voted == false) { props.upvotes = props.upvotes + 1; }
-        props.voted = true;
-
-    };
-
-    return (
-        <full-area /*style={locationContainerStyle}*/>
-            <area-pic /*style={locationPicStyle}*/><img src={props.pic}></img></area-pic>
-            <area-desc /*style={locationDescStyle}*/>
-                <area-name /*style={locationNameStyle}*/>{props.name}</area-name>
-                <upvote-count /*style={locationNameStyle}*/>{props.upvotes}</upvote-count>
-                <area-info /*style={locationNameStyle}*/><p>{props.description}</p></area-info>
-                <area-upvote /*style={locationNameStyle}*/ className="area-upvote"><button type="button" onclick={upvoteLocation}>UpVote</button> </area-upvote>
-            </area-desc>
-        </full-area>
-        )
+    render(){
+        return (
+            <full-area>
+                <area-pic><img src={this.props.pic}></img></area-pic>
+                <area-desc>
+                    <area-name>{this.props.name}</area-name>
+                    <upvote-count>{this.state.upvotes}</upvote-count>
+                    <area-info ><p>{this.props.description}</p></area-info>
+                    <area-upvote><button type="button" onClick={this.upvoteLocation}>UpVote</button> </area-upvote>
+                </area-desc>
+            </full-area>
+            )
+    }
 };
 
 class LocationList extends React.Component {
     constructor(props) {
+        console.log('LocationList constructor')
         super(props);
 
         this.state = {
@@ -166,12 +143,14 @@ class LocationList extends React.Component {
                 this.state.locList.get(loc.name).push(loc);
             }
         }
-
         this.createLocList = this.createLocList.bind(this);
+        this.createLocList();
         this.createSearchFilter = this.createSearchFilter.bind(this);
     }
 
     createLocList(){
+        console.log('createLocList');
+
         this.state.displayed = [];
         let iter = this.state.locList.keys();
         let curr = iter.next();
@@ -184,20 +163,19 @@ class LocationList extends React.Component {
         }
 
         names.sort((a,b) =>{
-            return (this.state.locList.get(b).upvotes - this.state.locList.get(a).upvotes);
+            return (this.state.locList.get(b)[0].upvotes - this.state.locList.get(a)[0].upvotes);
         });
 
         for(let i=0; i<names.length; i++){
-            if(locList.get(names[i]).upvotes > 0){
-                this.state.displayed.push(locList.get(names[i]));
+            if(this.state.locList.get(names[i])[0].upvotes > 0){
+                this.state.displayed.push(this.state.locList.get(names[i])[0]);
             }
         }
-        
-        this.setState({
+        /*this.setState({
             locList: this.state.locList,
             displayed: this.state.displayed,
             data: this.state.data
-        });
+        });*/
     }
 
     createSearchFilter(){
@@ -205,12 +183,12 @@ class LocationList extends React.Component {
         let filter = '';
         let dropdown = '';
 
-        search = '<input id="search-input" type="text" placeholder="Search For Destinations...." onkeyup={searchList()}>';
-        filter = '<button id="filter-button" onclick={dropdownShow()} class="dropbtn">Search</button></div>';
+        search = '<input id="search-input" type="text" placeholder="Search For Destinations...." onkeyup={this.searchList}>';
+        filter = '<button id="filter-button" onclick={this.dropdownShow} class="dropbtn">Search</button></div>';
         dropdown = '<div id="dropcon" class="dropdown-content">';
         for(let i=0; i<searchList.length; i++){
             let place = searchList[i];
-            dropdown += '<a onclick={addLocation('+place+')}>'+place+'</a>';
+            dropdown += '<a onclick={this.addLocation('+place+')}>'+place+'</a>';
         }
         dropdown += '</div>';
         return search+filter+dropdown;
@@ -221,8 +199,19 @@ class LocationList extends React.Component {
         dropdown.classList.toggle("show");
     }
 
+    searchList(){
+        let value = document.getElementById('search-input').value.toLowerCase();
+        let dropdown = document.getElementById('dropcon');
+        dropdown.innerHTML = '';
+        for(let i=0; i<searchlist.length; i++){
+            if(searchlist[i].toLowerCase().includes(value)){
+                dropdown.innerHTML += '<a onclick="{this.addLocation('+searchlist[i]+')}">'+searchlist[i]+'</a>';
+            }
+        }
+    }
+
     addLocation(name){
-        if(this.state.locList.get(name)){
+        if(this.state.locList.get(name)[0]){
             this.state.displayed.push(this.state.locList.get(name));
         }
         this.setState({
@@ -232,14 +221,18 @@ class LocationList extends React.Component {
         });
     }
 
+    upVoted(name){
+        console.log('upVoted');
+        
+    }
+
     render(){
+        console.log(this.state.displayed.length);
         return(
             <div>
-                <div id="search-filter" class="dropdown">
-                    {this.createSearchFilter()}
-                </div>
+                
                 <area-container>
-                    {this.displayed.map(vacayLoc => <VacayLocation {...vacayLoc} id={vacayLoc.key}/>)}
+                    {this.state.displayed.map(vacayLoc => <VacayLocation {...vacayLoc} onUpvote={this.upVoted(vacayLoc.name)}/>)}
                 </area-container>
             </div>
         );
@@ -247,3 +240,4 @@ class LocationList extends React.Component {
 
 };
 
+ReactDOM.render(<LocationList data={locations}/>, document.getElementById('content'));

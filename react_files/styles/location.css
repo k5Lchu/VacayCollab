@@ -78,7 +78,7 @@
     max-height: 300px;
 }
 
-#area-container full-area {
+area-container full-area {
     border-top: 2px solid gray;
     border-bottom: 2px solid gray;
     background-color: lightgray;
@@ -86,7 +86,7 @@
     grid-template-areas: 'left right';
 }
 
-#area-container full-area area-pic {
+area-container full-area area-pic {
     grid-area: left;
     text-align: center;
     margin-left: 5%;
@@ -96,12 +96,12 @@
     background-color: lightgray;
 }
 
-#area-container full-area area-pic img {
+area-container full-area area-pic img {
     width: 100%;
     height: 100%;
 }
 
-#area-container full-area area-desc {
+area-container full-area area-desc {
     grid-area: right;
     background-color: lightgray;
     margin-left: 5%;
@@ -110,7 +110,7 @@
     margin-bottom: 5px;
 }
 
-#area-container full-area area-desc area-name {
+area-container full-area area-desc area-name {
     text-align: center;
     border-bottom: 2px solid gray;
     font-size: 1.5em;
@@ -118,17 +118,17 @@
     margin-top: 10px;
 }
 
-#area-container full-area area-desc area-info {
+area-container full-area area-desc area-info {
     text-align: left;
     margin-left: 10%;
     margin-right: 10%;
 }
 
-#area-container full-area area-desc area-upvote {
+area-container full-area area-desc area-upvote {
     position: relative;
 }
 
-#area-container full-area area-desc area-upvote button {
+area-container full-area area-desc area-upvote button {
     text-align: right;
     background-color: white;
     color: black;
@@ -141,12 +141,12 @@
     float: right;
 }
 
-#area-container full-area area-desc area-upvote button:hover {
+area-container full-area area-desc area-upvote button:hover {
     background-color: lightsteelblue;
     cursor: pointer;
 }
 
-#area-container full-area area-desc upvote-count {
+area-container full-area area-desc upvote-count {
     text-align: right;
     background-color: white;
     color: black;
