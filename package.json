@@ -4,8 +4,13 @@
   "description": "cse 134b project",
   "main": "index.js",
   "scripts": {
+<<<<<<< HEAD
     "build": "babel src -d lib",
     "test": "echo \"Error: no test specified\" && exit 1"
+=======
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack -d --watch"
+>>>>>>> b8695bc6dc07d9e97d10c5eb6b6e64145c6c9057
   },
   "repository": {
     "type": "git",
@@ -24,6 +29,7 @@
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-node": "^6.0.0",
     "eslint-plugin-promise": "^3.6.0",
+<<<<<<< HEAD
     "eslint-plugin-standard": "^3.0.1"
   },
   "dependencies": {
@@ -31,5 +37,26 @@
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-router-dom": "^4.2.2"
+=======
+    "eslint-plugin-standard": "^3.0.1",
+    "webpack-cli": "^2.0.9"
+  },
+  "dependencies": {
+    "babel-loader": "^7.1.3",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "css-loader": "^0.28.10",
+    "eslint-config-standard": "^11.0.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-node": "^6.0.0",
+    "eslint-plugin-promise": "^3.6.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-router": "^4.2.0",
+    "react-router-dom": "^4.2.2",
+    "style-loader": "^0.20.2",
+    "webpack": "^4.0.1"
+>>>>>>> b8695bc6dc07d9e97d10c5eb6b6e64145c6c9057
   }
 }

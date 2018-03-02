@@ -1,3 +1,7 @@
 {
+<<<<<<< HEAD
     "presets": ["env"]
+=======
+  "presets" : ["es2015", "react"]
+>>>>>>> b8695bc6dc07d9e97d10c5eb6b6e64145c6c9057
 }

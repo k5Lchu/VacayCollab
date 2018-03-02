@@ -1,3 +1,5 @@
+import React from 'react';
+
 const Message = (props) => {
     let messageContainerStyles = {
         padding: '0px 10px',
@@ -219,3 +221,5 @@ class ChatContainer extends React.Component {
         );
     }
 };
+
+export default ChatContainer;

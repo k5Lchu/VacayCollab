@@ -128,11 +128,12 @@ window.onload = function(){
 
 var clickBack = function () {
     'use strict';
-    localStorage.setItem('dates-selected', JSON.stringify(dayspassed))
+    localStorage.setItem('dates-selected', JSON.stringify(dayspassed));
     location.href = 'MarkAvailability.html';
 };
 
 var clickNext = function () {
     'use strict';
+    localStorage.setItem('dates-selected', JSON.stringify(currdays));
     location.href = 'locationselect.html';
 };

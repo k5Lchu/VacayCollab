@@ -1,3 +1,5 @@
+import React from 'react';
+
 const Comment = (props) => {
     let commentContainerStyles = {
         margin: 'auto',
@@ -169,3 +171,5 @@ const CommentComponent = (props) => {
         </div>
     );
 };
+
+export default CommentComponent;
