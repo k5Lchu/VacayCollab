@@ -67,7 +67,7 @@ var populateList = function () {
 
         if (currEvent.type === 'flight') {
             eventTitle = 'Get to ' + currEvent.location;
-            description = 'Fly from' + currEvent.startLocation + ' to ' + currEvent.location;
+            description = 'Fly from ' + currEvent.startLocation + ' to ' + currEvent.location;
         }
 
         itemId = (currEvent.month + '-' + currEvent.dayOfMonth + '-' + currEvent.year).toLowerCase();

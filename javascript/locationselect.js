@@ -68,6 +68,10 @@ var locations = [
     }
 ];
 
+if(localStorage.getItem('LocationList') != null){
+    locations = JSON.parse(localStorage.getItem('LocationList'));
+}
+
 var comments = [
     {
         author: 'Roronoa Zoro',
@@ -121,14 +125,18 @@ var searchList = function() {
             dropdown.innerHTML += '<a onclick="addLocation('+i+')">'+searchlist[i]+'</a>';
         }
     }
+};
+
+var dropdownShow = function(){
+    var dropdown = document.getElementById('dropcon');
     dropdown.classList.toggle("show");
 };
 
 var initialSearch = function() {
     'use strict';
     var searchfilt = document.getElementById("search-filter");
-    var searchbar = '<input id="search-input" type="text" placeholder="Search For Destinations....">';
-    var filter = '<button id="filter-button" onclick="searchList()" class="dropbtn">Search</button></div>';
+    var searchbar = '<input id="search-input" type="text" placeholder="Search For Destinations...." onkeyup="searchList()">';
+    var filter = '<button id="filter-button" onclick="dropdownShow()" class="dropbtn">Search</button></div>';
     var dropcon = '<div id="dropcon" class="dropdown-content"></div>';
     searchfilt.innerHTML = searchbar+filter+dropcon;
 };
@@ -185,15 +193,20 @@ window.onload = function() {
     initialLocations();
     populateInitialComments();
     populateChat();
+    searchList();
 };
 
 var clickBack = function () {
     'use strict';
+    clearLocations();
+    localStorage.setItem('LocationList', JSON.stringify(locations));
     location.href = 'DecideDate.html';
 };
 
 var clickNext = function () {
     'use strict';
+    clearLocations();
+    localStorage.setItem('LocationList', JSON.stringify(locations));
     location.href = 'hotel.html';
 };
 
