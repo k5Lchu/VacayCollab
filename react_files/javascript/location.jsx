@@ -68,23 +68,66 @@ var locations = [
     }
 ];
 
-var listedLocs = [];
+var locMap = new Map();
+for(let i=0; i<locations.length; i++){
+    let loc = locations[i];
+    if(!locMap.has(loc.name)){
+        locMap.set(loc.name, [i]);
+    }else{
+        locMap.get(loc.name).push(i);
+    }
+}
 
 var comments = [
     {
         author: 'Roronoa Zoro',
-        content: 'Hey Luffy, trust me.If we go to Chiang Mai we can eat a lot of delicious food.',
+        commentContent: 'Hey Luffy, trust me.If we go to Chiang Mai we can eat a lot of delicious food.',
         timestamp: 1
     },
     {
         author: 'Luffy',
-        content: 'NAMI! WE"RE SETTING SAIL TO CHIANG MAI NOW!',
+        commentContent: 'NAMI! WE"RE SETTING SAIL TO CHIANG MAI NOW!',
         timestamp: 2
     },
     {
         author: 'Nami',
-        content: 'I want to see Hollywood!',
+        commentContent: 'I want to see Hollywood!',
         timestamp: 3
+    }
+];
+
+let messagesData = [
+    {
+        sender: 'user',
+        message: 'I have a question'
+    },
+    {
+        sender: 'agent',
+        message: 'Sure thing! What\'s your question?'
+    },
+    {
+        sender: 'user',
+        message: 'Do you happen to know any places to visit in ChiangMai?'
+    },
+    {
+        sender: 'agent',
+        message: 'Not really'
+    },
+    {
+        sender: 'user',
+        message: '...'
+    },
+    {
+        sender: 'user',
+        message: 'Thank you...?'
+    },
+    {
+        sender: 'agent',
+        message: 'No problem'
+    },
+    {
+        sender: 'agent',
+        message: 'It\'s been a pleasure'
     }
 ];
 
@@ -92,31 +135,35 @@ class VacayLocation extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            upvotes: props.upvotes,
-            voted: props.voted
+            upvotes: props.location.upvotes,
+            voted: props.location.voted
         }
         this.upvoteLocation = this.upvoteLocation.bind(this);
     }
 
     upvoteLocation(){
-        if (this.state.voted == false) { this.state.upvotes += 1; }
+        console.log('upvoted '+this.props.location.name+' from vacayloc');
+        if (this.state.voted == false) { 
+            this.props.onUpvote(this.props.location.name);
+            this.state.upvotes += 1;
+        }
         this.state.voted = true;
 
         this.setState({
             upvotes: this.state.upvotes,
             voted: this.state.voted
         });
-        this.props.onUpvote();
+        
     }
 
     render(){
         return (
             <full-area>
-                <area-pic><img src={this.props.pic}></img></area-pic>
+                <area-pic><img src={this.props.location.pic}></img></area-pic>
                 <area-desc>
-                    <area-name>{this.props.name}</area-name>
+                    <area-name>{this.props.location.name}</area-name>
                     <upvote-count>{this.state.upvotes}</upvote-count>
-                    <area-info ><p>{this.props.description}</p></area-info>
+                    <area-info><p>{this.props.location.description}</p></area-info>
                     <area-upvote><button type="button" onClick={this.upvoteLocation}>UpVote</button> </area-upvote>
                 </area-desc>
             </full-area>
@@ -124,15 +171,27 @@ class VacayLocation extends React.Component{
     }
 };
 
+const DropdownItem = (props) => {
+    let getLoc = function() {
+        props.addLocation(props.name);
+    };
+
+    return(
+        <a id={props.name} onClick={getLoc}>{props.name}</a>
+    );
+}
+
 class LocationList extends React.Component {
     constructor(props) {
-        console.log('LocationList constructor')
         super(props);
 
         this.state = {
             locList: new Map(),
             displayed: [],
-            data: props.data
+            data: props.data,
+            map: props.map,
+            list: props.list,
+            matches: []
         }
 
         for(let i=0; i<props.data.length; i++){
@@ -143,57 +202,57 @@ class LocationList extends React.Component {
                 this.state.locList.get(loc.name).push(loc);
             }
         }
-        this.createLocList = this.createLocList.bind(this);
-        this.createLocList();
-        this.createSearchFilter = this.createSearchFilter.bind(this);
-    }
 
-    createLocList(){
-        console.log('createLocList');
-
-        this.state.displayed = [];
         let iter = this.state.locList.keys();
         let curr = iter.next();
-
         let names = [];
-
         while(!curr.done){
             names.push(curr.value);
             curr = iter.next();
         }
-
         names.sort((a,b) =>{
             return (this.state.locList.get(b)[0].upvotes - this.state.locList.get(a)[0].upvotes);
         });
-
+        
         for(let i=0; i<names.length; i++){
             if(this.state.locList.get(names[i])[0].upvotes > 0){
                 this.state.displayed.push(this.state.locList.get(names[i])[0]);
             }
         }
-        /*this.setState({
+        
+        this.searchList = this.searchList.bind(this);
+        this.dropdownShow = this.dropdownShow.bind(this);
+        this.updateVoted = this.updateVoted.bind(this);
+        this.addLocation = this.addLocation.bind(this);
+        
+    }
+
+    addLocation(name){
+        if(this.state.locList.get(name)[0]){
+            let there = false;
+            for(let i=0; i<this.state.displayed.length; i++){
+                if(this.state.displayed[i].name == this.state.locList.get(name)[0].name){
+                    there = true;
+                }
+                if(there){ break; }
+            }
+            if(!there){this.state.displayed.push(this.state.locList.get(name)[0]);}
+        }
+        this.setState({
             locList: this.state.locList,
             displayed: this.state.displayed,
-            data: this.state.data
-        });*/
+            data: this.state.data,
+            map: this.state.map,
+            list: this.state.list,
+            matches: this.state.matches
+        });
     }
 
-    createSearchFilter(){
-        let search = '';
-        let filter = '';
-        let dropdown = '';
-
-        search = '<input id="search-input" type="text" placeholder="Search For Destinations...." onkeyup={this.searchList}>';
-        filter = '<button id="filter-button" onclick={this.dropdownShow} class="dropbtn">Search</button></div>';
-        dropdown = '<div id="dropcon" class="dropdown-content">';
-        for(let i=0; i<searchList.length; i++){
-            let place = searchList[i];
-            dropdown += '<a onclick={this.addLocation('+place+')}>'+place+'</a>';
-        }
-        dropdown += '</div>';
-        return search+filter+dropdown;
+    updateVoted(name){
+        console.log('upVoted '+name);
+        this.props.upVoteLoc(name);
     }
-
+    
     dropdownShow(){
         let dropdown = document.getElementById('dropcon');
         dropdown.classList.toggle("show");
@@ -202,37 +261,36 @@ class LocationList extends React.Component {
     searchList(){
         let value = document.getElementById('search-input').value.toLowerCase();
         let dropdown = document.getElementById('dropcon');
-        dropdown.innerHTML = '';
+        this.state.matches = [];
         for(let i=0; i<searchlist.length; i++){
-            if(searchlist[i].toLowerCase().includes(value)){
-                dropdown.innerHTML += '<a onclick="{this.addLocation('+searchlist[i]+')}">'+searchlist[i]+'</a>';
+            if(this.state.list[i].toLowerCase().includes(value)){
+                this.state.matches.push(this.state.list[i]);
             }
         }
-    }
-
-    addLocation(name){
-        if(this.state.locList.get(name)[0]){
-            this.state.displayed.push(this.state.locList.get(name));
-        }
+        console.log("searchList setState");
         this.setState({
             locList: this.state.locList,
             displayed: this.state.displayed,
-            data: this.state.data
+            data: this.state.data,
+            map: this.state.map,
+            list: this.state.list,
+            matches: this.state.matches
         });
     }
 
-    upVoted(name){
-        console.log('upVoted');
-        
-    }
-
     render(){
-        console.log(this.state.displayed.length);
+        
         return(
             <div>
-                
+                <div id="search-filter" className="dropdown">
+                    <input id="search-input" type="text" placeholder="Search For Destinations...." onKeyUp={this.searchList}></input>
+                    <button id="filter-button" onClick={this.dropdownShow} className="dropbtn">Search</button>
+                    <div id="dropcon" className="dropdown-content">
+                        {this.state.matches.map(loc => <DropdownItem name={loc} addLocation={this.addLocation}/>)}
+                    </div>
+                </div>
                 <area-container>
-                    {this.state.displayed.map(vacayLoc => <VacayLocation {...vacayLoc} onUpvote={this.upVoted(vacayLoc.name)}/>)}
+                    {this.state.displayed.map(vacayLoc => <VacayLocation location={vacayLoc} id={vacayLoc.name} onUpvote={this.updateVoted}/>)}
                 </area-container>
             </div>
         );
@@ -240,4 +298,26 @@ class LocationList extends React.Component {
 
 };
 
-ReactDOM.render(<LocationList data={locations}/>, document.getElementById('content'));
+const LocationSelectContent = (props) => {
+    return(
+        <div>
+            <div id="progress-bar"><div></div></div>
+            <div id="location-container">
+                <div id="top-prompt">
+                    <h1>Where does everyone want to go?</h1>
+                    <h4>Vote on where you want to go! Leave comments for the group with you opinions on your vacation destination</h4>
+                </div>
+                <LocationList data={props.data} map={props.map} list={props.list} upVoteLoc={props.upVoteLoc}/>
+                <CommentComponent comments={props.comments}/>
+                <ChatContainer data={props.messages} />
+            </div>
+        </div>
+    );
+};
+
+let upvoteLoc = function(name){
+    locations[locMap.get(name)].upvotes += 1;
+    locations[locMap.get(name)].voted = true;
+};
+
+ReactDOM.render(<LocationSelectContent data={locations} map={locMap} list={searchlist} upVoteLoc={upvoteLoc} comments={comments} messages={messagesData}/>, document.getElementById('content'));

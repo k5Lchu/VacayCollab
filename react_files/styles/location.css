@@ -1,3 +1,42 @@
+#progress-bar {
+    border: 1px solid black;
+    width: 200px;
+    height: 20px;
+    margin: auto;
+    margin-top: 30px;
+}
+
+#progress-bar div {
+    width: 60px;
+    height: 20px;
+    background-color: dodgerblue;
+}
+
+#location-container {
+    background-color: white;
+    max-width: 65%;
+    border: 2px solid black;
+    border-radius: 10px;
+    margin: auto;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    
+}
+
+#top-prompt {
+    text-align: center;
+}
+
+#top-prompt h4 {
+    margin-top: 10px;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+#top-prompt h1 {
+    margin-bottom: 10px;
+}
+
 .dropdown input {
     width: 60%;
     margin-top: 10px;
@@ -68,7 +107,8 @@
     display: block;
 }
 
-#area-container {
+area-container {
+    display: block;
     margin-left: 0px;
     margin-right: 0px;
     border-top: 2px solid black;
@@ -126,6 +166,7 @@ area-container full-area area-desc area-info {
 
 area-container full-area area-desc area-upvote {
     position: relative;
+    padding-left: 25%;
 }
 
 area-container full-area area-desc area-upvote button {
@@ -154,4 +195,97 @@ area-container full-area area-desc upvote-count {
     font-size: 1.5em;
     font-weight: bold;
     border-radius: 6px;
+}
+
+#progress-buttons {
+    width: 75%;
+    margin: auto;
+    margin-bottom: 75px;
+    overflow: hidden;
+}
+
+#progress-buttons button {
+    background-color: dodgerblue;
+    color: white;
+    border: none;
+    font-size: 1.5em;
+    font-weight: bold;
+    padding: 5px 20px;
+    border-radius: 6px;
+}
+
+#progress-buttons button:first-child {
+    float: left;
+}
+
+#progress-buttons button:last-child {
+    float: right;
+}
+
+#progress-buttons button:hover {
+    background-color: steelblue;
+    cursor: pointer;
+}
+
+#chat-comments {
+    background-color: lightgray;
+    padding: 10px;
+    border-bottom: 2px solid black;
+    margin-bottom: 20px;
+}
+
+#chat-comments h2 {
+    margin: 0;
+    padding-bottom: 10px;
+}
+
+#chat-comments form {
+    text-align: center;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    padding: 10px;
+    margin-bottom: 30px;
+}
+
+#chat-comments input[type=text] {
+    width: 80%;
+    padding: 5px;
+    background-color: inherit;
+    border: none;
+    border-bottom: 1px solid black;
+}
+
+#chat-comments-all {
+    list-style-type: none;
+    padding: 0px;
+    max-height: 200px;
+    overflow: auto;
+}
+
+.comment-author {
+    border-top: 1px solid gray;
+    font-weight: bold;
+    padding-top: 5px;
+}
+
+.comment-content {
+    padding-bottom: 10px;
+    padding-left: 50px;
+    line-height: 1em;
+    margin-bottom: 20px;
+    border-bottom: 1px solid gray;
+}
+
+@media only screen and (max-width: 768px){
+    #location-container {
+        max-width: 90%;
+    }
+
+    #search-filter input[type=text]{
+        width: 80%;
+    }
+
+    #area-container full-area{
+        grid-template-areas: 'left' 'right';
+    }
 }
