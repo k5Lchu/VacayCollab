@@ -1,0 +1,65 @@
+.form-signin {
+    max-width: 330px;
+    padding: 15px;
+    margin: 0 auto;
+  }
+  .form-signin .form-signin-heading,
+  .form-signin .checkbox {
+    margin-bottom: 10px;
+    margin-left: 25px;
+    font-weight: normal;
+  }
+  .form-signin .signup {
+    margin-left: 80px;
+  }
+  .form-signin .form-control {
+    position: relative;
+    height: auto;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    padding: 10px;
+    font-size: 16px;
+  }
+  .form-signin .form-control:focus {
+    z-index: 2;
+  }
+  .form-signin input[type="email"] {
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+  .form-signin input[type="password"] {
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+  
+  .loginBtn {
+      box-sizing: border-box;
+      position: relative;
+      margin: 0.2em;
+      padding: 0 15px 0 46px;
+      border: none;
+      text-align: left;
+      line-height: 34px;
+      white-space: nowrap;
+      border-radius: 0.2em;
+      font-size: 16px;
+      color: #FFF;
+    }
+    .loginBtn:before {
+      content: "";
+      box-sizing: border-box;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 34px;
+      height: 100%;
+    }
+    .loginBtn:focus {
+      outline: none;
+    }
+    .loginBtn:active {
+      box-shadow: inset 0 0 0 32px rgba(0,0,0,0.1);
+    }
+    

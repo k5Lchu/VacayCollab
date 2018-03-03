@@ -1,0 +1,25 @@
+#invite-container {
+    max-width: 65%;
+    border: 2px solid black;
+    border-radius: 10px;
+    margin: auto;
+    margin-top:10px;
+    margin-bottom: 10px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    text-align: center;
+    background-color: white;
+}
+
+#desktop-button {
+    color: white;
+    background-color: orange;
+    padding: 5px 10px;
+    border-radius: 15px;
+    border-style: none;
+    font-size: 18px;
+}
+
+.input{
+    width: 300px;
+}

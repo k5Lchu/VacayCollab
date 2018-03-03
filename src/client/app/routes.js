@@ -4,6 +4,10 @@ import { Route } from 'react-router-dom';
 import App from './components/App.jsx';
 import Itinerary from './components/itinerary.jsx';
 import Summary from './components/summary.jsx';
+import Home from './components/home.jsx';
+import Login from './components/login.jsx';
+import Signup from './components/signup.jsx';
+import Invite from './components/invite.jsx';
 
 let commentsData = [
     {
@@ -150,6 +154,10 @@ itineraryData.sort((a,b) => {
 let startingPathname = window.location.pathname;
 
 export default [<Route key="1" path={startingPathname + '/'} component={App}/>,
-                <Route key="2" path={startingPathname + '/'} exact render={(props) => <Itinerary data={itineraryData} comments={commentsData} messages={messagesData} starPathName={startingPathname} />} />,
-                <Route key="3" path={startingPathname + '/summary'} render={(props) => <Summary data={itineraryData} comments={commentsData} messages={messagesData} starPathName={startingPathname} />} />
+                <Route key="2" path={startingPathname + '/'} exact render={(props) => <Home starPathName={startingPathname}/> }/>,
+                <Route key="3" path={startingPathname + '/login'} render={(props) => <Login starPathName={startingPathname}/> }/>,
+                <Route key="4" path={startingPathname + '/signup'} render={(props) => <Signup starPathName={startingPathname}/> }/>,
+                <Route key="5" path={startingPathname + '/invite'} render={(props) => <Invite starPathName={startingPathname}/> }/>,
+                <Route key="6" path={startingPathname + '/itinerary'} render={(props) => <Itinerary data={itineraryData} comments={commentsData} messages={messagesData} starPathName={startingPathname} />} />,
+                <Route key="7" path={startingPathname + '/summary'} render={(props) => <Summary data={itineraryData} comments={commentsData} messages={messagesData} starPathName={startingPathname} />} />
                ];
