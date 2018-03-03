@@ -38,6 +38,7 @@ var start = [1, 4, 4, 0, 2, 5, 0, 3, 6, 1, 4, 6];
 var days = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 
 var currentMonth = 2;
+var passedDays = [1,31,32,59,60]
 var saveDays = [];
 
 let monthMap = new Map();
@@ -136,7 +137,9 @@ class CalenderContent extends React.Component {
             rows: [],
             rowNum: 0,
             saved: this.props.saveDays,
-            monthSaved: []
+            passed: this.props.passedDays,
+            monthSaved: [],
+            monthPassed: []
         };
         let monthName = this.state.months[this.state.currentMonth];
         let currMonthMap = this.state.monthMap.get(monthName);
@@ -238,7 +241,9 @@ class CalenderContent extends React.Component {
             rows: this.state.rows,
             rowNum: this.state.rowNum,
             saved: this.state.saved,
-            monthSaved: this.state.monthSaved
+            passed: this.state.passed,
+            monthSaved: this.state.monthSaved,
+            monthPassed: this.state.monthPassed
         });
         this.monthSelect(this.state.currentMonth);
         this.saveDaysInMonth();
@@ -270,7 +275,9 @@ class CalenderContent extends React.Component {
             rows: this.state.rows,
             rowNum: this.state.rowNum,
             saved: this.state.saved,
-            monthSaved: this.state.monthSaved
+            passed: this.state.passed,
+            monthSaved: this.state.monthSaved,
+            monthPassed: this.state.monthPassed
         });
         this.props.selectDay(this.state.saved);
     }
@@ -306,7 +313,9 @@ class CalenderContent extends React.Component {
             rows: this.state.rows,
             rowNum: this.state.rowNum,
             saved: this.state.saved,
-            monthSaved: this.state.monthSaved
+            passed: this.state.passed,
+            monthSaved: this.state.monthSaved,
+            monthPassed: this.state.monthPassed
         });
     }
 
@@ -334,7 +343,9 @@ class CalenderContent extends React.Component {
             rows: this.state.rows,
             rowNum: this.state.rowNum,
             saved: this.state.saved,
-            monthSaved: this.state.monthSaved
+            passed: this.state.passed,
+            monthSaved: this.state.monthSaved,
+            monthPassed: this.state.monthPassed
         });
     }
 
@@ -359,7 +370,7 @@ class CalenderContent extends React.Component {
     )};
 }
 
-class MarkAvailabilityContent extends React.Component {
+class DecideDateContent extends React.Component {
     constructor(props){
         super(props);
     }
@@ -373,7 +384,7 @@ class MarkAvailabilityContent extends React.Component {
                         <h1>Mark Availability</h1>
                         <h4>Mark all dates that you are available and the leader of the group will finalize the vacation start and end date</h4>
                     </div>
-                    <CalenderContent monthMap={this.props.monthMap} currentMonth={this.props.currentMonth} months={this.props.months} daysInWeek={this.props.daysInWeek} saveDays={this.props.saveDays} selectDay={this.props.selectDay}/>
+                    <CalenderContent monthMap={this.props.monthMap} currentMonth={this.props.currentMonth} months={this.props.months} daysInWeek={this.props.daysInWeek} saveDays={this.props.saveDays} passedDays={this.props.passedDays}selectDay={this.props.selectDay}/>
                     <ChatContainer data={this.props.messages} />
                 </div>
                 
@@ -383,4 +394,4 @@ class MarkAvailabilityContent extends React.Component {
 };
 
 
-ReactDOM.render(<MarkAvailabilityContent monthMap={monthMap} currentMonth={currentMonth} months={months} daysInWeek={daysInWeek} saveDays={saveDays} selectDay={selectDay} messages={messagesData}/>, document.getElementById('content'));
+ReactDOM.render(<DecideDateContent monthMap={monthMap} currentMonth={currentMonth} months={months} daysInWeek={daysInWeek} saveDays={saveDays} passedDays={passedDays} selectDay={selectDay} messages={messagesData}/>, document.getElementById('content'));
