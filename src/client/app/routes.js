@@ -4,6 +4,7 @@ import { Route } from 'react-router-dom';
 import App from './components/App.jsx';
 import Itinerary from './components/itinerary.jsx';
 import Summary from './components/summary.jsx';
+import LocationSelect from './components/location.jsx';
 
 let commentsData = [
     {
@@ -68,6 +69,97 @@ let messagesData = [
     }
 ];
 
+var locations = [
+    {
+        name: 'Chiang Mai',
+        upvotes: 3,
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nun maximus kevin chu is a scrub, nulla ut commodo sagittis, sapien dui mattis dui, non pulvinar lorem felis nec erat.',
+        pic: '../assets/images/chiangmai-pic.jpg',
+        displayed: false,
+        voted: false
+    },
+    {
+        name: 'Los Angeles',
+        upvotes: 1,
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nun maximus kevin chu is a scrub, nulla ut commodo sagittis, sapien dui mattis dui, non pulvinar lorem felis nec erat.',
+        pic: '../assets/images/LA-pic.jpg',
+        displayed: false,
+        voted: false
+    },
+    {
+        name: 'San Diego',
+        upvotes: 0,
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nun maximus kevin chu is a scrub, nulla ut commodo sagittis, sapien dui mattis dui, non pulvinar lorem felis nec erat.',
+        pic: '../assets/images/sandiego-pic.jpg',
+        displayed: false,
+        voted: false
+    },
+    {
+        name: 'New York',
+        upvotes: 0,
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nun maximus kevin chu is a scrub, nulla ut commodo sagittis, sapien dui mattis dui, non pulvinar lorem felis nec erat.',
+        pic: '../assets/images/newyork-pic.jpg',
+        displayed: false,
+        voted: false
+    },
+    {
+        name: 'Dubai',
+        upvotes: 0,
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nun maximus kevin chu is a scrub, nulla ut commodo sagittis, sapien dui mattis dui, non pulvinar lorem felis nec erat.',
+        pic: '../assets/images/dubai-pic.jpg',
+        displayed: false,
+        voted: false
+    },
+    {
+        name: 'Toronto',
+        upvotes: 0,
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nun maximus kevin chu is a scrub, nulla ut commodo sagittis, sapien dui mattis dui, non pulvinar lorem felis nec erat.',
+        pic: '../assets/images/toronto-pic.jpg',
+        displayed: false,
+        voted: false
+    },
+    {
+        name: 'Paris',
+        upvotes: 0,
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nun maximus kevin chu is a scrub, nulla ut commodo sagittis, sapien dui mattis dui, non pulvinar lorem felis nec erat.',
+        pic: '../assets/images/paris-pic.jpg',
+        displayed: false,
+        voted: false
+    }
+];
+
+var locMap = new Map();
+for(let i=0; i<locations.length; i++){
+    let loc = locations[i];
+    if(!locMap.has(loc.name)){
+        locMap.set(loc.name, [i]);
+    }else{
+        locMap.get(loc.name).push(i);
+    }
+}
+
+let upvoteLoc = function(name){
+    locations[locMap.get(name)].upvotes += 1;
+    locations[locMap.get(name)].voted = true;
+};
+
+var locCommentsData = [
+    {
+        author: 'Roronoa Zoro',
+        commentContent: 'Hey Luffy, trust me.If we go to Chiang Mai we can eat a lot of delicious food.',
+        timestamp: 1
+    },
+    {
+        author: 'Luffy',
+        commentContent: 'NAMI! WE"RE SETTING SAIL TO CHIANG MAI NOW!',
+        timestamp: 2
+    },
+    {
+        author: 'Nami',
+        commentContent: 'I want to see Hollywood!',
+        timestamp: 3
+    }
+];
 /*let months = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
 let daysInWeek = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
 
@@ -150,6 +242,7 @@ itineraryData.sort((a,b) => {
 let startingPathname = window.location.pathname;
 
 export default [<Route key="1" path={startingPathname + '/'} component={App}/>,
-                <Route key="2" path={startingPathname + '/'} exact render={(props) => <Itinerary data={itineraryData} comments={commentsData} messages={messagesData} starPathName={startingPathname} />} />,
-                <Route key="3" path={startingPathname + '/summary'} render={(props) => <Summary data={itineraryData} comments={commentsData} messages={messagesData} starPathName={startingPathname} />} />
+                <Route key="2" path={startingPathname + '/itenerary'} render={(props) => <Itinerary data={itineraryData} comments={commentsData} messages={messagesData} starPathName={startingPathname} />} />,
+                <Route key="3" path={startingPathname + '/summary'} render={(props) => <Summary data={itineraryData} comments={commentsData} messages={messagesData} starPathName={startingPathname} />} />,
+                <Route key="4" path={startingPathname + '/'} exact render={(props) => <LocationSelect data={locations} map={locMap} upVoteLoc={upvoteLoc} comments={locCommentsData} messages={messagesData} starPathName={startingPathname} />} />
                ];
