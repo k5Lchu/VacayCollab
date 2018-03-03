@@ -8,7 +8,8 @@ const config = {
     entry: APP_DIR + '/index.js',
     output: {
         path: BUILD_DIR,
-        filename: 'bundle.js'
+        filename: 'bundle.js',
+        publicPath: '/src/client/public'
     },
     module: {
         rules: [
@@ -26,7 +27,16 @@ const config = {
             },
             {
                 test: /\.(png|jpg)$/,
-                loader: "file-loader"
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            name: '[name].[ext]',
+                            outputPath: '/imgs',
+                            publicPath: '/imgs'
+                        }
+                    }
+                ]
             }
         ]
     }
