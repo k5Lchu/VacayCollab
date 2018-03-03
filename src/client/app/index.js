@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from 'react-dom';
 
-import { BrowserRouter, Router } from 'react-router-dom';
+import { HashRouter, Router } from 'react-router-dom';
 
 import routes from './routes.js';
 
@@ -15,10 +15,10 @@ import './styles/location.css';
 //import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 render(
-    <BrowserRouter>
+    <HashRouter>
         <div>
             {routes}
         </div>
-    </BrowserRouter>,
+    </HashRouter>,
     document.getElementById('app')
 );

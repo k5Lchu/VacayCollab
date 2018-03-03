@@ -78,7 +78,7 @@ var locations = [
         name: 'Chiang Mai',
         upvotes: 3,
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nun maximus kevin chu is a scrub, nulla ut commodo sagittis, sapien dui mattis dui, non pulvinar lorem felis nec erat.',
-        pic: '/src/client/public/imgs/chiangmai-pic.jpg',
+        pic: '/imgs/chiangmai-pic.jpg',
         displayed: false,
         voted: false
     },
@@ -86,7 +86,7 @@ var locations = [
         name: 'Los Angeles',
         upvotes: 1,
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nun maximus kevin chu is a scrub, nulla ut commodo sagittis, sapien dui mattis dui, non pulvinar lorem felis nec erat.',
-        pic: '/src/client/public/imgs/LA-pic.jpg',
+        pic: '/imgs/LA-pic.jpg',
         displayed: false,
         voted: false
     },
@@ -94,7 +94,7 @@ var locations = [
         name: 'San Diego',
         upvotes: 0,
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nun maximus kevin chu is a scrub, nulla ut commodo sagittis, sapien dui mattis dui, non pulvinar lorem felis nec erat.',
-        pic: '/src/client/public/imgs/sandiego-pic.jpg',
+        pic: '/imgs/sandiego-pic.jpg',
         displayed: false,
         voted: false
     },
@@ -102,7 +102,7 @@ var locations = [
         name: 'New York',
         upvotes: 0,
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nun maximus kevin chu is a scrub, nulla ut commodo sagittis, sapien dui mattis dui, non pulvinar lorem felis nec erat.',
-        pic: '/src/client/public/imgs/newyork-pic.jpg',
+        pic: '/imgs/newyork-pic.jpg',
         displayed: false,
         voted: false
     },
@@ -110,7 +110,7 @@ var locations = [
         name: 'Dubai',
         upvotes: 0,
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nun maximus kevin chu is a scrub, nulla ut commodo sagittis, sapien dui mattis dui, non pulvinar lorem felis nec erat.',
-        pic: '/src/client/public/imgs/dubai-pic.jpg',
+        pic: '/imgs/dubai-pic.jpg',
         displayed: false,
         voted: false
     },
@@ -118,7 +118,7 @@ var locations = [
         name: 'Toronto',
         upvotes: 0,
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nun maximus kevin chu is a scrub, nulla ut commodo sagittis, sapien dui mattis dui, non pulvinar lorem felis nec erat.',
-        pic: '/src/client/public/imgs/toronto-pic.jpg',
+        pic: '/imgs/toronto-pic.jpg',
         displayed: false,
         voted: false
     },
@@ -126,7 +126,7 @@ var locations = [
         name: 'Paris',
         upvotes: 0,
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nun maximus kevin chu is a scrub, nulla ut commodo sagittis, sapien dui mattis dui, non pulvinar lorem felis nec erat.',
-        pic: '/src/client/public/imgs/paris-pic.jpg',
+        pic: '/imgs/paris-pic.jpg',
         displayed: false,
         voted: false
     }
@@ -243,10 +243,8 @@ itineraryData.sort((a,b) => {
     return (aDateVal - bDateVal);
 });
 
-let startingPathname = window.location.pathname;
-
-export default [<Route key="1" path={startingPathname + '/'} component={App}/>,
-                <Route key="2" path={startingPathname + '/itenerary'} render={(props) => <Itinerary data={itineraryData} comments={commentsData} messages={messagesData} starPathName={startingPathname} />} />,
-                <Route key="3" path={startingPathname + '/summary'} render={(props) => <Summary data={itineraryData} comments={commentsData} messages={messagesData} starPathName={startingPathname} />} />,
-                <Route key="4" path={startingPathname + '/'} exact render={(props) => <LocationSelect data={locations} map={locMap} upVoteLoc={upvoteLoc} comments={locCommentsData} messages={messagesData} starPathName={startingPathname} />} />
+export default [<Route key="1" path={'/'} component={App}/>,
+                <Route key="2" path={'/itenerary'} render={(props) => <Itinerary data={itineraryData} comments={commentsData} messages={messagesData} />} />,
+                <Route key="3" path={'/summary'} render={(props) => <Summary data={itineraryData} comments={commentsData} messages={messagesData} />} />,
+                <Route key="4" path={'/'} exact render={(props) => <LocationSelect data={locations} map={locMap} upVoteLoc={upvoteLoc} comments={locCommentsData} messages={messagesData} />} />
                ];
