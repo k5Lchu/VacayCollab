@@ -265,8 +265,8 @@ const SummaryPage = (props) => {
         backgroundColor: 'dodgerblue'
     };
 
-    let backRouteRef = props.starPathName + '/';
-    let nextRouteRef = props.starPathName + '/summary';
+    let backRouteRef = '/';
+    let nextRouteRef = '/summary';
 
     return(
         <div>
