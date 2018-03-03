@@ -13,6 +13,8 @@ import './styles/home.css';
 import './styles/login.css';
 import './styles/signup.css';
 import './styles/invite.css';
+import './styles/location.css';
+//import './styles/markavailability.css';
 
 //import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 

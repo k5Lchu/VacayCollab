@@ -1,129 +1,7 @@
-let messagesData = [
-    {
-        sender: 'user',
-        message: 'I have a question'
-    },
-    {
-        sender: 'agent',
-        message: 'Sure thing! What\'s your question?'
-    },
-    {
-        sender: 'user',
-        message: 'Do you happen to know any places to visit in ChiangMai?'
-    },
-    {
-        sender: 'agent',
-        message: 'Not really'
-    },
-    {
-        sender: 'user',
-        message: '...'
-    },
-    {
-        sender: 'user',
-        message: 'Thank you...?'
-    },
-    {
-        sender: 'agent',
-        message: 'No problem'
-    },
-    {
-        sender: 'agent',
-        message: 'It\'s been a pleasure'
-    }
-];
-
-var locations = [
-    {
-        name: 'Chiang Mai',
-        upvotes: 3,
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nun maximus kevin chu is a scrub, nulla ut commodo sagittis, sapien dui mattis dui, non pulvinar lorem felis nec erat.',
-        pic: '../assets/images/chiangmai-pic.jpg',
-        displayed: false,
-        voted: false
-    },
-    {
-        name: 'Los Angeles',
-        upvotes: 1,
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nun maximus kevin chu is a scrub, nulla ut commodo sagittis, sapien dui mattis dui, non pulvinar lorem felis nec erat.',
-        pic: '../assets/images/LA-pic.jpg',
-        displayed: false,
-        voted: false
-    },
-    {
-        name: 'San Diego',
-        upvotes: 0,
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nun maximus kevin chu is a scrub, nulla ut commodo sagittis, sapien dui mattis dui, non pulvinar lorem felis nec erat.',
-        pic: '../assets/images/sandiego-pic.jpg',
-        displayed: false,
-        voted: false
-    },
-    {
-        name: 'New York',
-        upvotes: 0,
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nun maximus kevin chu is a scrub, nulla ut commodo sagittis, sapien dui mattis dui, non pulvinar lorem felis nec erat.',
-        pic: '../assets/images/newyork-pic.jpg',
-        displayed: false,
-        voted: false
-    },
-    {
-        name: 'Dubai',
-        upvotes: 0,
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nun maximus kevin chu is a scrub, nulla ut commodo sagittis, sapien dui mattis dui, non pulvinar lorem felis nec erat.',
-        pic: '../assets/images/dubai-pic.jpg',
-        displayed: false,
-        voted: false
-    },
-    {
-        name: 'Toronto',
-        upvotes: 0,
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nun maximus kevin chu is a scrub, nulla ut commodo sagittis, sapien dui mattis dui, non pulvinar lorem felis nec erat.',
-        pic: '../assets/images/toronto-pic.jpg',
-        displayed: false,
-        voted: false
-    },
-    {
-        name: 'Paris',
-        upvotes: 0,
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nun maximus kevin chu is a scrub, nulla ut commodo sagittis, sapien dui mattis dui, non pulvinar lorem felis nec erat.',
-        pic: '../assets/images/paris-pic.jpg',
-        displayed: false,
-        voted: false
-    }
-];
-
-var locMap = new Map();
-for(let i=0; i<locations.length; i++){
-    let loc = locations[i];
-    if(!locMap.has(loc.name)){
-        locMap.set(loc.name, [i]);
-    }else{
-        locMap.get(loc.name).push(i);
-    }
-}
-
-let upvoteLoc = function(name){
-    locations[locMap.get(name)].upvotes += 1;
-    locations[locMap.get(name)].voted = true;
-};
-
-var locCommentsData = [
-    {
-        author: 'Roronoa Zoro',
-        commentContent: 'Hey Luffy, trust me.If we go to Chiang Mai we can eat a lot of delicious food.',
-        timestamp: 1
-    },
-    {
-        author: 'Luffy',
-        commentContent: 'NAMI! WE"RE SETTING SAIL TO CHIANG MAI NOW!',
-        timestamp: 2
-    },
-    {
-        author: 'Nami',
-        commentContent: 'I want to see Hollywood!',
-        timestamp: 3
-    }
-];
+import React from 'react';
+import CommentComponent from './comments.jsx';
+import ChatContainer from './agent_chat.jsx';
+import ProgressButtons from './progress_bottom_bar.jsx';
 
 class VacayLocation extends React.Component{
     constructor(props){
@@ -136,7 +14,6 @@ class VacayLocation extends React.Component{
     }
 
     upvoteLocation(){
-        console.log('upvoted '+this.props.location.name+' from vacayloc');
         if (this.state.voted == false) { 
             this.props.onUpvote(this.props.location.name);
             this.state.upvotes += 1;
@@ -246,7 +123,6 @@ class LocationList extends React.Component {
     }
 
     updateVoted(name){
-        console.log('upVoted '+name);
         this.props.upVoteLoc(name);
     }
     
@@ -264,7 +140,7 @@ class LocationList extends React.Component {
                 this.state.matches.push(this.state.list[i]);
             }
         }
-        console.log("searchList setState");
+        
         this.setState({
             locList: this.state.locList,
             displayed: this.state.displayed,
@@ -296,6 +172,8 @@ class LocationList extends React.Component {
 };
 
 const LocationSelectContent = (props) => {
+    let backRouteRef = props.starPathName + '/';
+    let nextRouteRef = props.starPathName + '/itenerary';
     return(
         <div>
             <div id="progress-bar"><div></div></div>
@@ -308,8 +186,11 @@ const LocationSelectContent = (props) => {
                 <CommentComponent comments={props.comments}/>
                 <ChatContainer data={props.messages} />
             </div>
+            <ProgressButtons backRoute={backRouteRef} nextRoute={nextRouteRef}/>
         </div>
     );
 };
 
-ReactDOM.render(<LocationSelectContent data={locations} map={locMap} upVoteLoc={upvoteLoc} comments={locCommentsData} messages={messagesData}/>, document.getElementById('content'));
+export default LocationSelectContent;
+
+//ReactDOM.render(<LocationSelectContent data={locations} map={locMap} upVoteLoc={upvoteLoc} comments={comments} messages={messagesData}/>, document.getElementById('content'));

@@ -8,6 +8,11 @@ import Home from './components/home.jsx';
 import Login from './components/login.jsx';
 import Signup from './components/signup.jsx';
 import Invite from './components/invite.jsx';
+import LocationSelect from './components/location.jsx';
+
+//import MarkAvailability from './components/markavailability.jsx';
+
+const imageReq = require.context('./images', false, /\.(png|jpg)$/);
 
 let commentsData = [
     {
@@ -72,6 +77,97 @@ let messagesData = [
     }
 ];
 
+var locations = [
+    {
+        name: 'Chiang Mai',
+        upvotes: 3,
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nun maximus kevin chu is a scrub, nulla ut commodo sagittis, sapien dui mattis dui, non pulvinar lorem felis nec erat.',
+        pic: '/src/client/public/imgs/chiangmai-pic.jpg',
+        displayed: false,
+        voted: false
+    },
+    {
+        name: 'Los Angeles',
+        upvotes: 1,
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nun maximus kevin chu is a scrub, nulla ut commodo sagittis, sapien dui mattis dui, non pulvinar lorem felis nec erat.',
+        pic: '/src/client/public/imgs/LA-pic.jpg',
+        displayed: false,
+        voted: false
+    },
+    {
+        name: 'San Diego',
+        upvotes: 0,
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nun maximus kevin chu is a scrub, nulla ut commodo sagittis, sapien dui mattis dui, non pulvinar lorem felis nec erat.',
+        pic: '/src/client/public/imgs/sandiego-pic.jpg',
+        displayed: false,
+        voted: false
+    },
+    {
+        name: 'New York',
+        upvotes: 0,
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nun maximus kevin chu is a scrub, nulla ut commodo sagittis, sapien dui mattis dui, non pulvinar lorem felis nec erat.',
+        pic: '/src/client/public/imgs/newyork-pic.jpg',
+        displayed: false,
+        voted: false
+    },
+    {
+        name: 'Dubai',
+        upvotes: 0,
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nun maximus kevin chu is a scrub, nulla ut commodo sagittis, sapien dui mattis dui, non pulvinar lorem felis nec erat.',
+        pic: '/src/client/public/imgs/dubai-pic.jpg',
+        displayed: false,
+        voted: false
+    },
+    {
+        name: 'Toronto',
+        upvotes: 0,
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nun maximus kevin chu is a scrub, nulla ut commodo sagittis, sapien dui mattis dui, non pulvinar lorem felis nec erat.',
+        pic: '/src/client/public/imgs/toronto-pic.jpg',
+        displayed: false,
+        voted: false
+    },
+    {
+        name: 'Paris',
+        upvotes: 0,
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nun maximus kevin chu is a scrub, nulla ut commodo sagittis, sapien dui mattis dui, non pulvinar lorem felis nec erat.',
+        pic: '/src/client/public/imgs/paris-pic.jpg',
+        displayed: false,
+        voted: false
+    }
+];
+
+var locMap = new Map();
+for(let i=0; i<locations.length; i++){
+    let loc = locations[i];
+    if(!locMap.has(loc.name)){
+        locMap.set(loc.name, [i]);
+    }else{
+        locMap.get(loc.name).push(i);
+    }
+}
+
+let upvoteLoc = function(name){
+    locations[locMap.get(name)].upvotes += 1;
+    locations[locMap.get(name)].voted = true;
+};
+
+var locCommentsData = [
+    {
+        author: 'Roronoa Zoro',
+        commentContent: 'Hey Luffy, trust me.If we go to Chiang Mai we can eat a lot of delicious food.',
+        timestamp: 1
+    },
+    {
+        author: 'Luffy',
+        commentContent: 'NAMI! WE"RE SETTING SAIL TO CHIANG MAI NOW!',
+        timestamp: 2
+    },
+    {
+        author: 'Nami',
+        commentContent: 'I want to see Hollywood!',
+        timestamp: 3
+    }
+];
 /*let months = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
 let daysInWeek = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
 
@@ -154,10 +250,14 @@ itineraryData.sort((a,b) => {
 let startingPathname = window.location.pathname;
 
 export default [<Route key="1" path={startingPathname + '/'} component={App}/>,
+
                 <Route key="2" path={startingPathname + '/'} exact render={(props) => <Home starPathName={startingPathname}/> }/>,
                 <Route key="3" path={startingPathname + '/login'} render={(props) => <Login starPathName={startingPathname}/> }/>,
                 <Route key="4" path={startingPathname + '/signup'} render={(props) => <Signup starPathName={startingPathname}/> }/>,
                 <Route key="5" path={startingPathname + '/invite'} render={(props) => <Invite starPathName={startingPathname}/> }/>,
-                <Route key="6" path={startingPathname + '/itinerary'} render={(props) => <Itinerary data={itineraryData} comments={commentsData} messages={messagesData} starPathName={startingPathname} />} />,
-                <Route key="7" path={startingPathname + '/summary'} render={(props) => <Summary data={itineraryData} comments={commentsData} messages={messagesData} starPathName={startingPathname} />} />
+                
+                <Route key="8" path={startingPathname + '/location'} render={(props) => <LocationSelect data={locations} map={locMap} upVoteLoc={upvoteLoc} comments={locCommentsData} messages={messagesData} starPathName={startingPathname} />} />
+                
+                <Route key="10" path={startingPathname + '/itinerary'} render={(props) => <Itinerary data={itineraryData} comments={commentsData} messages={messagesData} starPathName={startingPathname} />} />,
+                <Route key="11" path={startingPathname + '/summary'} render={(props) => <Summary data={itineraryData} comments={commentsData} messages={messagesData} starPathName={startingPathname} />} />,
                ];
