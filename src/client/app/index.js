@@ -10,6 +10,7 @@ import './styles/itinerary.css';
 import './styles/summary.css';
 import './styles/progress_bottom.css';
 import './styles/location.css';
+//import './styles/markavailability.css';
 
 //import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 

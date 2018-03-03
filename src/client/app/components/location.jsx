@@ -172,6 +172,8 @@ class LocationList extends React.Component {
 };
 
 const LocationSelectContent = (props) => {
+    let backRouteRef = props.starPathName + '/';
+    let nextRouteRef = props.starPathName + '/itenerary';
     return(
         <div>
             <div id="progress-bar"><div></div></div>
@@ -184,6 +186,7 @@ const LocationSelectContent = (props) => {
                 <CommentComponent comments={props.comments}/>
                 <ChatContainer data={props.messages} />
             </div>
+            <ProgressButtons backRoute={backRouteRef} nextRoute={nextRouteRef}/>
         </div>
     );
 };

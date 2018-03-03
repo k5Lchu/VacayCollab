@@ -6,6 +6,8 @@ import Itinerary from './components/itinerary.jsx';
 import Summary from './components/summary.jsx';
 import LocationSelect from './components/location.jsx';
 
+//import MarkAvailability from './components/markavailability.jsx';
+
 let commentsData = [
     {
         author: 'Scott',
@@ -74,7 +76,7 @@ var locations = [
         name: 'Chiang Mai',
         upvotes: 3,
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nun maximus kevin chu is a scrub, nulla ut commodo sagittis, sapien dui mattis dui, non pulvinar lorem felis nec erat.',
-        pic: '../assets/images/chiangmai-pic.jpg',
+        pic: './app/images/chiangmai-pic.jpg',
         displayed: false,
         voted: false
     },
@@ -82,7 +84,7 @@ var locations = [
         name: 'Los Angeles',
         upvotes: 1,
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nun maximus kevin chu is a scrub, nulla ut commodo sagittis, sapien dui mattis dui, non pulvinar lorem felis nec erat.',
-        pic: '../assets/images/LA-pic.jpg',
+        pic: './app/images/LA-pic.jpg',
         displayed: false,
         voted: false
     },
@@ -90,7 +92,7 @@ var locations = [
         name: 'San Diego',
         upvotes: 0,
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nun maximus kevin chu is a scrub, nulla ut commodo sagittis, sapien dui mattis dui, non pulvinar lorem felis nec erat.',
-        pic: '../assets/images/sandiego-pic.jpg',
+        pic: './app/images/sandiego-pic.jpg',
         displayed: false,
         voted: false
     },
@@ -98,7 +100,7 @@ var locations = [
         name: 'New York',
         upvotes: 0,
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nun maximus kevin chu is a scrub, nulla ut commodo sagittis, sapien dui mattis dui, non pulvinar lorem felis nec erat.',
-        pic: '../assets/images/newyork-pic.jpg',
+        pic: './app/images/newyork-pic.jpg',
         displayed: false,
         voted: false
     },
@@ -106,7 +108,7 @@ var locations = [
         name: 'Dubai',
         upvotes: 0,
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nun maximus kevin chu is a scrub, nulla ut commodo sagittis, sapien dui mattis dui, non pulvinar lorem felis nec erat.',
-        pic: '../assets/images/dubai-pic.jpg',
+        pic: './app/images/dubai-pic.jpg',
         displayed: false,
         voted: false
     },
@@ -114,7 +116,7 @@ var locations = [
         name: 'Toronto',
         upvotes: 0,
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nun maximus kevin chu is a scrub, nulla ut commodo sagittis, sapien dui mattis dui, non pulvinar lorem felis nec erat.',
-        pic: '../assets/images/toronto-pic.jpg',
+        pic: './app/images/toronto-pic.jpg',
         displayed: false,
         voted: false
     },
@@ -122,7 +124,7 @@ var locations = [
         name: 'Paris',
         upvotes: 0,
         description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nun maximus kevin chu is a scrub, nulla ut commodo sagittis, sapien dui mattis dui, non pulvinar lorem felis nec erat.',
-        pic: '../assets/images/paris-pic.jpg',
+        pic: './app/images/paris-pic.jpg',
         displayed: false,
         voted: false
     }
