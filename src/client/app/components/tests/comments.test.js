@@ -3,6 +3,7 @@ import expect from 'expect';
 import {shallow,mount, configure} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import Comments from '../comments.jsx';
+import { BrowserRouter } from 'react-router-dom';
 
 configure({adapter: new Adapter()});
 
@@ -25,7 +26,7 @@ let commentData = [
 ];
 
 const wrapper = mount(
-    <Comments comments={commentData}/>
+    <BrowserRouter><Comments comments={commentData}/></BrowserRouter>
 );
 
 describe('comments component', ()=>{
