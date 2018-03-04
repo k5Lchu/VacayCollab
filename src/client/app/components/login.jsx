@@ -11,12 +11,13 @@ class LoginContainer extends React.Component {
     handleSubmit(event) {
         console.log("Login form was submitted");
         event.preventDefault();
+        window.location = "/#/invite";
     }
 
     render() {
         return(
         <div className="container">
-            <form className="form-signin" onSubmit={this.handleSubmit}>
+            <form className="form-signin" onSubmit={this.handleSubmit} data-toggle="validator">
                 <h2 className="form-signin-heading">Please login</h2>
                     <label htmlFor="inputEmail" className="sr-only"></label>
                         <input type="email" id="inputEmail" className="form-control" placeholder="Email address" required autoFocus/>
@@ -25,13 +26,14 @@ class LoginContainer extends React.Component {
                         <input type="password" id="inputPassword" className="form-control" placeholder="Password" required/>   
                         
                     <div className="checkbox">
-                        <input type="checkbox" value="remember-me"/> Remember me
+                        <input type="checkbox" value="remember-me"/>Remember me
                     </div>
                         
-                    <Link to="/invite"><button className="btn btn-lg btn-primary btn-block" type="submit">Login</button></Link>
+                    {/*<Link to="/invite">*/}
+                    <button className="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+                    {/*</Link>*/}
                     <br></br>
                     <div className="signup">
-                        {/*<a href="signup.html">New User? Sign Up!</a>*/}
                         <Link to="/signup">New User? Sign Up!</Link>
                     </div>
             </form>

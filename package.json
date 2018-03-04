@@ -4,8 +4,8 @@
   "description": "cse 134b project",
   "main": "index.js",
   "scripts": {
-    "build": "babel src -d lib",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha --reporter progress --require tools/testSetup.js --recursive src/client/app/components/tests/*.test.js",
+    "dev-scott": "webpack -d --watch",
     "dev": "webpack -d",
     "dev-start": "webpack-dev-server"
   },
@@ -22,12 +22,18 @@
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.6.1",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
     "eslint-config-standard": "^11.0.0",
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-node": "^6.0.0",
     "eslint-plugin-promise": "^3.6.0",
     "eslint-plugin-standard": "^3.0.1",
-    "webpack-cli": "^2.0.10",
+    "jsdom": "^11.6.2",
+    "mocha": "^5.0.1",
+    "react-addons-test-utils": "^15.6.2",
+    "webpack": "^4.0.1",
+    "webpack-cli": "^2.0.9",
     "webpack-dev-server": "^3.1.0"
   },
   "dependencies": {
@@ -44,6 +50,7 @@
     "eslint-plugin-node": "^6.0.0",
     "eslint-plugin-promise": "^3.6.0",
     "eslint-plugin-standard": "^3.0.1",
+    "expect": "^22.4.0",
     "file-loader": "^1.1.11",
     "npm": "^5.7.1",
     "react": "^16.2.0",

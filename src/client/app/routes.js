@@ -10,8 +10,9 @@ import Signup from './components/signup.jsx';
 import Invite from './components/invite.jsx';
 import Hotel from './components/hotel.jsx';
 import LocationSelect from './components/location.jsx';
+import MarkAvailability from './components/markavailability.jsx';
+import DecideDate from './components/decidedate.jsx';
 
-//import MarkAvailability from './components/markavailability.jsx';
 
 const imageReq = require.context('./images', false, /\.(png|jpg)$/);
 
@@ -169,6 +170,29 @@ var locCommentsData = [
         timestamp: 3
     }
 ];
+
+var months = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
+var daysInWeek = ['SUN','MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
+var start = [1, 4, 4, 0, 2, 5, 0, 3, 6, 1, 4, 6];
+var days = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+
+var currentMonth = 2;
+var saveDays = [];
+var passedDays = [];
+
+let monthMap = new Map();
+for(let i=0; i<months.length; i++){
+    let map = [i, start[i], days[i]];
+    monthMap.set(months[i], map);
+}
+
+let selectDaySave = function(save){
+    saveDays = save;
+};
+
+let selectDayPass = function(save){
+    passedDays = save;
+}
 /*let months = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
 let daysInWeek = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
 
@@ -254,9 +278,10 @@ export default [<Route key="1" path={'/'} component={App}/>,
                 <Route key="3" path={'/login'} render={(props) => <Login/> }/>,
                 <Route key="4" path={'/signup'} render={(props) => <Signup/> }/>,
                 <Route key="5" path={'/invite'} render={(props) => <Invite/> }/>,
-                
+
+                <Route key="7" path={'/decidedate'} render={(props) => <DecideDate monthMap={monthMap} currentMonth={currentMonth} months={months} daysInWeek={daysInWeek} saveDays={saveDays} passedDays={passedDays} selectDay={selectDaySave} messages={messagesData} />} />,
                 <Route key="8" path={'/location'} render={(props) => <LocationSelect data={locations} map={locMap} upVoteLoc={upvoteLoc} comments={locCommentsData} messages={messagesData} />} />,
-                <Route key="9" path={'/hotel'} render={(props) => <Hotel/>}/>,
+                <Route key="9" path={'/hotel'} render={(props) => <Hotel comments={commentsData} messages={messagesData} />}/>,
                 <Route key="10" path={'/itinerary'} render={(props) => <Itinerary data={itineraryData} comments={commentsData} messages={messagesData} />} />,
                 <Route key="11" path={'/summary'} render={(props) => <Summary data={itineraryData} comments={commentsData} messages={messagesData}  />} />,
                ];

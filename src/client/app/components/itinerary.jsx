@@ -486,7 +486,7 @@ const ItinerearyPageContent = (props) => {
         backgroundColor: 'dodgerblue'
     };
 
-    let backRouteRef = '/';
+    let backRouteRef = '/hotel';
     let nextRouteRef = '/summary';
 
     return(

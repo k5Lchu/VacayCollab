@@ -17,7 +17,6 @@ class InviteContainer extends React.Component {
                     <form>
                         <input className="input" type="text" name="email" placeholder="XXX@XXX.com, YYY@YYY.com, ZZZ@ZZZ.com"/><br></br>
                     </form>
-                    <button id="desktop-button" type="button">Start Planning!</button>
                 </div>
             </div>
         );
@@ -27,11 +26,28 @@ class InviteContainer extends React.Component {
 const InvitePage = (props) => {
 
     let backRouteRef = '/';
-    let nextRouteRef = '/itinerary';
+    let nextRouteRef = '/markavailability';
+
+    let progressBarContainerStyle = {
+        width: '70%',
+        height: '20px',
+        margin: 'auto',
+        border: '1px solid black',
+        marginBottom: '50px',
+        marginTop: '50px'
+    };
+
+    let progressBarContentStyle = {
+        width: '10%',
+        height: '20px',
+        backgroundColor: 'dodgerblue'
+    };
 
     return(
         <div>
-            <InviteContainer backRoute={backRouteRef} nextRoute={nextRouteRef}/>,
+            <div style={progressBarContainerStyle}><div style={progressBarContentStyle}></div></div>
+            <InviteContainer/>
+            <ProgressButtons backRoute={backRouteRef} nextRoute={nextRouteRef} />
         </div>
     );
 }
