@@ -172,7 +172,7 @@ class LocationList extends React.Component {
 };
 
 const LocationSelectContent = (props) => {
-    let backRouteRef = '/';
+    let backRouteRef = '/decidedate';
     let nextRouteRef = '/itenerary';
     return(
         <div>
