@@ -5,8 +5,9 @@ import App from './components/App.jsx';
 import Itinerary from './components/itinerary.jsx';
 import Summary from './components/summary.jsx';
 import LocationSelect from './components/location.jsx';
+import MarkAvailability from './components/markavailability.jsx';
+import DecideDate from './components/decidedate.jsx';
 
-//import MarkAvailability from './components/markavailability.jsx';
 
 const imageReq = require.context('./images', false, /\.(png|jpg)$/);
 
@@ -164,6 +165,29 @@ var locCommentsData = [
         timestamp: 3
     }
 ];
+
+var months = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
+var daysInWeek = ['SUN','MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
+var start = [1, 4, 4, 0, 2, 5, 0, 3, 6, 1, 4, 6];
+var days = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+
+var currentMonth = 2;
+var saveDays = [];
+var passedDays = [];
+
+let monthMap = new Map();
+for(let i=0; i<months.length; i++){
+    let map = [i, start[i], days[i]];
+    monthMap.set(months[i], map);
+}
+
+let selectDaySave = function(save){
+    saveDays = save;
+};
+
+let selectDayPass = function(save){
+    passedDays = save;
+}
 /*let months = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
 let daysInWeek = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
 
@@ -246,5 +270,7 @@ itineraryData.sort((a,b) => {
 export default [<Route key="1" path={'/'} component={App}/>,
                 <Route key="2" path={'/itenerary'} render={(props) => <Itinerary data={itineraryData} comments={commentsData} messages={messagesData} />} />,
                 <Route key="3" path={'/summary'} render={(props) => <Summary data={itineraryData} comments={commentsData} messages={messagesData} />} />,
-                <Route key="4" path={'/'} exact render={(props) => <LocationSelect data={locations} map={locMap} upVoteLoc={upvoteLoc} comments={locCommentsData} messages={messagesData} />} />
+                <Route key="4" path={'/location'} exact render={(props) => <LocationSelect data={locations} map={locMap} upVoteLoc={upvoteLoc} comments={locCommentsData} messages={messagesData} />} />,
+                <Route key="5" path={'/'} exact render={(props) => <MarkAvailability monthMap={monthMap} currentMonth={currentMonth} months={months} daysInWeek={daysInWeek} saveDays={passedDays} selectDay={selectDayPass} messages={messagesData} />} />,
+                <Route key="6" path={'/decidedate'} exact render={(props) => <DecideDate monthMap={monthMap} currentMonth={currentMonth} months={months} daysInWeek={daysInWeek} saveDays={saveDays} passedDays={passedDays} selectDay={selectDaySave} messages={messagesData} />} />
                ];

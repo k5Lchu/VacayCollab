@@ -1,55 +1,7 @@
-let messagesData = [
-    {
-        sender: 'user',
-        message: 'I have a question'
-    },
-    {
-        sender: 'agent',
-        message: 'Sure thing! What\'s your question?'
-    },
-    {
-        sender: 'user',
-        message: 'Do you happen to know any places to visit in ChiangMai?'
-    },
-    {
-        sender: 'agent',
-        message: 'Not really'
-    },
-    {
-        sender: 'user',
-        message: '...'
-    },
-    {
-        sender: 'user',
-        message: 'Thank you...?'
-    },
-    {
-        sender: 'agent',
-        message: 'No problem'
-    },
-    {
-        sender: 'agent',
-        message: 'It\'s been a pleasure'
-    }
-];
-var months = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
-var daysInWeek = ['SUN','MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
-var start = [1, 4, 4, 0, 2, 5, 0, 3, 6, 1, 4, 6];
-var days = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
-
-var currentMonth = 2;
-var passedDays = [1,31,32,59,60]
-var saveDays = [];
-
-let monthMap = new Map();
-for(let i=0; i<months.length; i++){
-    let map = [i, start[i], days[i]];
-    monthMap.set(months[i], map);
-}
-
-let selectDay = function(save){
-    saveDays = save;
-};
+import React from 'react';
+import CommentComponent from './comments.jsx';
+import ChatContainer from './agent_chat.jsx';
+import ProgressButtons from './progress_bottom_bar.jsx';
 
 const CalenderCell = (props) => {
     let day = props.day;
@@ -84,6 +36,14 @@ const CalenderRow = (props) =>{
     let reStyle = function(){
         shadedStyle = [];
         for(let i=0; i<row.length; i++){
+            if(row[i] == 0){
+                shadedStyle.push({
+                    backgroundColor: "white",
+                    border: "1px solid black",
+                    borderCollapse: "collapse"
+                });
+                continue;
+            }
             let passIn = pass.indexOf(row[i]);
             let saveIn = save.indexOf(row[i]);
             if(passIn != -1 && saveIn != -1){
@@ -200,12 +160,18 @@ class CalenderContent extends React.Component {
             i+=1;
         }
         let ceiling = floor+this.state.monthMap.get(this.state.months[i])[2];
-        let ret = []
+        let ret = [];
+        let pass = [];
         for(let x=0; x<this.state.saved.length; x++){
             let val = this.state.saved[x];
-            if(val >= floor && val < ceiling) { ret.push((val-floor));}
+            if(val > floor && val <= ceiling) { ret.push((val-floor));}
+        }
+        for(let y =0; y<this.state.passed.length; y++){
+            let val = this.state.passed[y];
+            if(val > floor && val <= ceiling) { pass.push((val-floor));}
         }
         this.state.monthSaved = ret;
+        this.state.monthPassed = pass;
 
         this.changeMonth = this.changeMonth.bind(this);
         this.selectDay = this.selectDay.bind(this);
@@ -330,6 +296,7 @@ class CalenderContent extends React.Component {
 
     saveDaysInMonth(){
         this.state.monthSaved = [];
+        this.state.monthPassed = [];
         let floor = 0;
         let i = 0;
         while(i<this.state.currentMonth){
@@ -388,6 +355,9 @@ class CalenderContent extends React.Component {
 class DecideDateContent extends React.Component {
     constructor(props){
         super(props);
+        //this.backRouteRef = '/markavailability';
+        this.backRouteRef = '/';
+        this.nextRouteRef = '/location';
     }
     render(){
         return(
@@ -396,17 +366,18 @@ class DecideDateContent extends React.Component {
 
                 <div id="calender-container">
                     <div id="top-prompt">
-                        <h1>Mark Availability</h1>
-                        <h4>Mark all dates that you are available and the leader of the group will finalize the vacation start and end date</h4>
+                        <h1>Decide the Date</h1>
+                        <h4>As the leader of this group, use the available dates of all participants to finalize the vacation start and end dates</h4>
                     </div>
-                    <CalenderContent monthMap={this.props.monthMap} currentMonth={this.props.currentMonth} months={this.props.months} daysInWeek={this.props.daysInWeek} saveDays={this.props.saveDays} passedDays={this.props.passedDays}selectDay={this.props.selectDay}/>
-                    <ChatContainer data={this.props.messages} />
+                    <CalenderContent monthMap={this.props.monthMap} currentMonth={this.props.currentMonth} months={this.props.months} daysInWeek={this.props.daysInWeek} saveDays={this.props.saveDays} passedDays={this.props.passedDays} selectDay={this.props.selectDay}/>
                 </div>
-                
+                <ChatContainer data={this.props.messages} />
+                <ProgressButtons backRoute={this.backRouteRef} nextRoute={this.nextRouteRef}/>
             </div>
         );
     }
 };
 
+export default DecideDateContent;
 
-ReactDOM.render(<DecideDateContent monthMap={monthMap} currentMonth={currentMonth} months={months} daysInWeek={daysInWeek} saveDays={saveDays} passedDays={passedDays} selectDay={selectDay} messages={messagesData}/>, document.getElementById('content'));
+//ReactDOM.render(<DecideDateContent monthMap={monthMap} currentMonth={currentMonth} months={months} daysInWeek={daysInWeek} saveDays={saveDays} passedDays={passedDays} selectDay={selectDay} messages={messagesData}/>, document.getElementById('content'));

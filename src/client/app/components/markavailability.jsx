@@ -1,54 +1,7 @@
-let messagesData = [
-    {
-        sender: 'user',
-        message: 'I have a question'
-    },
-    {
-        sender: 'agent',
-        message: 'Sure thing! What\'s your question?'
-    },
-    {
-        sender: 'user',
-        message: 'Do you happen to know any places to visit in ChiangMai?'
-    },
-    {
-        sender: 'agent',
-        message: 'Not really'
-    },
-    {
-        sender: 'user',
-        message: '...'
-    },
-    {
-        sender: 'user',
-        message: 'Thank you...?'
-    },
-    {
-        sender: 'agent',
-        message: 'No problem'
-    },
-    {
-        sender: 'agent',
-        message: 'It\'s been a pleasure'
-    }
-];
-var months = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
-var daysInWeek = ['SUN','MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
-var start = [1, 4, 4, 0, 2, 5, 0, 3, 6, 1, 4, 6];
-var days = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
-
-var currentMonth = 2;
-var saveDays = [];
-
-let monthMap = new Map();
-for(let i=0; i<months.length; i++){
-    let map = [i, start[i], days[i]];
-    monthMap.set(months[i], map);
-}
-
-let selectDay = function(save){
-    saveDays = save;
-};
+import React from 'react';
+import CommentComponent from './comments.jsx';
+import ChatContainer from './agent_chat.jsx';
+import ProgressButtons from './progress_bottom_bar.jsx';
 
 const CalenderCell = (props) => {
     let day = props.day;
@@ -87,6 +40,14 @@ const CalenderRow = (props) =>{
     let reStyle = function(){
         shadedStyle = [];
         for(let i=0; i<row.length; i++){
+            if(row[i] == 0){
+                shadedStyle.push({
+                    backgroundColor: "white",
+                    border: "1px solid black",
+                    borderCollapse: "collapse"
+                });
+                continue;
+            }
             let contains = save.indexOf(row[i]);
             if(contains != -1){
                 shadedStyle.push({
@@ -362,6 +323,8 @@ class CalenderContent extends React.Component {
 class MarkAvailabilityContent extends React.Component {
     constructor(props){
         super(props);
+        this.backRouteRef = '/';
+        this.nextRouteRef = '/decidedate';
     }
     render(){
         return(
@@ -374,13 +337,14 @@ class MarkAvailabilityContent extends React.Component {
                         <h4>Mark all dates that you are available and the leader of the group will finalize the vacation start and end date</h4>
                     </div>
                     <CalenderContent monthMap={this.props.monthMap} currentMonth={this.props.currentMonth} months={this.props.months} daysInWeek={this.props.daysInWeek} saveDays={this.props.saveDays} selectDay={this.props.selectDay}/>
-                    <ChatContainer data={this.props.messages} />
+                    
                 </div>
-                
+                <ChatContainer data={this.props.messages} />
+                <ProgressButtons backRoute={this.backRouteRef} nextRoute={this.nextRouteRef}/>
             </div>
         );
     }
 };
+export default MarkAvailabilityContent;
 
-
-ReactDOM.render(<MarkAvailabilityContent monthMap={monthMap} currentMonth={currentMonth} months={months} daysInWeek={daysInWeek} saveDays={saveDays} selectDay={selectDay} messages={messagesData}/>, document.getElementById('content'));
+//ReactDOM.render(<MarkAvailabilityContent monthMap={monthMap} currentMonth={currentMonth} months={months} daysInWeek={daysInWeek} saveDays={saveDays} selectDay={selectDay} messages={messagesData}/>, document.getElementById('content'));
