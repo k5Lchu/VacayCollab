@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 const TopContainer = (props) => {
     
-    let buttonRoute = props.starPathName + '/login';
+    let buttonRoute = '/login';
     
     let buttonStyles = {
         color: '#ffff',
@@ -116,7 +116,7 @@ const Footer = (props) => {
 const HomePage = (props) => {
     return(
         <div>
-            <TopContainer starPathName={props.starPathName}/>,
+            <TopContainer/>,
             <FeaturesSection/>,
             <TipSection/>,
             <AgentSection/>,

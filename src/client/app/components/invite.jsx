@@ -26,8 +26,8 @@ class InviteContainer extends React.Component {
 
 const InvitePage = (props) => {
 
-    let backRouteRef = props.starPathName + '/';
-    let nextRouteRef = props.starPathName + '/itinerary';
+    let backRouteRef = '/';
+    let nextRouteRef = '/itinerary';
 
     return(
         <div>

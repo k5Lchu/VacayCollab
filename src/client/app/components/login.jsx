@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 class LoginContainer extends React.Component {
     constructor(props) {
         super(props);
-        this.signupRoute = props.starPathName + '/signup';
+        this.signupRoute = '/signup';
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
@@ -43,7 +43,7 @@ class LoginContainer extends React.Component {
 const LoginPage = (props) => {
     return(
         <div>
-            <LoginContainer starPathName={props.starPathName}/>,
+            <LoginContainer/>,
         </div>
     );
 }
