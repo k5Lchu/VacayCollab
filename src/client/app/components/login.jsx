@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 class LoginContainer extends React.Component {
     constructor(props) {
         super(props);
-        this.signupRoute = '/signup';
+        
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
@@ -28,10 +28,11 @@ class LoginContainer extends React.Component {
                         <input type="checkbox" value="remember-me"/> Remember me
                     </div>
                         
-                    <button className="btn btn-lg btn-primary btn-block" type="submit"><Link to={signupRoute}>Login</Link></button>
+                    <Link to="/invite"><button className="btn btn-lg btn-primary btn-block" type="submit">Login</button></Link>
                     <br></br>
                     <div className="signup">
-                        <a href="signup.html">New User? Sign Up!</a>
+                        {/*<a href="signup.html">New User? Sign Up!</a>*/}
+                        <Link to="/signup">New User? Sign Up!</Link>
                     </div>
             </form>
 

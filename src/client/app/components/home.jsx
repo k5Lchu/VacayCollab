@@ -1,28 +1,22 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
-
+import Header from './header.jsx';
 
 const TopContainer = (props) => {
     
     let buttonRoute = '/login';
-    
-    let buttonStyles = {
-        color: '#ffff',
-        backgroundColor: 'transparent',
-        borderColor: 'white',
-        marginBottom: '5px'
-    };
 
     return(
-        <div className="jumbotron">
-                <div className="container">
-                    <h2>Explore the world with your friends.</h2>
-                    <br></br>
-                    <p>
-                        <Link to={buttonRoute}><button className="btn btn-primary btn-lg" styles={buttonStyles} href="#">Start Planning!</button></Link>
-                    </p>
-                </div>
+        <div className="row">
+            <div className="jumbotron">
+                    <div className="container">
+                        <h2>Explore the world with your friends.</h2>
+                        <br></br>
+                        <p>
+                            <Link to={buttonRoute}><button className="btn btn-primary-white btn-lg" href="#">Start Planning!</button></Link>
+                        </p>
+                    </div>
+            </div>
         </div>
     );
     

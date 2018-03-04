@@ -10,6 +10,7 @@ import './styles/itinerary.css';
 import './styles/summary.css';
 import './styles/progress_bottom.css';
 import './styles/home.css';
+import './styles/header.css';
 import './styles/login.css';
 import './styles/signup.css';
 import './styles/invite.css';

@@ -1,25 +1,27 @@
 .jumbotron {
-	/*background-image: url("../../../../assets/images/bgpic-tropical.jpg") !important;*/
+	background-image: url("/imgs/bgpic-tropical.jpg") !important;
     text-align: center;
     background-repeat:no-repeat !important;
     background-size: cover !important;
-    height: 550px;
+	height: 600px;
+	margin-top: 0px !important;
 }
-.jumbotron p {
+.jumbotron h2 {
 	color: white;
-	font-size: 26px;
+	font-size: 30px;
+	padding-top: 20px;
 }
-/*.btn-primary {
+.btn-primary-white {
 	color: #fff !important;
 	background-color: transparent !important;
 	border-color: white !important;
 	margin-bottom: 5px;
 }
-.btn-primary:hover {
+.btn-primary-white:hover {
 	color: black !important;
 	background-color: white !important;
 	border-color: white;
-}*/
+}
 .glyphicon-large {
 	font-size: 100px;
 }

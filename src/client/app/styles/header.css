@@ -1,0 +1,15 @@
+.navbar {
+    margin-bottom: 0px !important;
+    min-height: 50px !important;
+    font-size: 20px !important;
+}
+/*.navbar .navbar-header .navbar-brand {
+    padding: 0 15px;
+    height: 50px;
+    line-height: 50px !important;
+    font-size: medium !important;
+    text-align: center !important;
+}*/
+.navbar-nav > li > a {
+    line-height: 50px !important;
+}

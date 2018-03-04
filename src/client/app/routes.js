@@ -8,6 +8,7 @@ import Home from './components/home.jsx';
 import Login from './components/login.jsx';
 import Signup from './components/signup.jsx';
 import Invite from './components/invite.jsx';
+import Hotel from './components/hotel.jsx';
 import LocationSelect from './components/location.jsx';
 
 //import MarkAvailability from './components/markavailability.jsx';
@@ -255,7 +256,7 @@ export default [<Route key="1" path={'/'} component={App}/>,
                 <Route key="5" path={'/invite'} render={(props) => <Invite/> }/>,
                 
                 <Route key="8" path={'/location'} render={(props) => <LocationSelect data={locations} map={locMap} upVoteLoc={upvoteLoc} comments={locCommentsData} messages={messagesData} />} />,
-                
+                <Route key="9" path={'/hotel'} render={(props) => <Hotel/>}/>,
                 <Route key="10" path={'/itinerary'} render={(props) => <Itinerary data={itineraryData} comments={commentsData} messages={messagesData} />} />,
                 <Route key="11" path={'/summary'} render={(props) => <Summary data={itineraryData} comments={commentsData} messages={messagesData}  />} />,
                ];
