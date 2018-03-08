@@ -19,11 +19,39 @@ import './styles/markavailability.css';
 import './styles/decidedate.css';
 import './styles/hotel.css';
 
+import { combineReducers, createStore } from "redux";
+import { Provider } from "react-redux";
+import MarkReducer from './components/reducers/markReducer.js';
+import DecideReducer from './components/reducers/decideReducer.js';
+import LocationReducer from './components/reducers/locationReducer.js';
+
+/** Add reducer file imports to this combineReducer */
+const reducers = combineReducers({
+    decideDate: DecideReducer,
+    markAvail: MarkReducer,
+    location: LocationReducer,
+});
+const store = createStore(reducers,
+    {
+        /*this is where the initial state goes,
+        still trying to figure out a way to squeeze 
+        all of our data in routes from here without
+        being ridiculous */
+    },
+    window.devToolsExtension && window.devToolsExtension()
+);
+
+store.subscribe(() => {
+    console.log("store changed", store.getState())
+});
+
 render(
-    <HashRouter>
-        <div>
-            {routes}
-        </div>
-    </HashRouter>,
+    <Provider store={store}>
+        <HashRouter>
+            <div>
+                {routes}
+            </div>
+        </HashRouter>
+    </Provider>,
     document.getElementById('app')
 );
