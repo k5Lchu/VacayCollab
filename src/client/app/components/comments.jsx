@@ -33,6 +33,7 @@ class CommentList extends React.Component {
         super(props);
 
         this.state = {
+            name: props.name, 
             commentsData: props.comments,
             validComment: true
         };
@@ -133,7 +134,7 @@ class CommentInput extends React.Component {
             });
 
             this.props.onNewComment(e,{
-                author: 'David',
+                author: this.state.name,
                 commentContent: this.state.value,
                 key: ('' + this.keyCount++)
             });
@@ -167,7 +168,7 @@ const CommentComponent = (props) => {
     return (
         <div style={containerStyles}>
             <h3 style={headerStyles}>Comments</h3>
-            <CommentList comments={props.comments} />
+            <CommentList comments={props.comments} name={props.name}/>
         </div>
     );
 };

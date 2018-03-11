@@ -5,6 +5,10 @@ class SignupContainer extends React.Component {
     constructor(props) {
         super(props);
 
+        this.state = {
+        name: props.name
+    }
+
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
