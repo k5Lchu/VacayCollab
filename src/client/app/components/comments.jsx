@@ -1,4 +1,7 @@
 import React from 'react';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import * as commentsActions from '../actions/comments-actions';
 
 const Comment = (props) => {
     let commentContainerStyles = {
@@ -54,12 +57,14 @@ class CommentList extends React.Component {
 
     addNewComment(e, newComment) {
         console.log(newComment);
-        this.state.commentsData.unshift(newComment);
+        //this.state.commentsData.unshift(newComment);
         this.setState({
-            commentsData: this.state.commentsData,
+            //commentsData: this.state.commentsData,
             validComment: true
         });
         e.target.scrollTop = 0;
+
+        this.props.save(newComment);
     };
 
     render() {
@@ -67,7 +72,7 @@ class CommentList extends React.Component {
             <div style={this.containerStyles}>
                 <CommentInput onNewComment={this.addNewComment} />
                 <div style={this.listStyles}>
-                    {this.state.commentsData.map(comment => <Comment {...comment} />)}
+                    {this.props.comments.map(comment => <Comment {...comment} />)}
                 </div>
             </div>
         );
@@ -134,7 +139,7 @@ class CommentInput extends React.Component {
             });
 
             this.props.onNewComment(e,{
-                author: this.state.name,
+                author: "David",
                 commentContent: this.state.value,
                 key: ('' + this.keyCount++)
             });
@@ -142,6 +147,7 @@ class CommentInput extends React.Component {
     }
 
     render() {
+        
         return (
             <form style={this.formStyles} onSubmit={this.handleSubmit}>
                 <input style={this.state.inputStyles} onChange={this.handleChange} type="text" value={this.state.value} placeholder="Enter comment here" />
@@ -164,13 +170,28 @@ const CommentComponent = (props) => {
         marginBottom: '5px',
         borderBottom: '1px solid black'
     };
-
+    
     return (
         <div style={containerStyles}>
             <h3 style={headerStyles}>Comments</h3>
-            <CommentList comments={props.comments} name={props.name}/>
+            <CommentList comments={props.comments} name={props.name} save={props.actions.saveComment}/>
         </div>
     );
 };
 
-export default CommentComponent;
+//export default CommentComponent;
+
+function mapStateToProps(state, ownProps) {
+  console.log(state);
+  return {
+    comments: state.commentsData
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(commentsActions, dispatch)
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(CommentComponent);

@@ -17,14 +17,6 @@ class HotelContainer extends React.Component {
 
     render() {
         return(
-            <div id="main-container">
-
-                <div id="top-prompt">
-                    <h1>Where does everyone want to stay?</h1>
-                    <h4>Vote on where you want to stay!<br></br>
-                    Do you want to relax at the best hotel or live like a local?</h4>
-                </div>
-                
                 <div id="outer-container">
                     <br></br>
                     
@@ -33,7 +25,7 @@ class HotelContainer extends React.Component {
                         inexpensive options. The riverside neighborhoods boast exclusive hotels whereas
                         the inner cities allow you to live like a local.</p>
                         <div id="hotel-container">
-                            <img id="hotel-logo" src="/imgs/airbnb-logo.jpg" alt="hotel-logo"/>
+                            <img id="hotel-logo" src="/imgs/airbnb-logo-s.png" alt="hotel-logo"/>
                                 <h4>Live like a local and find unique places to stay</h4>
                                 <p>from 02/02/19<br></br> to 02/07/19</p>
                                 <p>
@@ -41,7 +33,7 @@ class HotelContainer extends React.Component {
                                 </p>
                         </div>
                 </div>
-            </div>
+            
         );
     }    
 }
@@ -69,8 +61,16 @@ const HotelPage = (props) => {
     return(
         <div>
             <div style={progressBarContainerStyle}><div style={progressBarContentStyle}></div></div>
-            <HotelContainer/>
-            <CommentComponent comments={props.comments} />
+            <div id="main-container">
+
+                <div id="top-prompt">
+                    <h1>Where does everyone want to stay?</h1>
+                    <h4>Vote on where you want to stay!<br></br>
+                    Do you want to relax at the best hotel or live like a local?</h4>
+                </div>
+                <HotelContainer/>
+                <CommentComponent comments={props.comments} />
+            </div>
             <ChatContainer data={props.messages} />
             <ProgressButtons backRoute={backRouteRef} nextRoute={nextRouteRef} />
         </div>

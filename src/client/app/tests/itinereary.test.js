@@ -2,7 +2,7 @@ import React from 'react';
 import expect from 'expect';
 import {shallow,mount, configure} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import SummaryPage from '../summary.jsx';
+import ItinerearyPageContent from '../components/itinerary.jsx';
 import { BrowserRouter } from 'react-router-dom';
 
 configure({adapter: new Adapter()});
@@ -11,7 +11,7 @@ let messagesData = [];
 
 let commentData = [];
 
-let eventsData = [
+let itineraryData = [
     {
         location: 'Chiang Mai',
         title: 'Chiang Mai Attractions',
@@ -58,11 +58,11 @@ let eventsData = [
     }
 ];
 
-for (let i = 0; i < eventsData.length; i++) {
-    eventsData[i].key = Date.now().toString(36) + Math.random().toString(36).substr(2, 5);
+for (let i = 0; i < itineraryData.length; i++) {
+    itineraryData[i].key = Date.now().toString(36) + Math.random().toString(36).substr(2, 5);
 }
 
-eventsData.sort((a,b) => {
+itineraryData.sort((a,b) => {
     let aDateVal = parseInt(a.year.toString() + ((a.month > 10) ? a.month.toString() : '0' + a.month.toString()) + ((a.dayOfMonth > 10) ? a.dayOfMonth.toString() : '0' + a.dayOfMonth.toString()));
     let bDateVal = parseInt(b.year.toString() + ((b.month > 10) ? b.month.toString() : '0' + b.month.toString()) + ((b.dayOfMonth > 10) ? b.dayOfMonth.toString() : '0' + b.dayOfMonth.toString()));
     return (aDateVal - bDateVal);
@@ -70,7 +70,7 @@ eventsData.sort((a,b) => {
 
 let g = () => {
     return(
-        <BrowserRouter><SummaryPage data={eventsData} comments={commentData} messages={messagesData} /></BrowserRouter>
+        <BrowserRouter><ItinerearyPageContent data={itineraryData} comments={commentData} messages={messagesData} /></BrowserRouter>
     );
 };
 
@@ -80,9 +80,12 @@ const wrapper = mount(
 
 describe('itinerary page component', ()=>{
     it('renders title', () => {
-        expect(wrapper.find('#summary-h1-header').text()).toEqual('Does this plan work with everyone?');
+        expect(wrapper.find('#top-prompt h1').text()).toEqual('Where does everyone want to go?');
     });
-    it('has correct number of events listed', () => {
-        expect(wrapper.find('EventSummaryList').childAt(0).childAt(1).children().length).toEqual(4);
+    it('left side has correct number of dates', () => {
+        expect(wrapper.find('.itinerary-container-left').children().length).toEqual(3);
+    });
+    it('right side has correct number of events', () => {
+        expect(wrapper.find('.itinerary-container-right').children().length).toEqual(4);
     });
 });

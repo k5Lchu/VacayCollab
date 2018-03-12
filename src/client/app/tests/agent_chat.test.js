@@ -2,7 +2,8 @@ import React from 'react';
 import expect from 'expect';
 import {shallow,mount, configure} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import ChatContainer from '../agent_chat.jsx';
+import ChatContainer from '../components/agent_chat.jsx';
+import { BrowserRouter } from 'react-router-dom';
 
 configure({adapter: new Adapter()});
 
@@ -44,7 +45,7 @@ let messagesData = [
 let numMessages = messagesData.length;
 
 const wrapper = mount(
-    <ChatContainer data={messagesData}/>
+    <BrowserRouter><ChatContainer data={messagesData}/></BrowserRouter>
 );
 
 describe('agent_chat component', ()=>{

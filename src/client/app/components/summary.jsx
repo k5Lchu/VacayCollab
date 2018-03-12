@@ -265,8 +265,8 @@ const SummaryPage = (props) => {
         backgroundColor: 'dodgerblue'
     };
 
-    let backRouteRef = '/';
-    let nextRouteRef = '/summary';
+    let backRouteRef = '/itinerary';
+    let nextRouteRef = '/';
 
     return(
         <div>

@@ -506,6 +506,20 @@ const ItinerearyPageContent = (props) => {
     );
 };
 
+/*function mapStateToProps(state, ownProps) {
+  return {
+    courses: state.courses
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(courseActions, dispatch)
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(CoursesPage);*/
+
 export default ItinerearyPageContent;
 
 //ReactDOM.render(<ItinerearyPageContent data={itineraryData} comments={commentsData} messages={messagesData} />, document.getElementById('content'));

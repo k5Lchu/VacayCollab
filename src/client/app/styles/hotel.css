@@ -42,11 +42,11 @@
 
 #hotel-logo {
     margin: auto;
-    height: auto; 
+    display: block;
     width: auto;
-    max-width: 100px; 
+    height: auto;
+    max-width: 100px;
     max-height: 100px;
-    padding-left: 50px;
 }
 
 #area-container > h3 {

@@ -2,7 +2,7 @@ import React from 'react';
 import expect from 'expect';
 import {shallow,mount, configure} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import Invite from '../invite.jsx';
+import Invite from '../components/invite.jsx';
 import { BrowserRouter } from 'react-router-dom';
 
 configure({adapter: new Adapter()});

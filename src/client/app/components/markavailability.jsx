@@ -216,11 +216,11 @@ class CalenderContent extends React.Component {
         let contains = this.state.saved.indexOf(select);
         if(contains == -1) {
             this.state.saved.push(select);
-            console.log("added day: "+select);
+            //console.log("added day: "+select);
         }
         else{
             this.state.saved.splice(contains, 1);
-            console.log("removed day: "+select);
+            //console.log("removed day: "+select);
         }
         this.setState({
             monthMap: this.state.monthMap,
@@ -323,7 +323,7 @@ class CalenderContent extends React.Component {
 class MarkAvailabilityContent extends React.Component {
     constructor(props){
         super(props);
-        this.backRouteRef = '/';
+        this.backRouteRef = '/invite';
         this.nextRouteRef = '/decidedate';
     }
     render(){

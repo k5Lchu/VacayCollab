@@ -2,14 +2,14 @@ import React from 'react';
 import expect from 'expect';
 import {shallow,mount, configure} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import Signup from '../signup.jsx';
+import Login from '../components/login.jsx';
 import { BrowserRouter } from 'react-router-dom';
 
 configure({adapter: new Adapter()});
 
 let g = () => {
     return(
-        <BrowserRouter><Signup/></BrowserRouter>
+        <BrowserRouter><Login/></BrowserRouter>
     );
 };
 
@@ -17,9 +17,17 @@ const wrapper = mount(
     g()
 );
 
-describe('signup page component', ()=>{
+describe('login page component', ()=>{
     it('renders title', () => {
-        expect(wrapper.find('#main-container h1').text()).toEqual('Sign Up');
+        expect(wrapper.find('.form-signin-heading').text()).toEqual('Please login');
+    });
+});
+
+describe('checkbox', ()=>{
+    it('renders remember me input', () => {
+        expect(wrapper.find('input[type="checkbox"]').simulate('change', {
+            target: { checked: true },
+        }));
     });
 });
 
@@ -31,10 +39,11 @@ describe('email', ()=>{
     });
 });
 
-describe('birthday', ()=>{
-    it('change and store birthday input', () => {
-        expect(wrapper.find('input[type="date"]').simulate('change', {
+describe('password', ()=>{
+    it('change and store password input', () => {
+        expect(wrapper.find('input[type="password"]').simulate('change', {
             target: { checked: true },
         }));
     });
 });
+

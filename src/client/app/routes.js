@@ -156,7 +156,7 @@ let upvoteLoc = function(name){
 var locCommentsData = [
     {
         author: 'Roronoa Zoro',
-        commentContent: 'Hey Luffy, trust me.If we go to Chiang Mai we can eat a lot of delicious food.',
+        commentContent: 'Hey Luffy, trust me. If we go to Chiang Mai we can eat a lot of delicious food.',
         timestamp: 1
     },
     {
@@ -278,9 +278,10 @@ export default [<Route key="1" path={'/'} component={App}/>,
                 <Route key="3" path={'/login'} render={(props) => <Login/> }/>,
                 <Route key="4" path={'/signup'} render={(props) => <Signup/> }/>,
                 <Route key="5" path={'/invite'} render={(props) => <Invite/> }/>,
-
+                <Route key="6" path={'/markavailability'} render={(props) => <MarkAvailability monthMap={monthMap} currentMonth={currentMonth} months={months} daysInWeek={daysInWeek} saveDays={passedDays} selectDay={selectDayPass} messages={messagesData} />} />,
                 <Route key="7" path={'/decidedate'} render={(props) => <DecideDate monthMap={monthMap} currentMonth={currentMonth} months={months} daysInWeek={daysInWeek} saveDays={saveDays} passedDays={passedDays} selectDay={selectDaySave} messages={messagesData} />} />,
-                <Route key="8" path={'/location'} render={(props) => <LocationSelect data={locations} map={locMap} upVoteLoc={upvoteLoc} comments={locCommentsData} messages={messagesData} />} />,
+                //<Route key="8" path={'/location'} render={(props) => <LocationSelect data={locations} map={locMap} upVoteLoc={upvoteLoc} comments={locCommentsData} messages={messagesData} />} />,
+                <Route key="8" path={'/location'} render={(props) => <LocationSelect data={locations} map={locMap} upVoteLoc={upvoteLoc} messages={messagesData} />} />,
                 <Route key="9" path={'/hotel'} render={(props) => <Hotel comments={commentsData} messages={messagesData} />}/>,
                 <Route key="10" path={'/itinerary'} render={(props) => <Itinerary data={itineraryData} comments={commentsData} messages={messagesData} />} />,
                 <Route key="11" path={'/summary'} render={(props) => <Summary data={itineraryData} comments={commentsData} messages={messagesData}  />} />,

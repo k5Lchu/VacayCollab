@@ -4,17 +4,16 @@ import { Link } from 'react-router-dom';
 class SignupContainer extends React.Component {
     constructor(props) {
         super(props);
-
         this.state = {
-        name: props.name
-    }
-
+            name: this.props.name
+        }
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     handleSubmit(event) {
         console.log("Signup form was submitted");
         event.preventDefault();
+        this.setState({name: this.state.name });
     }
 
     render() {
@@ -25,7 +24,7 @@ class SignupContainer extends React.Component {
             <form onSubmit={this.handleSubmit}>
                     <br></br>
                         First name:<br></br>
-                        <input id="firstName" name="firstName" placeholder="Enter your first name" type="text" />
+                        <input id="firstName" value={this.props.name} name="firstName" placeholder="Enter your first name" type="text" />
                         <br></br>
                     <br></br>
                         Last name:<br></br>

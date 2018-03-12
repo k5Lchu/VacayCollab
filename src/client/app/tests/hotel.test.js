@@ -2,7 +2,7 @@ import React from 'react';
 import expect from 'expect';
 import {shallow,mount, configure} from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import Hotel from '../hotel.jsx';
+import Hotel from '../components/hotel.jsx';
 import { BrowserRouter } from 'react-router-dom';
 
 configure({adapter: new Adapter()});

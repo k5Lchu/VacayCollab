@@ -22,7 +22,7 @@ export default (props) => {
           </div>
           <div className="collapse navbar-collapse" id="navigationbar">
             <ul className="nav navbar-nav navbar-right">
-              <li><a href="#"><span className="glyphicon glyphicon-briefcase"></span> My Plans</a></li>
+              <li><Link to="/itinerary"><span className="glyphicon glyphicon-briefcase"></span> My Plans</Link></li>
               <li><Link to="/signup"><span className="glyphicon glyphicon-user"></span>Sign Up</Link></li>
               <li><Link to="/login"><span className="glyphicon glyphicon-log-in"></span> Login</Link></li>
             </ul>

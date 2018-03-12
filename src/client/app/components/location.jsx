@@ -93,6 +93,12 @@ class LocationList extends React.Component {
                 this.state.displayed.push(this.state.locList.get(names[i])[0]);
             }
         }
+        this.state.matches = [];
+        for(let i=0; i<this.state.list.length; i++){
+            if(this.state.list[i].toLowerCase().includes('')){
+                this.state.matches.push(this.state.list[i]);
+            }
+        }
         
         this.searchList = this.searchList.bind(this);
         this.dropdownShow = this.dropdownShow.bind(this);
@@ -173,7 +179,7 @@ class LocationList extends React.Component {
 
 const LocationSelectContent = (props) => {
     let backRouteRef = '/decidedate';
-    let nextRouteRef = '/itenerary';
+    let nextRouteRef = '/hotel';
     return(
         <div>
             <div id="progress-bar"><div></div></div>
@@ -183,7 +189,8 @@ const LocationSelectContent = (props) => {
                     <h4>Vote on where you want to go! Leave comments for the group with you opinions on your vacation destination</h4>
                 </div>
                 <LocationList data={props.data} map={props.map} list={props.list} upVoteLoc={props.upVoteLoc}/>
-                <CommentComponent comments={props.comments}/>
+                {/*<CommentComponent comments={props.comments}/>*/}
+                <CommentComponent/>
                 <ChatContainer data={props.messages} />
             </div>
             <ProgressButtons backRoute={backRouteRef} nextRoute={nextRouteRef}/>
