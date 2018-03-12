@@ -69,9 +69,9 @@ const HotelPage = (props) => {
                     Do you want to relax at the best hotel or live like a local?</h4>
                 </div>
                 <HotelContainer/>
-                <CommentComponent comments={props.comments} />
+                <CommentComponent/>
             </div>
-            <ChatContainer data={props.messages} />
+            <ChatContainer/>
             <ProgressButtons backRoute={backRouteRef} nextRoute={nextRouteRef} />
         </div>
     );

@@ -370,7 +370,7 @@ class DecideDateContent extends React.Component {
                     </div>
                     <CalenderContent monthMap={this.props.monthMap} currentMonth={this.props.currentMonth} months={this.props.months} daysInWeek={this.props.daysInWeek} saveDays={this.props.saveDays} passedDays={this.props.passedDays} selectDay={this.props.selectDay}/>
                 </div>
-                <ChatContainer data={this.props.messages} />
+                <ChatContainer />
                 <ProgressButtons backRoute={this.backRouteRef} nextRoute={this.nextRouteRef}/>
             </div>
         );

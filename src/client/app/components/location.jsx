@@ -189,9 +189,8 @@ const LocationSelectContent = (props) => {
                     <h4>Vote on where you want to go! Leave comments for the group with you opinions on your vacation destination</h4>
                 </div>
                 <LocationList data={props.data} map={props.map} list={props.list} upVoteLoc={props.upVoteLoc}/>
-                {/*<CommentComponent comments={props.comments}/>*/}
                 <CommentComponent/>
-                <ChatContainer data={props.messages} />
+                <ChatContainer />
             </div>
             <ProgressButtons backRoute={backRouteRef} nextRoute={nextRouteRef}/>
         </div>

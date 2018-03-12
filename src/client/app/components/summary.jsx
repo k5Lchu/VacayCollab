@@ -274,10 +274,10 @@ const SummaryPage = (props) => {
             <div style={mainContainerStyles}>
                 <h1 id="summary-h1-header" style={{textAlign: 'center'}}>Does this plan work with everyone?</h1>
                 <EventSummaryList data={props.data} />
-                <CommentComponent comments={props.comments} />
+                <CommentComponent/>
             </div>
             <ProgressButtons backRoute={backRouteRef} nextRoute={nextRouteRef} />
-            <ChatContainer data={props.messages} />
+            <ChatContainer/>
         </div>
     );
 };

@@ -1,4 +1,7 @@
 import React from 'react';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import * as messagesActions from '../actions/messages-actions';
 
 const Message = (props) => {
     let messageContainerStyles = {
@@ -102,10 +105,12 @@ class MessageList extends React.Component {
     }
 
     addNewMessage(newMsg) {
-        this.state.data.push(newMsg);
+        //this.state.data.push(newMsg);
         this.setState({
-            data: this.state.data
+            //data: this.state.data
         });
+
+        this.props.save(newMsg);
     }
 
     componentDidMount() {
@@ -120,7 +125,7 @@ class MessageList extends React.Component {
         return(
             <div style={{height: '90%'}}>
                 <div ref={(el) => {this.chatList = el;}} style={{height: '90%', position: 'relative', overflowY: 'scroll'}}>
-                    {this.state.data.map(msg => <Message {...msg} />)}
+                    {this.props.data.map(msg => <Message {...msg} />)}
                 </div>
                 <ChatInput displayNewMessage={this.addNewMessage} />
             </div>
@@ -214,7 +219,7 @@ class ChatContainer extends React.Component {
             <div>
                 <div style={containerStyles}>
                     <ChatHeader onToggleChat={this.toggleChatVisibility} />
-                    <MessageList data={this.props.data} />
+                    <MessageList data={this.props.data} save={this.props.actions.saveMessage}/>
                 </div>
                 <img id="chatToggle" src="http://iconshow.me/media/images/ui/ios7-icons/png/512/chatbubble-outline.png" alt="chat" onClick={this.toggleChatVisibility} />
             </div>
@@ -222,4 +227,19 @@ class ChatContainer extends React.Component {
     }
 };
 
-export default ChatContainer;
+//export default ChatContainer;
+
+function mapStateToProps(state, ownProps) {
+  console.log(state);
+  return {
+    data: state.messagesData
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(messagesActions, dispatch)
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ChatContainer);

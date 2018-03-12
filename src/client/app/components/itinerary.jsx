@@ -498,8 +498,8 @@ const ItinerearyPageContent = (props) => {
                     <h4 style={promptHeaderSubStyles}>Vote on where to want to go! Leave comments for each other and the leader of this group to back up why your spot should be part of the vacation</h4>
                 </div>
                 <EventList data={props.data} />
-                <CommentComponent comments={props.comments} />
-                <ChatContainer data={props.messages} />
+                <CommentComponent/>
+                <ChatContainer  />
             </div>
             <ProgressButtons backRoute={backRouteRef} nextRoute={nextRouteRef} />
         </div>
