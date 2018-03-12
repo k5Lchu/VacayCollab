@@ -55,6 +55,11 @@ const generateId = (data) => {
     return Date.now().toString(36) + Math.random().toString(36).substr(2, 5);
 };
 
+for (let i = 0; i < itineraryData.length; i++) {
+    itineraryData[i].key = generateId(itineraryData[i]);
+    itineraryData[i].id = itineraryData[i].key;
+}
+
 class ItineraryApi {
   static getAllData() {
     return new Promise((resolve, reject) => {
@@ -68,12 +73,15 @@ class ItineraryApi {
     data = Object.assign({}, data); // to avoid manipulating object passed in.
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-        
-        //Just simulating creation here.
-        //The server would generate ids for new authors in a real app.
-        //Cloning so copy returned is passed by value rather than by reference.
         data.id = generateId(data);
+        data.key = data.id;
+
         itineraryData.push(data);
+        itineraryData.sort((a,b) => {
+            let aDateVal = parseInt(a.year.toString() + ((a.month > 10) ? a.month.toString() : '0' + a.month.toString()) + ((a.dayOfMonth > 10) ? a.dayOfMonth.toString() : '0' + a.dayOfMonth.toString()));
+            let bDateVal = parseInt(b.year.toString() + ((b.month > 10) ? b.month.toString() : '0' + b.month.toString()) + ((b.dayOfMonth > 10) ? b.dayOfMonth.toString() : '0' + b.dayOfMonth.toString()));
+            return (aDateVal - bDateVal);
+        });
 
         resolve(data);
       }, delay);
@@ -84,10 +92,10 @@ class ItineraryApi {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         const indexOfDataToDelete = itineraryData.findIndex(data => {
-          return data.dataId == dataId;
+          return data.id === dataId;
         });
         itineraryData.splice(indexOfDataToDelete, 1);
-        resolve();
+        resolve(dataId);
       }, delay);
     });
   }

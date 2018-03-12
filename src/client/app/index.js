@@ -30,6 +30,7 @@ import rootReducer from './reducers';
 //import {loadItineraryData} from './actions/itinerary-actions';
 import {loadComments} from './actions/comments-actions';
 import {loadMessages} from './actions/messages-actions';
+import {loadItinerary} from './actions/itinerary-actions';
 //add actions here
 
 /** Add reducer file imports to this combineReducer */
@@ -41,6 +42,7 @@ import {loadMessages} from './actions/messages-actions';
 
 //const store = createStore(rootReducer);
 const store = configureStore();
+store.dispatch(loadItinerary());
 store.dispatch(loadComments());
 store.dispatch(loadMessages());
 
@@ -55,7 +57,7 @@ store.dispatch(loadMessages());
 );*/
 
 store.subscribe(() => {
-    console.log("store changed", store.getState())
+    console.log("store changed", store.getState());
 });
 
 render(

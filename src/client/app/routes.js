@@ -192,7 +192,7 @@ let selectDaySave = function(save){
 
 let selectDayPass = function(save){
     passedDays = save;
-}
+};
 /*let months = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
 let daysInWeek = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'];
 

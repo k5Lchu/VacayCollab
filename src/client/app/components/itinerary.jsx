@@ -3,6 +3,10 @@ import CommentComponent from './comments.jsx';
 import ChatContainer from './agent_chat.jsx';
 import ProgressButtons from './progress_bottom_bar.jsx';
 
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import * as itineraryActions from '../actions/itinerary-actions';
+
 const Event = (props) => {
     let eventContainerStyles = {
         display: 'grid',
@@ -292,8 +296,7 @@ class EventList extends React.Component {
         super(props);
 
         this.state = {
-            itineraryDataSorted: new Map(),
-            data: props.data
+            itineraryDataSorted: new Map()
         };
 
         let months = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
@@ -384,17 +387,10 @@ class EventList extends React.Component {
             this.state.itineraryDataSorted.get(key).push(newEvent);
         }
 
-        this.state.data.push(newEvent);
-
-        this.state.data.sort((a,b) => {
-            let aDateVal = parseInt(a.year.toString() + ((a.month > 10) ? a.month.toString() : '0' + a.month.toString()) + ((a.dayOfMonth > 10) ? a.dayOfMonth.toString() : '0' + a.dayOfMonth.toString()));
-            let bDateVal = parseInt(b.year.toString() + ((b.month > 10) ? b.month.toString() : '0' + b.month.toString()) + ((b.dayOfMonth > 10) ? b.dayOfMonth.toString() : '0' + b.dayOfMonth.toString()));
-            return (aDateVal - bDateVal);
-        });
+        this.props.actions.saveItineraryEvent(newEvent);
 
         this.setState({
-            itineraryDataSorted: this.state.itineraryDataSorted,
-            data: this.state.data
+            itineraryDataSorted: this.state.itineraryDataSorted
         });
     }
 
@@ -415,18 +411,10 @@ class EventList extends React.Component {
             dateDataArr.splice(indx, 1);
         }
 
-        for (let i = 0; i < this.state.data.length; i++) {
-            if (this.state.data[i].key === dataId) {
-                indx = i;
-                break;
-            }
-        }
-
-        this.state.data.splice(indx, 1);
+        this.props.actions.deleteItineraryEvent(dataId);
 
         this.setState({
-            itineraryDataSorted: this.state.itineraryDataSorted,
-            data: this.state.data
+            itineraryDataSorted: this.state.itineraryDataSorted
         });
     }
 
@@ -446,6 +434,20 @@ class EventList extends React.Component {
         );
     }
 };
+
+function mapStateToProps(state, ownProps) {
+  return {
+    data: state.itineraryData
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(itineraryActions, dispatch)
+  };
+}
+
+let EventListContainer = connect(mapStateToProps, mapDispatchToProps)(EventList);
 
 const ItinerearyPageContent = (props) => {
     let mainContainerStyles = {
@@ -497,8 +499,8 @@ const ItinerearyPageContent = (props) => {
                     <h1 style={promptHeaderMainStyles}>Where does everyone want to go?</h1>
                     <h4 style={promptHeaderSubStyles}>Vote on where to want to go! Leave comments for each other and the leader of this group to back up why your spot should be part of the vacation</h4>
                 </div>
-                <EventList data={props.data} />
-                <CommentComponent/>
+                <EventListContainer />
+                <CommentComponent />
                 <ChatContainer  />
             </div>
             <ProgressButtons backRoute={backRouteRef} nextRoute={nextRouteRef} />
