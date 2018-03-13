@@ -157,8 +157,11 @@ class AddEventModal extends React.Component {
         let convertedStartTime = startTimeHour + ':' + startTimeSplit[1] + meridianIndicatorS;
         let convertedEndTime = endTimeHour + ':' + endTimeSplit[1] + meridianIndicatorE;
 
+        let newId = Date.now().toString(36) + Math.random().toString(36).substr(2, 5);
+
         let newEvent = {
-            key: Date.now().toString(36) + Math.random().toString(36).substr(2, 5),
+            key: newId,
+            id: newId,
             location: this.state.destination,
             title: this.state.title,
             month: newEventDate.getUTCMonth(),
@@ -508,20 +511,4 @@ const ItinerearyPageContent = (props) => {
     );
 };
 
-/*function mapStateToProps(state, ownProps) {
-  return {
-    courses: state.courses
-  };
-}
-
-function mapDispatchToProps(dispatch) {
-  return {
-    actions: bindActionCreators(courseActions, dispatch)
-  };
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(CoursesPage);*/
-
 export default ItinerearyPageContent;
-
-//ReactDOM.render(<ItinerearyPageContent data={itineraryData} comments={commentsData} messages={messagesData} />, document.getElementById('content'));

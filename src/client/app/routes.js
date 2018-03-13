@@ -281,6 +281,6 @@ export default [<Route key="1" path={'/'} component={App}/>,
                 <Route key="7" path={'/decidedate'} render={(props) => <DecideDate monthMap={monthMap} currentMonth={currentMonth} months={months} daysInWeek={daysInWeek} saveDays={saveDays} passedDays={passedDays} selectDay={selectDaySave} />} />,
                 <Route key="8" path={'/location'} render={(props) => <LocationSelect data={locations} map={locMap} upVoteLoc={upvoteLoc} />} />,
                 <Route key="9" path={'/hotel'} render={(props) => <Hotel />}/>,
-                <Route key="10" path={'/itinerary'} render={(props) => <Itinerary data={itineraryData} />} />,
-                <Route key="11" path={'/summary'} render={(props) => <Summary data={itineraryData}  />} />,
+                <Route key="10" path={'/itinerary'} render={(props) => <Itinerary />} />,
+                <Route key="11" path={'/summary'} render={(props) => <Summary />} />
                ];

@@ -14,15 +14,15 @@ export function deleteItineraryData(data) {
   return {type: types.DELETE_ITINERARY_DATA, data};
 }
 
+export function updateItineraryData(data) {
+  return {type: types.UPDATE_ITINERARY_DATA, data};
+}
+
+
 export function loadItinerary() {
   return function(dispatch) {
     dispatch(beginAjaxCall());
     return itineraryApi.getAllData().then(data => {
-      data.sort((a,b) => {
-        let aDateVal = parseInt(a.year.toString() + ((a.month > 10) ? a.month.toString() : '0' + a.month.toString()) + ((a.dayOfMonth > 10) ? a.dayOfMonth.toString() : '0' + a.dayOfMonth.toString()));
-        let bDateVal = parseInt(b.year.toString() + ((b.month > 10) ? b.month.toString() : '0' + b.month.toString()) + ((b.dayOfMonth > 10) ? b.dayOfMonth.toString() : '0' + b.dayOfMonth.toString()));
-        return (aDateVal - bDateVal);
-      });
       dispatch(loadItineraryData(data));
     }).catch(error => {
       throw(error);
@@ -47,6 +47,18 @@ export function deleteItineraryEvent(eventId) {
     dispatch(beginAjaxCall());
     return itineraryApi.deleteData(eventId).then(id => {
       dispatch(deleteItineraryData(id));
+    }).catch(error => {
+      dispatch(ajaxCallError(error));
+      throw(error);
+    });
+  };
+}
+
+export function updateItineraryEvent(eventUpdates) {
+  return function (dispatch, getState) {
+    dispatch(beginAjaxCall());
+    return itineraryApi.updateData(eventUpdates).then(newData => {
+      dispatch(updateItineraryData(newData));
     }).catch(error => {
       dispatch(ajaxCallError(error));
       throw(error);

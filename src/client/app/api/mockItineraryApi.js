@@ -60,6 +60,12 @@ for (let i = 0; i < itineraryData.length; i++) {
     itineraryData[i].id = itineraryData[i].key;
 }
 
+itineraryData.sort((a,b) => {
+    let aDateVal = parseInt(a.year.toString() + ((a.month > 10) ? a.month.toString() : '0' + a.month.toString()) + ((a.dayOfMonth > 10) ? a.dayOfMonth.toString() : '0' + a.dayOfMonth.toString()));
+    let bDateVal = parseInt(b.year.toString() + ((b.month > 10) ? b.month.toString() : '0' + b.month.toString()) + ((b.dayOfMonth > 10) ? b.dayOfMonth.toString() : '0' + b.dayOfMonth.toString()));
+    return (aDateVal - bDateVal);
+});
+
 class ItineraryApi {
   static getAllData() {
     return new Promise((resolve, reject) => {
@@ -73,9 +79,6 @@ class ItineraryApi {
     data = Object.assign({}, data); // to avoid manipulating object passed in.
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-        data.id = generateId(data);
-        data.key = data.id;
-
         itineraryData.push(data);
         itineraryData.sort((a,b) => {
             let aDateVal = parseInt(a.year.toString() + ((a.month > 10) ? a.month.toString() : '0' + a.month.toString()) + ((a.dayOfMonth > 10) ? a.dayOfMonth.toString() : '0' + a.dayOfMonth.toString()));
@@ -96,6 +99,27 @@ class ItineraryApi {
         });
         itineraryData.splice(indexOfDataToDelete, 1);
         resolve(dataId);
+      }, delay);
+    });
+  }
+
+  static updateData(newData) {
+    newData = Object.assign({}, newData);
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        const indexOfDataToUpdate = itineraryData.findIndex(data => {
+          return data.id === newData.id;
+        });
+
+        let newDataObject = Object.assign({}, itineraryData[indexOfDataToUpdate]);
+
+        newDataObject.title = newData.title;
+        newDataObject.description = newData.description;
+
+        newDataObject.index = indexOfDataToUpdate;
+        itineraryData[indexOfDataToUpdate] = newDataObject;
+
+        resolve(newDataObject);
       }, delay);
     });
   }

@@ -16,8 +16,13 @@ export default function itineraryReducer(state = initialState.itineraryData, act
       return newItineraryList;
 
     case types.DELETE_ITINERARY_DATA:
-      console.log([...state.filter(event => event.id !== action.data)]);
       return [...state.filter(event => event.key !== action.data)];
+
+    case types.UPDATE_ITINERARY_DATA:
+      let newDataList = [...state];
+      newDataList[action.data.index] = action.data;
+      delete action.data['index'];
+      return newDataList;
 
     default:
       return state;

@@ -3,6 +3,10 @@ import CommentComponent from './comments.jsx';
 import ChatContainer from './agent_chat.jsx';
 import ProgressButtons from './progress_bottom_bar.jsx';
 
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import * as itineraryActions from '../actions/itinerary-actions';
+
 class EditEventSummaryModal extends React.Component {
     constructor(props) {
         super(props);
@@ -168,8 +172,7 @@ class EventSummaryList extends React.Component {
             currEventId: '',
             currEventTitle: '',
             currEventDescription: '',
-            modalHidden: true,
-            data: props.data
+            modalHidden: true
         };
 
         this.listStyles = {
@@ -190,8 +193,7 @@ class EventSummaryList extends React.Component {
             currEventId: event.id,
             currEventTitle: event.title,
             currEventDescription: event.description,
-            modalHidden: false,
-            data: this.state.data
+            modalHidden: false
         });
     }
 
@@ -201,8 +203,7 @@ class EventSummaryList extends React.Component {
                 currEventId: this.state.currEventId,
                 currEventTitle: this.state.currEventTitle,
                 currEventDescription: this.state.currEventDescription,
-                modalHidden: true,
-                data: this.state.data
+                modalHidden: true
             });
         }
     }
@@ -210,21 +211,13 @@ class EventSummaryList extends React.Component {
     handleNewEdit(newEventSummary) {
         console.log(newEventSummary);
 
-        for (let i = 0; i < this.state.data.length; i++) {
-            let currEvent = this.state.data[i];
-            if (currEvent.key === newEventSummary.id) {
-                currEvent.title = newEventSummary.title;
-                currEvent.description = newEventSummary.description;
-                break;
-            }
-        }
+        this.props.actions.updateItineraryEvent(newEventSummary);
 
         this.setState({
             currEventId: '',
             currEventTitle: '',
             currEventDescription: '',
-            modalHidden: true,
-            data: this.state.data
+            modalHidden: true
         });
     }
 
@@ -233,12 +226,26 @@ class EventSummaryList extends React.Component {
             <div style={this.listStyles}>
                 <EditEventSummaryModal currEventId={this.state.currEventId} currEventTitle={this.state.currEventTitle} currEventDescription={this.state.currEventDescription} modalHidden={this.state.modalHidden} hide={this.hideModal} submitEdit={this.handleNewEdit} />
                 <div>
-                    {this.state.data.map(event => <EventSummary {...event} id={event.key} showEditSummaryModal={this.showModal} />)}
+                    {this.props.data.map(event => <EventSummary {...event} id={event.key} showEditSummaryModal={this.showModal} />)}
                 </div>
             </div>
         );
     }
 }
+
+function mapStateToProps(state, ownProps) {
+  return {
+    data: state.itineraryData
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(itineraryActions, dispatch)
+  };
+}
+
+let EventSummaryListContainer = connect(mapStateToProps, mapDispatchToProps)(EventSummaryList);
 
 const SummaryPage = (props) => {
     let mainContainerStyles = {
@@ -273,7 +280,7 @@ const SummaryPage = (props) => {
             <div style={progressBarContainerStyle}><div style={progressBarContentStyle}></div></div>
             <div style={mainContainerStyles}>
                 <h1 id="summary-h1-header" style={{textAlign: 'center'}}>Does this plan work with everyone?</h1>
-                <EventSummaryList data={props.data} />
+                <EventSummaryListContainer />
                 <CommentComponent/>
             </div>
             <ProgressButtons backRoute={backRouteRef} nextRoute={nextRouteRef} />
@@ -283,5 +290,3 @@ const SummaryPage = (props) => {
 };
 
 export default SummaryPage;
-
-//ReactDOM.render(<SummaryPage data={eventsData} comments={commentsData} messages={messagesData} />, document.getElementById('content'));
