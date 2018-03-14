@@ -6,7 +6,6 @@ import { HashRouter, Router } from 'react-router-dom';
 import routes from './routes.js';
 
 import './styles/agent_chat.css';
-import './styles/itinerary.css';
 import './styles/summary.css';
 import './styles/progress_bottom.css';
 import './styles/invite.css';

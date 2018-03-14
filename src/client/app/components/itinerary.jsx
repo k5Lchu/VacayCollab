@@ -3,6 +3,8 @@ import CommentComponent from './comments.jsx';
 import ChatContainer from './agent_chat.jsx';
 import ProgressButtons from './progress_bottom_bar.jsx';
 
+import styles from '../styles/itinerary.css';
+
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as itineraryActions from '../actions/itinerary-actions';
@@ -70,7 +72,7 @@ const Event = (props) => {
                 <p style={{fontSize: '0.7em', margin: '0'}}>{daysInWeek[props.dayOfWeek]}</p>
             </div>
             <p style={{gridColumn: '2/5', gridRow: '1/2', margin: 'auto', fontSize: '1.3em'}}>{props.title}</p>
-            <img className="event-delete-button" style={deleteButtonStyles} src="https://cdn0.iconfinder.com/data/icons/round-ui-icons/128/close_red.png" alt="delete" onClick={deleteClick}/>
+            <img className={`${styles['event-delete-button']}`} style={deleteButtonStyles} src="https://cdn0.iconfinder.com/data/icons/round-ui-icons/128/close_red.png" alt="delete" onClick={deleteClick}/>
             <p style={timeStyles}>{props.startTime} - {props.endTime}</p>
             <p style={descirptionStyles}>{props.description}</p>
         </div>
@@ -94,7 +96,7 @@ const DateTab = (props) => {
     };
 
     return(
-        <div className="date-tab-container" style={containerStyles} onClick={dateClicked}>
+        <div className={`${styles['date-tab-container']}`} style={containerStyles} onClick={dateClicked}>
             <div style={{fontSize: '0.7em'}}>{parsedDate[0]}</div>
             <div style={{fontSize: '1.3em'}}>{parsedDate[1]}</div>
             <div style={{fontSize: '0.7em'}}>{parsedDate[2]}</div>
@@ -127,7 +129,8 @@ class AddEventModal extends React.Component {
     }
 
     toggleModal(e) {
-        if (e.target === document.getElementById('modal') || e.target === document.getElementById('add-activity-button')) {
+        if (e.target === document.getElementsByClassName(styles['modal'])[0] ||
+            e.target === document.getElementsByClassName(styles['add-activity-button'])[0]) {
             this.setState({
                 title: this.state.title,
                 destination: this.state.destination,
@@ -267,25 +270,24 @@ class AddEventModal extends React.Component {
             displayStyle.display = 'none';
         }
 
-
         return(
             <div>
-                <div id="add-activity-button-container">
-                    <button id="add-activity-button" type="button" onClick={this.toggleModal}>Add Activity</button>
+                <div className={`${styles['add-activity-button-container']}`}>
+                    <button className={`${styles['add-activity-button']}`} type="button" onClick={this.toggleModal}>Add Activity</button>
                 </div>
-                <div id="modal" style={displayStyle} onClick={this.toggleModal}>
-                    <div id="modal-content">
+                <div className={`${styles['modal']}`} style={displayStyle} onClick={this.toggleModal}>
+                    <div className={`${styles['modal-content']}`}>
                         <h4>Add an Activity</h4>
                         <form onSubmit={this.handleSubmit}>
-                            <div id="input-container">
-                                <div id="title-input" className="form-input-groups"><p>Title</p> <input value={this.state.title} onChange={this.handleTitleChange} type="text" placeholder="Enter a title"/></div>
-                                <div id="destination-input" className="form-input-groups"><p>Location</p> <input value={this.state.destination} onChange={this.handleDestinationChange} type="text" placeholder="Enter a destination"/></div>
-                                <div id="date-input" className="form-input-groups"><p>Date</p> <input value={this.state.date} onChange={this.handleDateChange} type="date"/></div>
-                                <div id="start-time-input" className="form-input-groups"><p>Start Time</p> <input value={this.state.startTime} onChange={this.handleStartTimeChange} type="time"/></div>
-                                <div id="end-time-input" className="form-input-groups"><p>End Time</p> <input value={this.state.endTime} onChange={this.handleEndTimeChange} type="time"/></div>
-                                <div id="description-input" className="form-input-groups"><p>Description</p> <textarea value={this.state.description} onChange={this.handleDescriptionChange} type="text" rows="5" cols="100" placeholder="Write a descirption"></textarea></div>
+                            <div className={`${styles['input-container']}`}>
+                                <div className={`${styles['form-input-groups']} ${styles['title-input']}`}><p>Title</p> <input value={this.state.title} onChange={this.handleTitleChange} type="text" placeholder="Enter a title"/></div>
+                                <div className={`${styles['form-input-groups']} ${styles['destination-input']}`}><p>Location</p> <input value={this.state.destination} onChange={this.handleDestinationChange} type="text" placeholder="Enter a destination"/></div>
+                                <div className={`${styles['form-input-groups']} ${styles['date-input']}`}><p>Date</p> <input value={this.state.date} onChange={this.handleDateChange} type="date"/></div>
+                                <div className={`${styles['form-input-groups']} ${styles['start-time-input']}`}><p>Start Time</p> <input value={this.state.startTime} onChange={this.handleStartTimeChange} type="time"/></div>
+                                <div className={`${styles['form-input-groups']} ${styles['end-time-input']}`}><p>End Time</p> <input value={this.state.endTime} onChange={this.handleEndTimeChange} type="time"/></div>
+                                <div className={`${styles['form-input-groups']} ${styles['description-input']}`}><p>Description</p> <textarea value={this.state.description} onChange={this.handleDescriptionChange} type="text" rows="5" cols="100" placeholder="Write a descirption"></textarea></div>
                             </div>
-                            <button id="submit-activity-button">Submit</button>
+                            <button className={`${styles['submit-activity-button']}`}>Submit</button>
                         </form>
                     </div>
                 </div>
@@ -425,11 +427,11 @@ class EventList extends React.Component {
         return(
             <div>
                 <AddEventModal addEvent={this.addElement} />
-                <div className="itinerary-container">
-                    <div className="itinerary-container-left" style={this.leftContainerStyles}>
+                <div className={`${styles['itinerary-container']}`}>
+                    <div className={`${styles['itinerary-container-left']}`} style={this.leftContainerStyles}>
                         {this.createLeftMenu()}
                     </div>
-                    <div className="itinerary-container-right" style={this.rightContainerStyles} ref={(el) => {this.rightItinerary = el;}}>
+                    <div className={`${styles['itinerary-container-right']}`} style={this.rightContainerStyles} ref={(el) => {this.rightItinerary = el;}}>
                         {this.props.data.map(event => <Event {...event} id={event.key} deleteElement={this.deleteElement} />)}
                     </div>
                 </div>
@@ -498,7 +500,7 @@ const ItinerearyPageContent = (props) => {
         <div>
             <div style={progressBarContainerStyle}><div style={progressBarContentStyle}></div></div>
             <div style={mainContainerStyles}>
-                <div id="top-prompt" style={contentPromptStyles}>
+                <div className={`${styles['top-prompt']}`} style={contentPromptStyles}>
                     <h1 style={promptHeaderMainStyles}>Where does everyone want to go?</h1>
                     <h4 style={promptHeaderSubStyles}>Vote on where to want to go! Leave comments for each other and the leader of this group to back up why your spot should be part of the vacation</h4>
                 </div>

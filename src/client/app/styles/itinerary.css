@@ -26,7 +26,7 @@
     border-radius: 10px;
 }
 
-#add-activity-button {
+.add-activity-button {
     background-color: darkorange;
     padding: 5px 10px;
     border: none;
@@ -36,12 +36,12 @@
     margin-bottom: 10px;
 }
 
-#add-activity-button:hover {
+.add-activity-button:hover {
     box-shadow: 0px 3px 3px #888888;
     cursor: pointer;
 }
 
-#modal {
+.modal {
     display: none;
     position: fixed;
     z-index: 1;
@@ -54,7 +54,7 @@
     background-color: rgba(0,0,0,0.4);
 }
 
-#modal-content {
+.modal-content {
     background-color: white;
     width: 600px;
     margin: 0% auto;
@@ -81,7 +81,7 @@
     padding: 5px;
 }
 
-#modal-content h4 {
+.modal-content h4 {
     background-color: orange;
     margin: 20px;
     padding: 5px;
@@ -89,7 +89,7 @@
     color: white;
 }
 
-#input-container {
+.input-container {
     display: grid;
     grid-template-areas:
         'title title'
@@ -98,31 +98,31 @@
         'desc desc';
 }
 
-#title-input {
+.title-input {
     grid-area: title;
 }
 
-#destination-input {
+.destination-input {
     grid-area: dest;
 }
 
-#date-input {
+.date-input {
     grid-area: date;
 }
 
-#start-time-input {
+.start-time-input {
     grid-area: stime;
 }
 
-#end-time-input {
+.end-time-input {
     grid-area: etime;
 }
 
-#description-input {
+.description-input {
     grid-area: desc;
 }
 
-#submit-activity-button {
+.submit-activity-button {
     border: none;
     border-radius: 50px;
     padding: 10px 40px;
@@ -132,12 +132,12 @@
     color: white;
 }
 
-#submit-activity-button:hover {
+.submit-activity-button:hover {
     box-shadow: 0px 3px 5px #888888;
     cursor: pointer;
 }
 
-#add-activity-button-container {
+.add-activity-button-container {
     width: 100%;
     text-align: right;
 }
@@ -164,17 +164,17 @@
         float: left;
     }
 
-    #add-activity-button {
+    .add-activity-button {
         width: 95%;
         margin: auto;
         border-radius: 5px;
     }
 
-    #add-activity-button-container {
+    .add-activity-button-container {
         text-align: center;
     }
 
-    #modal-content {
+    .modal-content {
         width: 90%;
     }
 
@@ -182,7 +182,7 @@
         padding: 5px;
     }
 
-    #input-container {
+    .input-container {
         grid-template-areas:
             'title'
             'dest'
@@ -196,13 +196,13 @@
         height: 650px;
     }
 
-    #top-prompt h4 {
+    .top-prompt h4 {
         font-size: 3.2vw;
         margin-left: 3%;
         margin-right: 3%;
     }
 
-    #top-prompt h1 {
+    .top-prompt h1 {
         font-size: 4.4vw;
     }
 }
