@@ -15,6 +15,7 @@ export function UpvoteLocation(data){
 }
 
 export function loadLocations() {
+    console.log("loadLocations called");
     return function(dispatch) {
       dispatch(beginAjaxCall());
       return locationAPI.getAllLocations().then(loc => {

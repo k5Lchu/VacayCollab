@@ -29,11 +29,12 @@ import {loadLocMap} from './actions/locations-actions';
 
 //const store = createStore(rootReducer);
 const store = configureStore();
+store.dispatch(loadLocations());
+store.dispatch(loadLocMap());
 store.dispatch(loadItinerary());
 store.dispatch(loadComments());
 store.dispatch(loadMessages());
-store.dispatch(loadLocations());
-store.dispatch(loadLocMap());
+
 
 store.subscribe(() => {
     console.log("store changed", store.getState());

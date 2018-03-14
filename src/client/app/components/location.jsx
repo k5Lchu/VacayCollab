@@ -5,6 +5,7 @@ import ProgressButtons from './progress_bottom_bar.jsx';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as locationActions from '../actions/locations-actions';
+import styles from '../styles/location.css';
 
 class VacayLocation extends React.Component{
     constructor(props){
@@ -64,11 +65,10 @@ class LocationList extends React.Component {
             locList: new Map(),
             displayed: [],
             data: props.data,
-            map: props.map,
+            map: new Map(),
             list: [],
             matches: []
         }
-        
 
         for(let i=0; i<this.state.data.length; i++){
             let loc = this.state.data[i];
@@ -78,6 +78,14 @@ class LocationList extends React.Component {
                 this.state.locList.get(loc.name).push(loc);
             }
             this.state.list.push(loc.name);
+        }
+        for(let i=0; i<this.state.data.length; i++){
+            let loc = this.state.data[i];
+            if(!this.state.map.has(loc.name)){
+                this.state.map.set(loc.name, [i]);
+            }else{
+                this.state.map.get(loc.name).push(i);
+            }
         }
 
         let iter = this.state.locList.keys();
@@ -136,13 +144,13 @@ class LocationList extends React.Component {
     }
     
     dropdownShow(){
-        let dropdown = document.getElementById('dropcon');
+        let dropdown = document.getElementsByClassName(styles['dropdown-content'])[0];
         dropdown.classList.toggle("show");
     }
 
     searchList(){
-        let value = document.getElementById('search-input').value.toLowerCase();
-        let dropdown = document.getElementById('dropcon');
+        let value = document.getElementsByClassName(styles['search-input'])[0].value.toLowerCase();
+        let dropdown = document.getElementsByClassName(styles['dropdown-content'])[0];
         this.state.matches = [];
         for(let i=0; i<this.state.list.length; i++){
             if(this.state.list[i].toLowerCase().includes(value)){
@@ -164,10 +172,10 @@ class LocationList extends React.Component {
         
         return(
             <div>
-                <div id="search-filter" className="dropdown">
-                    <input id="search-input" type="text" placeholder="Search For Destinations...." onKeyUp={this.searchList}></input>
-                    <button id="filter-button" onClick={this.dropdownShow} className="dropbtn">Search</button>
-                    <div id="dropcon" className="dropdown-content">
+                <div className={`${styles['search-filter']} ${styles['dropdown']}`}>
+                    <input className={`${styles['search-input']}`} type="text" placeholder="Search For Destinations...." onKeyUp={this.searchList}></input>
+                    <button onClick={this.dropdownShow} className={`${styles['filter-button']} ${styles['dropbtn']}`}>Search</button>
+                    <div className={`${styles['dropcon']} ${styles['dropdown-content']}`}>
                         {this.state.matches.map(loc => <DropdownItem name={loc} addLocation={this.addLocation}/>)}
                     </div>
                 </div>
@@ -185,9 +193,9 @@ const LocationSelectContent = (props) => {
     let nextRouteRef = '/hotel';
     return(
         <div>
-            <div id="progress-bar"><div></div></div>
-            <div id="location-container">
-                <div id="top-prompt">
+            <div className={`${styles['progress-bar']}`}><div></div></div>
+            <div className={`${styles['location-container']}`}>
+                <div className={`${styles['top-prompt']}`}>
                     <h1>Where does everyone want to go?</h1>
                     <h4>Vote on where you want to go! Leave comments for the group with you opinions on your vacation destination</h4>
                 </div>
@@ -207,8 +215,8 @@ const LocationSelectContent = (props) => {
 function mapStateToProps(state, ownProps) {
     console.log(state);
     return {
-      data: state.locations,
-      map: state.locMap,
+      data: state.locationData[0],
+      map: state.locationData[1],
     };
   }
   
