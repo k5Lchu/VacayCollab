@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import styles from '../styles/signup.css';
+
 class SignupContainer extends React.Component {
     constructor(props) {
         super(props);
@@ -18,7 +20,7 @@ class SignupContainer extends React.Component {
 
     render() {
         return(
-        <div id="main-container">
+        <div className={`${styles['main-container']}`}>
             <h1>Sign Up</h1>
             <h4>Sign up today to start planning for your group's next BIG vacation!</h4>
             <form onSubmit={this.handleSubmit}>
@@ -48,7 +50,7 @@ class SignupContainer extends React.Component {
                     <br></br>
                 </form>
             <br></br>
-            <Link to="/invite"><button id="desktop-button" type="button">Sign Up!</button></Link>    
+            <Link to="/invite"><button className={`${styles['desktop-button']}`} type="button">Sign Up!</button></Link>
         </div>
         );
     }    

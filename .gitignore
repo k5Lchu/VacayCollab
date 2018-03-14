@@ -4,3 +4,4 @@
 /bower_components/
 /node_modules/
 /.eslintrc.json
+/src/client/public/bundle.js

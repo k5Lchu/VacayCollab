@@ -1,4 +1,4 @@
-#main-container {
+.main-container {
     background-color: white;
     max-width: 65%;
     border: 2px solid black;
@@ -9,21 +9,12 @@
     padding: 15px;
 }
 
-#main-container > h1, h4, p{
+.main-container > h1, h4, p{
     text-align: center;
 }
 
-#main-container > form {
+.main-container > form {
     text-align: left;
-}
-
-#desktop-button {
-    color: white;
-    background-color: orange;
-    padding: 5px 10px;
-    border-radius: 15px;
-    border-style: none;
-    font-size: 18px;
 }
 
 .desktop-button {
