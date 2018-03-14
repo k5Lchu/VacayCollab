@@ -2,6 +2,9 @@ import React from 'react';
 import CommentComponent from './comments.jsx';
 import ChatContainer from './agent_chat.jsx';
 import ProgressButtons from './progress_bottom_bar.jsx';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import * as locationActions from '../actions/locations-actions';
 
 class VacayLocation extends React.Component{
     constructor(props){
@@ -67,8 +70,8 @@ class LocationList extends React.Component {
         }
         
 
-        for(let i=0; i<props.data.length; i++){
-            let loc = props.data[i];
+        for(let i=0; i<this.state.data.length; i++){
+            let loc = this.state.data[i];
             if(!this.state.locList.has(loc.name)){
                 this.state.locList.set(loc.name, [loc]);
             }else{
@@ -188,7 +191,7 @@ const LocationSelectContent = (props) => {
                     <h1>Where does everyone want to go?</h1>
                     <h4>Vote on where you want to go! Leave comments for the group with you opinions on your vacation destination</h4>
                 </div>
-                <LocationList data={props.data} map={props.map} list={props.list} upVoteLoc={props.upVoteLoc}/>
+                <LocationList data={props.data} map={props.map} upVoteLoc={props.actions.upvoteLocation}/>
                 <CommentComponent/>
                 <ChatContainer />
             </div>
@@ -197,6 +200,22 @@ const LocationSelectContent = (props) => {
     );
 };
 
-export default LocationSelectContent;
+//export default LocationSelectContent;
 
 //ReactDOM.render(<LocationSelectContent data={locations} map={locMap} upVoteLoc={upvoteLoc} comments={comments} messages={messagesData}/>, document.getElementById('content'));
+
+function mapStateToProps(state, ownProps) {
+    console.log(state);
+    return {
+      data: state.locations,
+      map: state.locMap,
+    };
+  }
+  
+  function mapDispatchToProps(dispatch) {
+    return {
+      actions: bindActionCreators(locationActions, dispatch)
+    };
+  }
+  
+  export default connect(mapStateToProps, mapDispatchToProps)(LocationSelectContent);
