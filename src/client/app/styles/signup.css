@@ -9,7 +9,7 @@
     padding: 15px;
 }
 
-.main-container > h1, h4, p{
+.main-container > h1, .main-container > h4, .main-container > p{
     text-align: center;
 }
 
