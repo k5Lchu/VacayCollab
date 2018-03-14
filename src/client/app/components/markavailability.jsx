@@ -2,6 +2,7 @@ import React from 'react';
 import CommentComponent from './comments.jsx';
 import ChatContainer from './agent_chat.jsx';
 import ProgressButtons from './progress_bottom_bar.jsx';
+import styles from '../styles/markavailability.css';
 
 const CalenderCell = (props) => {
     let day = props.day;
@@ -91,8 +92,8 @@ class CalenderContent extends React.Component {
         this.state = {
             monthMap: this.props.monthMap,
             currentMonth: this.props.currentMonth,
-            months: this.props.months,
-            week: this.props.daysInWeek,
+            months: ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'],
+            week: ['SUN','MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'],
             monthselect: [],
             rows: [],
             rowNum: 0,
@@ -193,8 +194,8 @@ class CalenderContent extends React.Component {
         this.setState({
             monthMap: this.state.monthMap,
             currentMonth: this.state.currentMonth,
-            months: this.props.months,
-            week: this.props.daysInWeek,
+            months: this.state.months,
+            week: this.state.daysInWeek,
             monthselect: this.state.monthselect,
             rows: this.state.rows,
             rowNum: this.state.rowNum,
@@ -225,8 +226,8 @@ class CalenderContent extends React.Component {
         this.setState({
             monthMap: this.state.monthMap,
             currentMonth: this.state.currentMonth,
-            months: this.props.months,
-            week: this.props.daysInWeek,
+            months: this.state.months,
+            week: this.state.daysInWeek,
             monthselect: this.state.monthselect,
             rows: this.state.rows,
             rowNum: this.state.rowNum,
@@ -261,8 +262,8 @@ class CalenderContent extends React.Component {
         this.setState({
             monthMap: this.state.monthMap,
             currentMonth: this.state.currentMonth,
-            months: this.props.months,
-            week: this.props.daysInWeek,
+            months: this.state.months,
+            week: this.state.daysInWeek,
             monthselect: this.state.monthselect,
             rows: this.state.rows,
             rowNum: this.state.rowNum,
@@ -289,8 +290,8 @@ class CalenderContent extends React.Component {
         this.setState({
             monthMap: this.state.monthMap,
             currentMonth: this.state.currentMonth,
-            months: this.props.months,
-            week: this.props.daysInWeek,
+            months: this.state.months,
+            week: this.state.daysInWeek,
             monthselect: this.state.monthselect,
             rows: this.state.rows,
             rowNum: this.state.rowNum,
@@ -302,8 +303,8 @@ class CalenderContent extends React.Component {
     render(){
         let rowNum = 0;
         return(
-            <div id="calender">
-                <div id="month-select">
+            <div className={`${styles["calender"]}`}>
+                <div className={`${styles["month-select"]}`}>
                     <h1>
                         {this.state.monthselect.map(select => <MonthSelect months={this.state.months} month={select} changeMonth={this.changeMonth}/>)}
                     </h1>
@@ -329,10 +330,10 @@ class MarkAvailabilityContent extends React.Component {
     render(){
         return(
             <div>
-                <div id="progress-bar"><div></div></div>
+                <div className={`${styles["progress-bar"]}`}><div></div></div>
 
-                <div id="calender-container">
-                    <div id="top-prompt">
+                <div className={`${styles["calender-container"]}`}>
+                    <div className={`${styles["top-prompt"]}`}>
                         <h1>Mark Availability</h1>
                         <h4>Mark all dates that you are available and the leader of the group will finalize the vacation start and end date</h4>
                     </div>
