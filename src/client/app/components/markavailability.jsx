@@ -3,6 +3,10 @@ import CommentComponent from './comments.jsx';
 import ChatContainer from './agent_chat.jsx';
 import ProgressButtons from './progress_bottom_bar.jsx';
 import styles from '../styles/markavailability.css';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as calendarActions from '../actions/calendar-actions';
+
 
 const CalenderCell = (props) => {
     let day = props.day;
@@ -337,7 +341,7 @@ class MarkAvailabilityContent extends React.Component {
                         <h1>Mark Availability</h1>
                         <h4>Mark all dates that you are available and the leader of the group will finalize the vacation start and end date</h4>
                     </div>
-                    <CalenderContent monthMap={this.props.monthMap} currentMonth={this.props.currentMonth} months={this.props.months} daysInWeek={this.props.daysInWeek} saveDays={this.props.saveDays} selectDay={this.props.selectDay}/>
+                    <CalenderContent monthMap={this.props.monthMap} currentMonth={this.props.currentMonth} saveDays={this.props.saveDays} selectDay={this.props.actions.selectDayPassed}/>
                     
                 </div>
                 <ChatContainer />
@@ -346,6 +350,22 @@ class MarkAvailabilityContent extends React.Component {
         );
     }
 };
-export default MarkAvailabilityContent;
+//export default MarkAvailabilityContent;
 
 //ReactDOM.render(<MarkAvailabilityContent monthMap={monthMap} currentMonth={currentMonth} months={months} daysInWeek={daysInWeek} saveDays={saveDays} selectDay={selectDay} messages={messagesData}/>, document.getElementById('content'));
+function mapStateToProps(state, ownProps) {
+    console.log(state);
+    return {
+        monthMap: state.calendarData[0],
+        currentMonth: state.calendarData[1],
+        saveDays: state.calendarData[2],
+    };
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        actions: bindActionCreators(calendarActions, dispatch)
+    };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(MarkAvailabilityContent);

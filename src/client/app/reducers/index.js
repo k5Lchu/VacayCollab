@@ -3,6 +3,7 @@ import itineraryData from './itineraryReducer';
 import commentsData from './commentsReducer';
 import messagesData from './messagesReducer';
 import locationData from './locationReducer';
+import calendarData from './calendarReducer';
 // import your reducers here
 
 import ajaxCallsInProgress from './ajaxStatusReducer';
@@ -12,6 +13,7 @@ const rootReducer = combineReducers({
   commentsData,
   itineraryData,
   locationData,
+  calendarData,
   ajaxCallsInProgress,
   // add your reducers here
 });

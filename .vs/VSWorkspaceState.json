@@ -1,11 +1,16 @@
 {
   "ExpandedNodes": [
     "",
-    "\\assets",
-    "\\assets\\images",
-    "\\javascript",
-    "\\styles"
+    "\\src",
+    "\\src\\client",
+    "\\src\\client\\app",
+    "\\src\\client\\app\\actions",
+    "\\src\\client\\app\\api",
+    "\\src\\client\\app\\components",
+    "\\src\\client\\app\\reducers",
+    "\\src\\client\\app\\store",
+    "\\src\\client\\app\\styles"
   ],
-  "SelectedNode": "\\javascript\\locationselect.js",
+  "SelectedNode": "\\src\\client\\app\\actions\\locations-actions.js",
   "PreviewInSolutionExplorer": false
 }

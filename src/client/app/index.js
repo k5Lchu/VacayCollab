@@ -18,7 +18,11 @@ import {loadComments} from './actions/comments-actions';
 import {loadMessages} from './actions/messages-actions';
 import {loadItinerary} from './actions/itinerary-actions';
 import {loadLocations} from './actions/locations-actions';
-import {loadLocMap} from './actions/locations-actions';
+import { loadLocMap } from './actions/locations-actions';
+import { loadMonthMap } from './actions/calendar-actions';
+import { loadCurrentMonth } from './actions/calendar-actions';
+import { loadDaysPassed } from './actions/calendar-actions';
+import { loadDaysSaved } from './actions/calendar-actions';
 //add actions here
 
 //const store = createStore(rootReducer);
@@ -28,6 +32,10 @@ store.dispatch(loadLocMap());
 store.dispatch(loadItinerary());
 store.dispatch(loadComments());
 store.dispatch(loadMessages());
+store.dispatch(loadMonthMap());
+store.dispatch(loadCurrentMonth());
+store.dispatch(loadDaysPassed());
+store.dispatch(loadDaysSaved());
 
 
 store.subscribe(() => {
