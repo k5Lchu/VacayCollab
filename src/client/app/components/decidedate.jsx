@@ -2,6 +2,10 @@ import React from 'react';
 import CommentComponent from './comments.jsx';
 import ChatContainer from './agent_chat.jsx';
 import ProgressButtons from './progress_bottom_bar.jsx';
+import styles from '../styles/decidedate.css';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as calendarActions from '../actions/calendar-actions';
 
 const CalenderCell = (props) => {
     let day = props.day;
@@ -100,8 +104,8 @@ class CalenderContent extends React.Component {
         this.state = {
             monthMap: this.props.monthMap,
             currentMonth: this.props.currentMonth,
-            months: this.props.months,
-            week: this.props.daysInWeek,
+            months: ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'],
+            week: ['SUN','MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'],
             monthselect: [],
             rows: [],
             rowNum: 0,
@@ -210,8 +214,8 @@ class CalenderContent extends React.Component {
         this.setState({
             monthMap: this.state.monthMap,
             currentMonth: this.state.currentMonth,
-            months: this.props.months,
-            week: this.props.daysInWeek,
+            months: this.state.months,
+            week: this.state.week,
             monthselect: this.state.monthselect,
             rows: this.state.rows,
             rowNum: this.state.rowNum,
@@ -244,8 +248,8 @@ class CalenderContent extends React.Component {
         this.setState({
             monthMap: this.state.monthMap,
             currentMonth: this.state.currentMonth,
-            months: this.props.months,
-            week: this.props.daysInWeek,
+            months: this.state.months,
+            week: this.state.week,
             monthselect: this.state.monthselect,
             rows: this.state.rows,
             rowNum: this.state.rowNum,
@@ -282,8 +286,8 @@ class CalenderContent extends React.Component {
         this.setState({
             monthMap: this.state.monthMap,
             currentMonth: this.state.currentMonth,
-            months: this.props.months,
-            week: this.props.daysInWeek,
+            months: this.state.months,
+            week: this.state.week,
             monthselect: this.state.monthselect,
             rows: this.state.rows,
             rowNum: this.state.rowNum,
@@ -319,8 +323,8 @@ class CalenderContent extends React.Component {
         this.setState({
             monthMap: this.state.monthMap,
             currentMonth: this.state.currentMonth,
-            months: this.props.months,
-            week: this.props.daysInWeek,
+            months: this.state.months,
+            week: this.state.week,
             monthselect: this.state.monthselect,
             rows: this.state.rows,
             rowNum: this.state.rowNum,
@@ -334,8 +338,8 @@ class CalenderContent extends React.Component {
     render(){
         let rowNum = 0;
         return(
-            <div id="calender">
-                <div id="month-select">
+            <div className={`${styles["calender"]}`}>
+                <div className={`${styles["month-select"]}`}>
                     <h1>
                         {this.state.monthselect.map(select => <MonthSelect months={this.state.months} month={select} changeMonth={this.changeMonth}/>)}
                     </h1>
@@ -361,14 +365,14 @@ class DecideDateContent extends React.Component {
     render(){
         return(
             <div>
-                <div id="progress-bar"><div></div></div>
+                <div className={`${styles["progress-bar"]}`}><div></div></div>
 
-                <div id="calender-container">
-                    <div id="top-prompt">
+                <div className={`${styles["calender-container"]}`}>
+                <div className={`${styles["top-prompt"]}`}>
                         <h1>Decide the Date</h1>
                         <h4>As the leader of this group, use the available dates of all participants to finalize the vacation start and end dates</h4>
                     </div>
-                    <CalenderContent monthMap={this.props.monthMap} currentMonth={this.props.currentMonth} months={this.props.months} daysInWeek={this.props.daysInWeek} saveDays={this.props.saveDays} passedDays={this.props.passedDays} selectDay={this.props.selectDay}/>
+                    <CalenderContent monthMap={this.props.monthMap} currentMonth={this.props.currentMonth} saveDays={this.props.saveDays} passedDays={this.props.passedDays} selectDay={this.props.actions.selectDaySaved}/>
                 </div>
                 <ChatContainer />
                 <ProgressButtons backRoute={this.backRouteRef} nextRoute={this.nextRouteRef}/>
@@ -377,6 +381,23 @@ class DecideDateContent extends React.Component {
     }
 };
 
-export default DecideDateContent;
+//export default DecideDateContent;
 
 //ReactDOM.render(<DecideDateContent monthMap={monthMap} currentMonth={currentMonth} months={months} daysInWeek={daysInWeek} saveDays={saveDays} passedDays={passedDays} selectDay={selectDay} messages={messagesData}/>, document.getElementById('content'));
+function mapStateToProps(state, ownProps) {
+    console.log(state);
+    return {
+        monthMap: state.calendarData[0],
+        currentMonth: state.calendarData[1],
+        passedDays: state.calendarData[2],
+        saveDays: state.calendarData[3],
+    };
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        actions: bindActionCreators(calendarActions, dispatch)
+    };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(DecideDateContent);

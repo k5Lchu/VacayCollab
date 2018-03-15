@@ -29,13 +29,13 @@ import { loadDaysSaved } from './actions/calendar-actions';
 const store = configureStore();
 store.dispatch(loadLocations());
 store.dispatch(loadLocMap());
-store.dispatch(loadItinerary());
-store.dispatch(loadComments());
-store.dispatch(loadMessages());
 store.dispatch(loadMonthMap());
 store.dispatch(loadCurrentMonth());
 store.dispatch(loadDaysPassed());
 store.dispatch(loadDaysSaved());
+store.dispatch(loadItinerary());
+store.dispatch(loadComments());
+store.dispatch(loadMessages());
 
 
 store.subscribe(() => {
