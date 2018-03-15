@@ -1,4 +1,26 @@
-#hotel-button {
+.top-prompt {
+    text-align: 'center'
+}
+
+.top-prompt h1 {
+    font-size: 4.4vw;
+}
+
+.top-prompt h4 {
+    font-size: 3.2vw;
+    margin-left: 3%;
+    margin-right: 3%;
+}
+
+.hotel-container {
+    height: 600px;
+    padding: 10px;
+    border: 1px solid lightgray;
+    overflow: auto;
+    border-radius: 10px;
+}
+
+/*#hotel-button {
     color: white;
     background-color: #fd5c63;
     padding: 5px 10px;
@@ -79,4 +101,4 @@
     margin-top: 10px;
     max-height: 500px;
     text-align: center;
-}
+}*/
