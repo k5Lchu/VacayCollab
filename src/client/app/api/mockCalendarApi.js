@@ -27,7 +27,7 @@ class calendarApi {
     static getMonthMap() {
         return new Promise((resolve, reject) => {
             setTimeout(() => {
-                resolve(Object.assign(new Map(), monthMap));
+                resolve(monthMap);
             }, delay);
         });
     }
@@ -35,7 +35,7 @@ class calendarApi {
     static getCurrentMonth() {
         return new Promise((resolve, reject) => {
             setTimeout(() => {
-                resolve(Object.assign(new Var(), currentMonth));
+                resolve(currentMonth);
             }, delay);
         });
     }
