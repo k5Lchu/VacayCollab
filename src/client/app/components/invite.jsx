@@ -1,6 +1,8 @@
 import React from 'react';
 import ProgressButtons from './progress_bottom_bar.jsx';
 
+import styles from '../styles/invite.css';
+
 class InviteContainer extends React.Component {
     constructor(props) {
         super(props);
@@ -9,13 +11,13 @@ class InviteContainer extends React.Component {
 
     render() {
         return(
-            <div id="invite-container">
+            <div className={`${styles['invite-container']}`}>
                 <h1>Invite Participants By Email Address</h1>
                     <p> Add as many or as little people as you like. 
                     <br></br> Separate email addresses with a comma.</p>
                 <div className="center">
                     <form>
-                        <input className="input" type="text" name="email" placeholder="XXX@XXX.com, YYY@YYY.com, ZZZ@ZZZ.com"/><br></br>
+                        <input className={`${styles['input']}`} type="text" name="email" placeholder="XXX@XXX.com, YYY@YYY.com, ZZZ@ZZZ.com"/><br></br>
                     </form>
                 </div>
             </div>

@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import styles from '../styles/progress_bottom.css';
+
 export default (props) => {
     let mainContainerStyles = {
         overflow: 'hidden',
@@ -28,7 +30,7 @@ export default (props) => {
     };
 
     return(
-        <div id="progress-buttons" style={mainContainerStyles}>
+        <div className={`${styles['progress-buttons']}`} style={mainContainerStyles}>
             <Link to={props.backRoute}><button style={backButtonStyles} type="button">Back</button></Link>
             <Link to={props.nextRoute}><button style={nextButtonStyles} type="button">Next</button></Link>
         </div>

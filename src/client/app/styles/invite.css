@@ -1,4 +1,4 @@
-#invite-container {
+.invite-container {
     max-width: 65%;
     border: 2px solid black;
     border-radius: 10px;
@@ -11,7 +11,7 @@
     background-color: white;
 }
 
-#desktop-button {
+.desktop-button {
     color: white;
     background-color: orange;
     padding: 5px 10px;

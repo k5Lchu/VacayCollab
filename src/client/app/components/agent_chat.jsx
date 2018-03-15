@@ -3,6 +3,8 @@ import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as messagesActions from '../actions/messages-actions';
 
+import styles from '../styles/agent_chat.css';
+
 const Message = (props) => {
     let messageContainerStyles = {
         padding: '0px 10px',
@@ -221,7 +223,7 @@ class ChatContainer extends React.Component {
                     <ChatHeader onToggleChat={this.toggleChatVisibility} />
                     <MessageList data={this.props.data} save={this.props.actions.saveMessage}/>
                 </div>
-                <img id="chatToggle" src="http://iconshow.me/media/images/ui/ios7-icons/png/512/chatbubble-outline.png" alt="chat" onClick={this.toggleChatVisibility} />
+                <img className={`${styles['chatToggle']}`} src="http://iconshow.me/media/images/ui/ios7-icons/png/512/chatbubble-outline.png" alt="chat" onClick={this.toggleChatVisibility} />
             </div>
         );
     }

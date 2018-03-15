@@ -3,6 +3,8 @@ import CommentComponent from './comments.jsx';
 import ChatContainer from './agent_chat.jsx';
 import ProgressButtons from './progress_bottom_bar.jsx';
 
+import styles from '../styles/summary.css';
+
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 import * as itineraryActions from '../actions/itinerary-actions';
@@ -92,8 +94,8 @@ class EditEventSummaryModal extends React.Component {
         }
 
         return(
-            <div id="summary-modal" onClick={this.props.hide} style={modalDisplayStyles}>
-                <div id="summary-modal-content">
+            <div className={`${styles['summary-modal']}`} onClick={this.props.hide} style={modalDisplayStyles}>
+                <div className={`${styles['summary-modal-content']}`}>
                     <h4 style={this.modalHeaderStyles}>Edit Event Summary</h4>
                     <form onSubmit={this.handleSubmit}>
                         <div>
@@ -104,7 +106,7 @@ class EditEventSummaryModal extends React.Component {
                             <p style={this.inputLabelStyles}>Description</p>
                             <textarea style={this.inputDescriptionStyles} value={this.state.description} onChange={this.handleDescriptionChange} placeholder="Write new description here..."></textarea>
                         </div>
-                        <button className="submit-summary-edit-button" type="submit">Submit</button>
+                        <button className={`${styles['submit-summary-edit-button']}`} type="submit">Submit</button>
                     </form>
                 </div>
             </div>
@@ -155,10 +157,10 @@ class EventSummary extends React.Component {
 
     render() {
         return(
-            <div className="event-summary-container" style={this.containerStyles}>
+            <div className={`${styles['event-summary-container']}`} style={this.containerStyles}>
                 <h3 style={this.headerStyles}>{this.state.title}</h3>
                 <p style={this.desciprtionStyles}>{this.state.description}</p>
-                <button onClick={this.handleEditClick} className="edit-summary-button" type="button">Edit</button>
+                <button onClick={this.handleEditClick} className={`${styles['edit-summary-button']}`} type="button">Edit</button>
             </div>
         );
     }
@@ -198,7 +200,7 @@ class EventSummaryList extends React.Component {
     }
 
     hideModal(e) {
-        if (e.target === document.getElementById('summary-modal')) {
+        if (e.target === document.getElementsByClassName(styles['summary-modal'])[0]) {
             this.setState({
                 currEventId: this.state.currEventId,
                 currEventTitle: this.state.currEventTitle,
@@ -279,7 +281,7 @@ const SummaryPage = (props) => {
         <div>
             <div style={progressBarContainerStyle}><div style={progressBarContentStyle}></div></div>
             <div style={mainContainerStyles}>
-                <h1 id="summary-h1-header" style={{textAlign: 'center'}}>Does this plan work with everyone?</h1>
+                <h1 className={`${styles['summary-h1-header']}`} style={{textAlign: 'center'}}>Does this plan work with everyone?</h1>
                 <EventSummaryListContainer />
                 <CommentComponent/>
             </div>

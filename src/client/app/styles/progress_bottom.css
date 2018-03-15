@@ -1,8 +1,8 @@
-#progress-buttons button {
+.progress-buttons button {
     background-color: dodgerblue;
 }
 
-#progress-buttons button:hover {
+.progress-buttons button:hover {
     background-color: royalblue;
     cursor: pointer;
 }
