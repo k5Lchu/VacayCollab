@@ -4,7 +4,8 @@
   "description": "cse 134b project",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --reporter progress --require tools/testSetup.js --recursive src/client/app/components/tests/*.test.js",
+    "test-components": "mocha --reporter progress --require tools/testSetup.js --recursive src/client/app/tests/*.test.js",
+    "test-reducers": "mocha --reporter progress --require tools/testSetup.js --recursive src/client/app/reducers/tests/*.test.js",
     "dev-scott": "webpack -d --watch",
     "dev": "webpack -d",
     "dev-start": "webpack-dev-server"

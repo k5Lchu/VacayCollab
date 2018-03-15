@@ -5,8 +5,6 @@ import { HashRouter, Router } from 'react-router-dom';
 
 import routes from './routes.js';
 
-import './styles/location.css';
-import './styles/markavailability.css';
 import './styles/decidedate.css';
 import './styles/hotel.css';
 
