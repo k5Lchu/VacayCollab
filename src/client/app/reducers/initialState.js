@@ -5,7 +5,7 @@ export default {
     locations: [],
     locMap: new Map(),
     monthMap: new Map(),
-    currentMonth: 3,
+    currentMonth: 2,
     passedDays: [],
     saveDays: [],
     ajaxCallsInProgress: 0

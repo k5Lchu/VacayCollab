@@ -74,24 +74,6 @@ let upvoteLoc = function(name){
     locations[locMap.get(name)].voted = true;
 };
 
-var locCommentsData = [
-    {
-        author: 'Roronoa Zoro',
-        commentContent: 'Hey Luffy, trust me. If we go to Chiang Mai we can eat a lot of delicious food.',
-        timestamp: 1
-    },
-    {
-        author: 'Luffy',
-        commentContent: 'NAMI! WE"RE SETTING SAIL TO CHIANG MAI NOW!',
-        timestamp: 2
-    },
-    {
-        author: 'Nami',
-        commentContent: 'I want to see Hollywood!',
-        timestamp: 3
-    }
-];
-
 class locationAPI {
     static getAllLocations() {
         return new Promise((resolve, reject) => {
