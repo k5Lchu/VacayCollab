@@ -122,4 +122,29 @@ const HotelPage = (props) => {
     );
 }
 
+/* Converts saved days to a map with the month abbreviations as keys (make sure you map the state to props for CalendarData*/
+let saveDaysToMonth = () => {
+    let saved = props.saveDays;
+    let monthMap = props.monthMap;
+    let months = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
+    let dayMap = new Map();
+    for (let j = 0; j < months.length; j += 1) {
+        let floor = 0;
+        let i = 0;
+        while (i < months[j]) {
+            floor += monthMap.get(months[i])[2];
+            i += 1;
+        }
+        let ceiling = floor + monthMap.get(months[i])[2];
+        let ret = [];
+        for (let x = 0; x < saved.length; x++) {
+            let val = saved[x];
+            if (val > floor && val <= ceiling) { ret.push((val - floor)); }
+        }
+        dayMap.set(months[j], ret);
+    }
+    return dayMap;
+};
+/*              */
+
 export default HotelPage
