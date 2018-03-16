@@ -3,6 +3,8 @@ import ProgressButtons from './progress_bottom_bar.jsx';
 import CommentComponent from './comments.jsx';
 import ChatContainer from './agent_chat.jsx';
 
+import styles from '../styles/hotel.css';
+
 const Hotel = (props) => {
 
     let hotelStyles = {
@@ -10,25 +12,41 @@ const Hotel = (props) => {
         margin: '10px',
         padding: '10px',
         boxShadow: '0px 3px 3px #888888',
-    }
+        display: 'grid',
+        gridTemplateAreas: 'left right',
+    };
 
     let titleStyles = {
         fontWeight: 'bold',
-        margin: '10px',
-    }
+        fontSize: '40px'
+    };
 
-    let cityPicStyles = {
+    let buttonStyles = {
+        textAlign: 'center',
+    };
 
-    }
+    let handleClick = () => {
+        console.log("Redirecting to AirBnB");
+        window.location = "https://www.airbnb.com/";
+    };
 
-    render(
-        <div style={eventContainerStyles}>
-            <div className='row'>
-                <div style={titleStyles}>
-                    <h2>Location Title</h2>
-                </div>
-                <div style={cityPicStyles}>
-                    
+    return(
+        <div className={`${styles['hotel-card']}`}>
+            <div className={`${styles['left-content']}`}>
+                <div style={titleStyles}>Chiang Mai</div>
+                    <img className={`${styles['hotel-img']}`} src='/imgs/chiangmai-pic.jpg' alt='hotel-pic'/>
+            </div>
+            
+            <div className={`${styles['right-content']}`}>
+                <div className={`${styles['airbnb-container']}`}>
+                    <img className={`${styles['airbnb-logo']}`} src="/imgs/airbnb-logo-s.png" alt="hotel-logo"/>
+                    <h4>Live like a local and find unique places to stay</h4>
+                    <div className={`${styles['airbnb-datebox']}`}>
+                        Friday 3/16 - Saturday 3/17
+                    </div>
+                    <div style={buttonStyles}>
+                        <button className={`${styles['airbnb-button']}`} type="button" onClick={handleClick}>Find Places!</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -38,19 +56,14 @@ const Hotel = (props) => {
 class HotelList extends React.Component {
     constructor(props) {
         super(props);
-        this.handleOnClick = this.handleOnClick.bind(this);
-    }
-    
-    handleOnClick(event) {
-        console.log("Redirecting to AirBnB");
-        window.location = "https://www.airbnb.com/";
+        
     }
 
     render() {
         return(
             <div>
                 <div className={`${styles['hotel-container']}`}>
-
+                    <Hotel/>
                 </div>
             </div>
         );
@@ -83,7 +96,12 @@ const HotelPage = (props) => {
         padding: '10px',
         width: '80%',
         borderRadius: '25px',
-        marginBottom: '20px'
+        marginBottom: '20px',
+        minWidth: '565px',
+    };
+
+    let promptStyles = {
+        textAlign: 'center',
     };
 
     return(
@@ -91,9 +109,9 @@ const HotelPage = (props) => {
             <div style={progressBarContainerStyle}><div style={progressBarContentStyle}></div></div>
             <div style={mainContainerStyles}>
 
-                <div className={`${styles['top-prompt']}`}>
+                <div style={promptStyles}>
                     <h1>Where does everyone want to stay?</h1>
-                    <h4>Vote on where you want to stay!</h4>
+                    <h4>Pick out a place to stay with Airbnb.</h4>
                 </div>
                 <HotelList/>
                 <CommentComponent/>
