@@ -1,82 +1,86 @@
-#hotel-button {
+.hotel-container {
+    height: 600px;
+    padding: 10px;
+    border: 1px solid lightgray;
+    overflow: auto;
+    border-radius: 10px;
+    margin: 15px;
+}
+
+.hotel-img {
+    display: block;
+    max-width: 400px;
+    max-height: 400px;
+    margin: auto;
+}
+
+.hotel-card {
+    border: 1px solid lightgray;
+    margin: 10px;
+    padding: 10px;
+    box-shadow: 0px 3px 3px #888888;
+    display: grid;
+    grid-template-areas: 'left right';
+}
+
+.hotel-card .left-content {
+    grid-area: left;
+    text-align: center;
+    margin: 10px;
+}
+
+.hotel-card .right-content {
+    grid-area: right;
+    text-align: center;
+    margin: 10px;
+}
+
+.airbnb-container {
+    height: 300px;
+    padding: 10px;
+    border: 1px solid lightgray;
+    margin: 10px;
+}
+
+.airbnb-logo {
+    display: block;
+    max-width: 100px;
+    max-height: 100px;
+    margin: auto;
+}
+
+.airbnb-datebox {
+    border: 1px solid black;
+    margin: 10px;
+    padding: 10px;
+    text-align: center;
+}
+
+.airbnb-button {
     color: white;
     background-color: #fd5c63;
     padding: 5px 10px;
     border-radius: 15px;
     border-style: none;
     font-size: 15px;
-    margin-top: 15px;
-    margin-bottom: 15px;
+    margin: 15px;
 }
 
-#outer-container {
-    background-color: white;
-    max-width: 65%;
-    border: 2px solid black;
-    border-radius: 10px;
-    margin: auto;
-    margin-top: 30px;
-    margin-bottom: 10px;
-    padding-left: 10px;
-    padding-right: 10px;
-}
+@media only screen and (max-width: 1000px) {
 
-#outer-container > h2 {
-    margin: auto;
-}
+    .hotel-card {
+        grid-template-areas: 'top' 'bottom';
+    }
 
-#hotel-container {
-    background-color: white;
-    max-width: 50%;
-    width: 50%;
-    height: 50%;
-    border: 2px solid grey;
-    margin: auto;
-    margin-top:10px;
-    margin-bottom: 10px;
-    padding-top: 15px;
-    padding-bottom: 15px;
-    padding-left: 15px;
-    padding-right: 15px;
-}
-
-#hotel-logo {
-    margin: auto;
-    display: block;
-    width: auto;
-    height: auto;
-    max-width: 100px;
-    max-height: 100px;
-}
-
-#area-container > h3 {
-    background-color: white;
-    margin-left: 10px;
-}
-
-#top-prompt {
-    text-align: center;
-    background-color: white;
-}
-
-#top-prompt h4 {
-    margin-top: 10px;
-    margin-left: 10%;
-    margin-right: 10%;
-}
-
-#top-prompt h1 {
-    margin-bottom: 10px;
-}
-
-
-#area-container {
-    background-color: white;
-    margin-left: 0px;
-    margin-right: 0px;
-    margin-bottom: 10px;
-    border-top: 2px solid black;
-    margin-top: 10px;
-    max-height: 500px;
-    text-align: center;
+    .hotel-card .left-content {
+        grid-area: top;
+        text-align: center;
+        margin: 10px;
+    }
+    
+    .hotel-card .right-content {
+        grid-area: bottom;
+        text-align: center;
+        margin: 10px;
+    }
 }

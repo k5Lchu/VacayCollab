@@ -3,39 +3,71 @@ import ProgressButtons from './progress_bottom_bar.jsx';
 import CommentComponent from './comments.jsx';
 import ChatContainer from './agent_chat.jsx';
 
-class HotelContainer extends React.Component {
-    constructor(props) {
-        super(props);
+import styles from '../styles/hotel.css';
 
-        this.handleClick = this.handleClick.bind(this);
-    }
+const Hotel = (props) => {
 
-    handleClick(event) {
+    let hotelStyles = {
+        border: '1px solid lightgray',
+        margin: '10px',
+        padding: '10px',
+        boxShadow: '0px 3px 3px #888888',
+        display: 'grid',
+        gridTemplateAreas: 'left right',
+    };
+
+    let titleStyles = {
+        fontWeight: 'bold',
+        fontSize: '40px'
+    };
+
+    let buttonStyles = {
+        textAlign: 'center',
+    };
+
+    let handleClick = () => {
         console.log("Redirecting to AirBnB");
         window.location = "https://www.airbnb.com/";
+    };
+
+    return(
+        <div className={`${styles['hotel-card']}`}>
+            <div className={`${styles['left-content']}`}>
+                <div style={titleStyles}>Chiang Mai</div>
+                    <img className={`${styles['hotel-img']}`} src='/imgs/chiangmai-pic.jpg' alt='hotel-pic'/>
+            </div>
+            
+            <div className={`${styles['right-content']}`}>
+                <div className={`${styles['airbnb-container']}`}>
+                    <img className={`${styles['airbnb-logo']}`} src="/imgs/airbnb-logo-s.png" alt="hotel-logo"/>
+                    <h4>Live like a local and find unique places to stay</h4>
+                    <div className={`${styles['airbnb-datebox']}`}>
+                        Friday 3/16 - Saturday 3/17
+                    </div>
+                    <div style={buttonStyles}>
+                        <button className={`${styles['airbnb-button']}`} type="button" onClick={handleClick}>Find Places!</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+}
+
+class HotelList extends React.Component {
+    constructor(props) {
+        super(props);
+        
     }
 
     render() {
         return(
-                <div id="outer-container">
-                    <br></br>
-                    
-                    <p>While visiting Chiang Mai, keep in mind that the old town
-                        district and area surrounding the famous night market offers both expensive and
-                        inexpensive options. The riverside neighborhoods boast exclusive hotels whereas
-                        the inner cities allow you to live like a local.</p>
-                        <div id="hotel-container">
-                            <img id="hotel-logo" src="/imgs/airbnb-logo-s.png" alt="hotel-logo"/>
-                                <h4>Live like a local and find unique places to stay</h4>
-                                <p>from 02/02/19<br></br> to 02/07/19</p>
-                                <p>
-                                    <button id="hotel-button" type="button" onClick={this.handleClick}>Check Out Homes on AirBnB</button>
-                                </p>
-                        </div>
+            <div>
+                <div className={`${styles['hotel-container']}`}>
+                    <Hotel/>
                 </div>
-            
+            </div>
         );
-    }    
+    }
 }
 
 const HotelPage = (props) => {
@@ -58,20 +90,33 @@ const HotelPage = (props) => {
         backgroundColor: 'dodgerblue'
     };
 
+    let mainContainerStyles = {
+        margin: 'auto',
+        border: '1px solid black',
+        padding: '10px',
+        width: '80%',
+        borderRadius: '25px',
+        marginBottom: '20px',
+        minWidth: '565px',
+    };
+
+    let promptStyles = {
+        textAlign: 'center',
+    };
+
     return(
         <div>
             <div style={progressBarContainerStyle}><div style={progressBarContentStyle}></div></div>
-            <div id="main-container">
+            <div style={mainContainerStyles}>
 
-                <div id="top-prompt">
+                <div style={promptStyles}>
                     <h1>Where does everyone want to stay?</h1>
-                    <h4>Vote on where you want to stay!<br></br>
-                    Do you want to relax at the best hotel or live like a local?</h4>
+                    <h4>Pick out a place to stay with Airbnb.</h4>
                 </div>
-                <HotelContainer/>
+                <HotelList/>
                 <CommentComponent/>
+                <ChatContainer/>
             </div>
-            <ChatContainer/>
             <ProgressButtons backRoute={backRouteRef} nextRoute={nextRouteRef} />
         </div>
     );
