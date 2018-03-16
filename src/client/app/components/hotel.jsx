@@ -128,14 +128,12 @@ let saveDaysToMonth = () => {
     let monthMap = props.monthMap;
     let months = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
     let dayMap = new Map();
+    let floor = 0;
     for (let j = 0; j < months.length; j += 1) {
-        let floor = 0;
-        let i = 0;
-        while (i < months[j]) {
-            floor += monthMap.get(months[i])[2];
-            i += 1;
+        if (j > 0) {
+            floor += monthMap.get(months[j - 1])[2];
         }
-        let ceiling = floor + monthMap.get(months[i])[2];
+        let ceiling = floor + monthMap.get(months[j])[2];
         let ret = [];
         for (let x = 0; x < saved.length; x++) {
             let val = saved[x];
